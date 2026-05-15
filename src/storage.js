@@ -1,15 +1,24 @@
-const storageKey = "todo-project-tasks";
+import { createDefaultProject, normalizeProjects } from "./appLogic.js";
 
-export function loadTodos() {
-  const savedTodos = localStorage.getItem(storageKey);
+const projectsStorageKey = "todo-project-projects";
+const legacyTodosStorageKey = "todo-project-tasks";
 
-  if (!savedTodos) {
-    return [];
+export function loadProjects() {
+  const savedProjects = localStorage.getItem(projectsStorageKey);
+
+  if (savedProjects) {
+    return normalizeProjects(JSON.parse(savedProjects));
   }
 
-  return JSON.parse(savedTodos);
+  const legacyTodos = localStorage.getItem(legacyTodosStorageKey);
+
+  if (legacyTodos) {
+    return [createDefaultProject(JSON.parse(legacyTodos))];
+  }
+
+  return [createDefaultProject()];
 }
 
-export function saveTodos(todos) {
-  localStorage.setItem(storageKey, JSON.stringify(todos));
+export function saveProjects(projects) {
+  localStorage.setItem(projectsStorageKey, JSON.stringify(projects));
 }

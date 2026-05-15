@@ -41,9 +41,19 @@ $env:PORT=4000; npm run dev
 
 - `public/` contains the HTML and CSS files served to the browser
 - `src/` contains ES module JavaScript for the todo app
+- `src/appLogic.js` contains todo and project factories plus data normalization
 - `index.html` is the GitHub Pages entry file
 - `server.config.json` sets the default server port
 - `server.js` runs the local Node server used by `npm run dev` and `npm run start`
+
+## Assignment Progress
+
+- Done: todo objects are created with a factory
+- Done: todos include title, description, dueDate, priority, notes, checklist, and completed state
+- Done: app logic is separated from DOM rendering modules
+- Done: data is persisted with localStorage
+- In progress: project UI for viewing and creating separate projects
+- Next: add description and due date fields to the visible todo form
 
 ## Manual Test Checklist
 
@@ -56,4 +66,4 @@ $env:PORT=4000; npm run dev
 
 ## Current Step
 
-Step 21 adds task priority.
+Step 22 adds todo and project factories in a separate app logic module.

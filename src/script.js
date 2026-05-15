@@ -1,7 +1,6 @@
-import { loadTodos, saveTodos } from "./storage.js";
+import { createTodo, defaultProjectId, normalizeProjects } from "./appLogic.js";
+import { loadProjects, saveProjects } from "./storage.js";
 import { createTodoItem } from "./todoItem.js";
-
-const priorityLevels = ["low", "medium", "high"];
 
 const todoForm = document.querySelector("#todo-form");
 const todoInput = document.querySelector("#todo-input");
@@ -15,7 +14,8 @@ const completedCount = document.querySelector("#completed-count");
 const clearCompletedButton = document.querySelector("#clear-completed");
 const emptyState = document.querySelector("#empty-state");
 
-let todos = loadTodos();
+let projects = loadProjects();
+let currentProjectId = defaultProjectId;
 let currentFilter = "all";
 let editingTodoId = null;
 
@@ -24,20 +24,20 @@ renderTodos();
 todoForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const text = todoInput.value.trim();
+  const title = todoInput.value.trim();
 
-  if (!text) {
+  if (!title) {
     return;
   }
 
-  todos.push({
-    id: crypto.randomUUID(),
-    text,
-    priority: priorityInput.value,
-    completed: false,
-  });
+  getCurrentProject().todos.push(
+    createTodo({
+      title,
+      priority: priorityInput.value,
+    })
+  );
 
-  saveTodos(todos);
+  saveProjects(projects);
   renderTodos();
 
   todoInput.value = "";
@@ -58,14 +58,16 @@ todoFilters.addEventListener("click", (event) => {
 });
 
 clearCompletedButton.addEventListener("click", () => {
-  todos = todos.filter((todo) => !todo.completed);
-  saveTodos(todos);
+  const currentProject = getCurrentProject();
+  currentProject.todos = currentProject.todos.filter((todo) => !todo.completed);
+  saveProjects(projects);
   renderTodos();
 });
 
 function renderTodos() {
   todoList.innerHTML = "";
-  normalizeTodos();
+  projects = normalizeProjects(projects);
+  currentProjectId = getCurrentProject().id;
 
   const visibleTodos = getFilteredTodos();
 
@@ -87,6 +89,8 @@ function renderTodos() {
 }
 
 function getFilteredTodos() {
+  const todos = getCurrentTodos();
+
   if (currentFilter === "active") {
     return todos.filter((todo) => !todo.completed);
   }
@@ -99,20 +103,21 @@ function getFilteredTodos() {
 }
 
 function toggleTodo(id, completed) {
-  const todo = todos.find((currentTodo) => currentTodo.id === id);
+  const todo = getCurrentTodos().find((currentTodo) => currentTodo.id === id);
 
   if (!todo) {
     return;
   }
 
   todo.completed = completed;
-  saveTodos(todos);
+  saveProjects(projects);
   renderTodos();
 }
 
 function deleteTodo(id) {
-  todos = todos.filter((todo) => todo.id !== id);
-  saveTodos(todos);
+  const currentProject = getCurrentProject();
+  currentProject.todos = currentProject.todos.filter((todo) => todo.id !== id);
+  saveProjects(projects);
   renderTodos();
 }
 
@@ -122,16 +127,16 @@ function editTodo(id) {
 }
 
 function saveEdit(id, text, priority) {
-  const todo = todos.find((currentTodo) => currentTodo.id === id);
+  const todo = getCurrentTodos().find((currentTodo) => currentTodo.id === id);
 
   if (!todo) {
     return;
   }
 
-  todo.text = text;
+  todo.title = text;
   todo.priority = priority;
   editingTodoId = null;
-  saveTodos(todos);
+  saveProjects(projects);
   renderTodos();
   todoInput.focus();
 }
@@ -151,6 +156,7 @@ function updateFilterButtons() {
 }
 
 function updateTodoFooter() {
+  const todos = getCurrentTodos();
   const activeTotal = todos.filter((todo) => !todo.completed).length;
   const completedTotal = todos.length - activeTotal;
   const taskLabel = activeTotal === 1 ? "task" : "tasks";
@@ -162,21 +168,6 @@ function updateTodoFooter() {
   clearCompletedButton.disabled = completedTotal === 0;
 }
 
-function normalizeTodos() {
-  let changed = false;
-
-  todos.forEach((todo) => {
-    if (!priorityLevels.includes(todo.priority)) {
-      todo.priority = "medium";
-      changed = true;
-    }
-  });
-
-  if (changed) {
-    saveTodos(todos);
-  }
-}
-
 function updateEmptyState(visibleCount) {
   emptyState.hidden = visibleCount > 0;
 
@@ -184,7 +175,7 @@ function updateEmptyState(visibleCount) {
     return;
   }
 
-  if (todos.length === 0) {
+  if (getCurrentTodos().length === 0) {
     emptyState.textContent = "No tasks yet. Add one above.";
     return;
   }
@@ -195,4 +186,15 @@ function updateEmptyState(visibleCount) {
   }
 
   emptyState.textContent = "No completed tasks.";
+}
+
+function getCurrentProject() {
+  return (
+    projects.find((project) => project.id === currentProjectId) ||
+    projects[0]
+  );
+}
+
+function getCurrentTodos() {
+  return getCurrentProject().todos;
 }

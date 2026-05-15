@@ -17,7 +17,7 @@ export function createTodoItem(todo, options) {
   checkbox.checked = todo.completed;
 
   const text = document.createElement("span");
-  text.textContent = todo.text;
+  text.textContent = todo.title;
 
   const priority = document.createElement("span");
   priority.className = `priority-badge priority-${todo.priority || "medium"}`;
@@ -66,7 +66,7 @@ function createEditForm(todo, options) {
 
   const input = document.createElement("input");
   input.type = "text";
-  input.value = todo.text;
+  input.value = todo.title;
   input.setAttribute("aria-label", "Edit task");
 
   const prioritySelect = document.createElement("select");

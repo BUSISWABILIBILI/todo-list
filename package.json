@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node server.js",
     "start": "node server.js",
-    "test": "node --check server.js && node --check src/script.js && node --check src/storage.js && node --check src/todoItem.js"
+    "test": "node --check server.js && node --check src/appLogic.js && node --check src/script.js && node --check src/storage.js && node --check src/todoItem.js"
   },
   "keywords": [
     "todo",
