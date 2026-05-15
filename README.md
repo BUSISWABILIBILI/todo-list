@@ -112,4 +112,4 @@ For GitHub Pages, set the repository Pages source to:
 
 ## Current Step
 
-Step 35 improves task cards with clearer hierarchy, meta details, and completed states.
+Step 36 improves the add-task form into a compact, professional task composer.

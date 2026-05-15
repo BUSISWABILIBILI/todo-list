@@ -176,7 +176,13 @@ function createWorkspaceStat(id, label) {
 
 function createTodoForm() {
   return createElement("form", { className: "todo-form", id: "todo-form" }, [
-    createElement("label", { text: "New task", attributes: { for: "todo-input" } }),
+    createElement("div", { className: "composer-header" }, [
+      createElement("div", {}, [
+        createElement("p", { className: "status-label", text: "Task composer" }),
+        createElement("label", { text: "Add a task", attributes: { for: "todo-input" } }),
+      ]),
+      createElement("span", { className: "composer-hint", text: "Saved to selected project" }),
+    ]),
     createElement("div", { className: "todo-entry" }, [
       createElement("input", {
         id: "todo-input",
