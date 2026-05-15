@@ -1,8 +1,9 @@
 const http = require("node:http");
 const fs = require("node:fs/promises");
+const serverConfig = require("./server.config.json");
 const path = require("node:path");
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || serverConfig.port;
 const publicDir = path.join(__dirname, "public");
 const sourceDir = path.join(__dirname, "src");
 

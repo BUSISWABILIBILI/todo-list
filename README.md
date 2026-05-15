@@ -12,6 +12,12 @@ npm run start
 
 Then open `http://localhost:3000` in a browser.
 
+To use another port in PowerShell:
+
+```powershell
+$env:PORT=4000; npm run dev
+```
+
 ## Scripts
 
 - `npm run dev` starts the local server for development
@@ -32,6 +38,7 @@ Then open `http://localhost:3000` in a browser.
 
 - `public/` contains the HTML and CSS files served to the browser
 - `src/` contains ES module JavaScript for the todo app
+- `server.config.json` sets the default server port
 - `server.js` runs the local Node server used by `npm run dev` and `npm run start`
 
 ## Manual Test Checklist
@@ -45,4 +52,4 @@ Then open `http://localhost:3000` in a browser.
 
 ## Current Step
 
-Step 15 adds `npm run dev` for a clear development command.
+Step 16 adds server port config with a `PORT` override.
