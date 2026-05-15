@@ -33,6 +33,7 @@ body {
 
 button,
 input,
+textarea,
 select {
   font: inherit;
 }
@@ -52,6 +53,7 @@ button:active:not(:disabled) {
 
 button:focus-visible,
 input:focus-visible,
+textarea:focus-visible,
 select:focus-visible {
   outline: 3px solid rgba(37, 99, 235, 0.22);
   outline-offset: 2px;
@@ -180,12 +182,13 @@ h1 {
 
 .todo-entry {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(130px, auto) auto;
+  grid-template-columns: minmax(0, 1fr) minmax(145px, auto) minmax(130px, auto) auto;
   gap: 10px;
 }
 
 .todo-entry input,
 .todo-entry select,
+.todo-form textarea,
 .edit-form input,
 .edit-form select {
   min-width: 0;
@@ -201,7 +204,15 @@ h1 {
   padding: 13px 14px;
 }
 
-.todo-entry input::placeholder {
+.todo-form textarea {
+  width: 100%;
+  min-height: 84px;
+  padding: 13px 14px;
+  resize: vertical;
+}
+
+.todo-entry input::placeholder,
+.todo-form textarea::placeholder {
   color: #98a2b3;
 }
 
@@ -313,6 +324,17 @@ h1 {
   gap: 10px;
   min-width: 0;
   flex-wrap: wrap;
+}
+
+.task-content > span:first-child {
+  min-width: 100%;
+}
+
+.task-meta {
+  min-width: 100%;
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 650;
 }
 
 .priority-badge {

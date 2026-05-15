@@ -23,6 +23,10 @@ export function createTodoItem(todo, options) {
   priority.className = `priority-badge priority-${todo.priority || "medium"}`;
   priority.textContent = getPriorityLabel(todo.priority);
 
+  const meta = document.createElement("span");
+  meta.className = "task-meta";
+  meta.textContent = getTaskMeta(todo);
+
   const editButton = document.createElement("button");
   editButton.className = "edit-button";
   editButton.type = "button";
@@ -48,6 +52,10 @@ export function createTodoItem(todo, options) {
   const taskContent = document.createElement("span");
   taskContent.className = "task-content";
   taskContent.append(text, priority);
+
+  if (meta.textContent) {
+    taskContent.append(meta);
+  }
 
   label.append(checkbox, taskContent);
 
@@ -134,4 +142,18 @@ function getPriorityLabel(priority) {
   }
 
   return "Medium";
+}
+
+function getTaskMeta(todo) {
+  const details = [];
+
+  if (todo.dueDate) {
+    details.push(`Due ${todo.dueDate}`);
+  }
+
+  if (todo.description) {
+    details.push(todo.description);
+  }
+
+  return details.join(" - ");
 }

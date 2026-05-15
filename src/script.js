@@ -4,6 +4,8 @@ import { createTodoItem } from "./todoItem.js";
 
 const todoForm = document.querySelector("#todo-form");
 const todoInput = document.querySelector("#todo-input");
+const descriptionInput = document.querySelector("#description-input");
+const dueDateInput = document.querySelector("#due-date-input");
 const priorityInput = document.querySelector("#priority-input");
 const todoList = document.querySelector("#todo-list");
 const todoFilters = document.querySelector("#todo-filters");
@@ -33,6 +35,8 @@ todoForm.addEventListener("submit", (event) => {
   getCurrentProject().todos.push(
     createTodo({
       title,
+      description: descriptionInput.value.trim(),
+      dueDate: dueDateInput.value,
       priority: priorityInput.value,
     })
   );
@@ -41,6 +45,8 @@ todoForm.addEventListener("submit", (event) => {
   renderTodos();
 
   todoInput.value = "";
+  descriptionInput.value = "";
+  dueDateInput.value = "";
   priorityInput.value = "medium";
   todoInput.focus();
 });

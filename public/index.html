@@ -59,8 +59,14 @@
                 id="todo-input"
                 name="todo"
                 type="text"
-                placeholder="Add a task"
+                placeholder="Task title"
                 autocomplete="off"
+              />
+              <input
+                id="due-date-input"
+                name="dueDate"
+                type="date"
+                aria-label="Due date"
               />
               <select id="priority-input" name="priority" aria-label="Task priority">
                 <option value="low">Low</option>
@@ -69,6 +75,12 @@
               </select>
               <button type="submit">Add</button>
             </div>
+            <textarea
+              id="description-input"
+              name="description"
+              placeholder="Description"
+              rows="3"
+            ></textarea>
           </form>
 
           <ul class="todo-list" id="todo-list" aria-label="Todo list"></ul>

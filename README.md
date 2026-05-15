@@ -33,6 +33,7 @@ $env:PORT=4000; npm run dev
 - Delete tasks
 - Save tasks in localStorage
 - Set task priority
+- Set todo description and due date
 - Filter all, active, and completed tasks
 - Clear completed tasks
 - Edit task names
@@ -52,8 +53,9 @@ $env:PORT=4000; npm run dev
 - Done: todos include title, description, dueDate, priority, notes, checklist, and completed state
 - Done: app logic is separated from DOM rendering modules
 - Done: data is persisted with localStorage
+- Done: visible todo form collects description and due date
 - In progress: project UI for viewing and creating separate projects
-- Next: add description and due date fields to the visible todo form
+- Next: add project UI for viewing and creating separate projects
 
 ## Manual Test Checklist
 
@@ -66,4 +68,4 @@ $env:PORT=4000; npm run dev
 
 ## Current Step
 
-Step 22 adds todo and project factories in a separate app logic module.
+Step 23 adds description and due date fields.
