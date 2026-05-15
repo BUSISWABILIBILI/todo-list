@@ -47,10 +47,10 @@ function createLeftPanel() {
 
   const header = createElement("header", { className: "app-header" }, [
     createElement("p", { className: "eyebrow", text: "Project planner" }),
-    createElement("h1", { id: "app-title", text: "Todo Dashboard" }),
+    createElement("h1", { id: "app-title", text: "Taskboard" }),
     createElement("p", {
       className: "app-intro",
-      text: "Organize project work, priorities, and deadlines in one focused workspace.",
+      text: "Manage project tasks, priorities, and deadlines from one focused workspace.",
     }),
   ]);
 
@@ -67,7 +67,7 @@ function createStatusPanel() {
       createStatCard("active-count", "Active"),
       createStatCard("completed-count", "Done"),
     ]),
-    createElement("p", { className: "todo-count", id: "todo-count", text: "0 active tasks" }),
+    createElement("p", { className: "todo-count", id: "todo-count", text: "0 open tasks" }),
   ]);
 }
 
@@ -122,7 +122,7 @@ function createProjectsPanel() {
     attributes: { "aria-labelledby": "projects-title" },
   }, [
     createElement("div", { className: "section-heading" }, [
-      createElement("p", { className: "status-label", id: "projects-title", text: "Projects" }),
+      createElement("p", { className: "status-label", id: "projects-title", text: "Project lists" }),
     ]),
     createElement("div", {
       className: "project-list",
@@ -180,10 +180,10 @@ function createTodoForm() {
   return createElement("form", { className: "todo-form", id: "todo-form" }, [
     createElement("div", { className: "composer-header" }, [
       createElement("div", {}, [
-        createElement("p", { className: "status-label", text: "Task composer" }),
-        createElement("label", { text: "Add a task", attributes: { for: "todo-input" } }),
+        createElement("p", { className: "status-label", text: "New task" }),
+        createElement("label", { text: "Capture work", attributes: { for: "todo-input" } }),
       ]),
-      createElement("span", { className: "composer-hint", text: "Saved to selected project" }),
+      createElement("span", { className: "composer-hint", text: "Added to selected project" }),
     ]),
     createElement("div", { className: "todo-entry" }, [
       createElement("input", {
@@ -191,7 +191,7 @@ function createTodoForm() {
         attributes: {
           autocomplete: "off",
           name: "todo",
-          placeholder: "Task title",
+          placeholder: "What needs to be done?",
           type: "text",
         },
       }),
@@ -210,7 +210,7 @@ function createTodoForm() {
       id: "description-input",
       attributes: {
         name: "description",
-        placeholder: "Description",
+        placeholder: "Add context or next steps",
         rows: "3",
       },
     }),
@@ -251,7 +251,7 @@ function createTodoList() {
       id: "empty-state",
       properties: { hidden: true },
     }, [
-      createElement("p", { className: "empty-state-kicker", text: "No matching tasks" }),
+      createElement("p", { className: "empty-state-kicker", text: "Workspace clear" }),
       createElement("h3", { id: "empty-state-title", text: "No tasks yet" }),
       createElement("p", {
         className: "empty-state-body",

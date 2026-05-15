@@ -257,7 +257,7 @@ export function startApp(root) {
     view.workspaceTotalCount.textContent = todos.length;
     view.workspaceActiveCount.textContent = activeTotal;
     view.workspaceCompletedCount.textContent = completedTotal;
-    view.todoCount.textContent = `${activeTotal} active ${taskLabel}`;
+    view.todoCount.textContent = `${activeTotal} open ${taskLabel}`;
     view.clearCompletedButton.disabled = completedTotal === 0;
   }
 
@@ -295,19 +295,19 @@ export function startApp(root) {
     }
 
     if (getCurrentTodos().length === 0) {
-      view.emptyStateTitle.textContent = `No tasks in ${currentProject.name}`;
-      view.emptyStateBody.textContent = "Add a task with a due date and priority to start planning this project.";
+      view.emptyStateTitle.textContent = `${currentProject.name} has no tasks`;
+      view.emptyStateBody.textContent = "Capture the first task with a due date and priority to start planning this project.";
       return;
     }
 
     if (currentFilter === "active") {
-      view.emptyStateTitle.textContent = "No active tasks";
+      view.emptyStateTitle.textContent = "No open tasks";
       view.emptyStateBody.textContent = "Everything in this project is complete. Switch filters to review finished work.";
       return;
     }
 
     view.emptyStateTitle.textContent = "No completed tasks";
-    view.emptyStateBody.textContent = "Completed tasks will appear here after you check them off.";
+    view.emptyStateBody.textContent = "Finished work will appear here after tasks are marked complete.";
   }
 
   function saveAndRender() {

@@ -32,7 +32,7 @@ export function createTodoItem(todo, options) {
 
   const description = document.createElement("span");
   description.className = "task-description";
-  description.textContent = todo.description || "No description added";
+  description.textContent = todo.description || "No added context";
 
   const editButton = document.createElement("button");
   editButton.className = "edit-button";

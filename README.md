@@ -112,4 +112,4 @@ For GitHub Pages, set the repository Pages source to:
 
 ## Current Step
 
-Step 38 adds UI polish for focus states, controls, scrolling, and hover feedback.
+Step 39 refines visible UI wording for a more professional planning tool.
