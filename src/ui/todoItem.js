@@ -18,16 +18,21 @@ export function createTodoItem(todo, options) {
   checkbox.type = "checkbox";
   checkbox.checked = todo.completed;
 
-  const text = document.createElement("span");
-  text.textContent = todo.title;
+  const title = document.createElement("span");
+  title.className = "task-title";
+  title.textContent = todo.title;
 
   const priority = document.createElement("span");
   priority.className = `priority-badge priority-${todo.priority || "medium"}`;
   priority.textContent = getPriorityLabel(todo.priority);
 
-  const meta = document.createElement("span");
-  meta.className = "task-meta";
-  meta.textContent = getTaskMeta(todo);
+  const dueDate = document.createElement("span");
+  dueDate.className = "task-due-date";
+  dueDate.textContent = todo.dueDate ? `Due ${formatDueDate(todo.dueDate)}` : "No due date";
+
+  const description = document.createElement("span");
+  description.className = "task-description";
+  description.textContent = todo.description || "No description added";
 
   const editButton = document.createElement("button");
   editButton.className = "edit-button";
@@ -53,11 +58,15 @@ export function createTodoItem(todo, options) {
 
   const taskContent = document.createElement("span");
   taskContent.className = "task-content";
-  taskContent.append(text, priority);
+  const taskHeader = document.createElement("span");
+  taskHeader.className = "task-header";
+  taskHeader.append(title, priority);
 
-  if (meta.textContent) {
-    taskContent.append(meta);
-  }
+  const taskMeta = document.createElement("span");
+  taskMeta.className = "task-meta";
+  taskMeta.append(dueDate, description);
+
+  taskContent.append(taskHeader, taskMeta);
 
   label.append(checkbox, taskContent);
 
@@ -194,18 +203,4 @@ function getPriorityLabel(priority) {
   }
 
   return "Medium";
-}
-
-function getTaskMeta(todo) {
-  const details = [];
-
-  if (todo.dueDate) {
-    details.push(`Due ${formatDueDate(todo.dueDate)}`);
-  }
-
-  if (todo.description) {
-    details.push(todo.description);
-  }
-
-  return details.join(" - ");
 }

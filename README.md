@@ -112,4 +112,4 @@ For GitHub Pages, set the repository Pages source to:
 
 ## Current Step
 
-Step 34 improves project row hierarchy, active states, and compact project actions.
+Step 35 improves task cards with clearer hierarchy, meta details, and completed states.
