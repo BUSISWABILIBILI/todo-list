@@ -276,7 +276,7 @@ function createProjectRow(project, options) {
       type: "button",
     },
   }, [
-    createElement("span", { text: project.name }),
+    createElement("span", { className: "project-name", text: project.name }),
     createElement("span", { className: "project-count", text: project.todos.length }),
   ]);
 
@@ -285,7 +285,9 @@ function createProjectRow(project, options) {
       className: "project-action-button",
       text: "Edit",
       attributes: {
+        "aria-label": `Edit ${project.name}`,
         "data-project-action": "edit",
+        title: "Edit project",
         type: "button",
       },
     }),
@@ -293,7 +295,9 @@ function createProjectRow(project, options) {
       className: "project-action-button danger",
       text: "Delete",
       attributes: {
+        "aria-label": `Delete ${project.name}`,
         "data-project-action": "delete",
+        title: "Delete project",
         type: "button",
       },
       properties: { disabled: options.isDeleteDisabled },

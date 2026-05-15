@@ -341,7 +341,7 @@ h1 {
 
 .projects-panel {
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 .section-heading {
@@ -352,26 +352,30 @@ h1 {
 
 .project-list {
   display: grid;
-  gap: 8px;
+  gap: 6px;
 }
 
 .project-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   width: 100%;
-  border: 1px solid #e4e9f1;
+  border: 1px solid transparent;
   border-radius: 8px;
-  padding: 6px;
+  padding: 5px;
+  background: transparent;
+}
+
+.project-row:hover {
+  border-color: #e3e9f1;
   background: #ffffff;
 }
 
-.project-row:hover,
 .project-row.is-active {
-  border-color: #dbe7ff;
-  background: var(--primary-soft);
-  box-shadow: 0 6px 14px rgba(24, 34, 48, 0.08);
+  border-color: #c7d8ff;
+  background: #ffffff;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.1);
 }
 
 .project-select {
@@ -382,7 +386,7 @@ h1 {
   min-width: 0;
   border: 0;
   border-radius: 6px;
-  padding: 9px 8px;
+  padding: 10px 8px;
   background: transparent;
   color: #344054;
   font-weight: 800;
@@ -395,31 +399,50 @@ h1 {
   color: var(--primary-hover);
 }
 
+.project-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .project-count {
-  min-width: 28px;
+  min-width: 30px;
   border-radius: 999px;
-  padding: 3px 8px;
-  background: #ffffff;
+  padding: 4px 8px;
+  background: #eef3f8;
   color: var(--muted);
   font-size: 0.78rem;
   font-weight: 850;
   text-align: center;
 }
 
+.project-row.is-active .project-count {
+  background: var(--primary-soft);
+  color: var(--primary-hover);
+}
+
 .project-actions {
   display: flex;
-  gap: 6px;
+  gap: 4px;
 }
 
 .project-action-button {
   border: 1px solid #cfd8e5;
   border-radius: 6px;
-  padding: 7px 8px;
+  width: 34px;
+  height: 34px;
+  padding: 0;
   background: #ffffff;
   color: #475467;
-  font-size: 0.78rem;
+  font-size: 0;
   font-weight: 850;
   cursor: pointer;
+}
+
+.project-action-button::before {
+  content: "E";
+  font-size: 0.75rem;
 }
 
 .project-action-button:hover:not(:disabled) {
@@ -431,6 +454,10 @@ h1 {
   border-color: #ffd6de;
   background: var(--danger-soft);
   color: var(--danger);
+}
+
+.project-action-button.danger::before {
+  content: "D";
 }
 
 .project-action-button:disabled {

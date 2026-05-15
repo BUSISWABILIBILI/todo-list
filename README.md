@@ -112,4 +112,4 @@ For GitHub Pages, set the repository Pages source to:
 
 ## Current Step
 
-Step 33 improves the main layout with a dashboard-style selected project header.
+Step 34 improves project row hierarchy, active states, and compact project actions.
