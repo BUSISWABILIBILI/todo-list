@@ -112,4 +112,4 @@ For GitHub Pages, set the repository Pages source to:
 
 ## Current Step
 
-Step 37 improves empty states with project-aware messaging and polished layout.
+Step 38 adds UI polish for focus states, controls, scrolling, and hover feedback.

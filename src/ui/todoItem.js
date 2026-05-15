@@ -38,11 +38,13 @@ export function createTodoItem(todo, options) {
   editButton.className = "edit-button";
   editButton.type = "button";
   editButton.textContent = "Details";
+  editButton.title = "Edit task details";
 
   const deleteButton = document.createElement("button");
   deleteButton.className = "delete-button";
   deleteButton.type = "button";
   deleteButton.textContent = "Delete";
+  deleteButton.title = "Delete task";
 
   checkbox.addEventListener("change", () => {
     options.onToggle(todo.id, checkbox.checked);
