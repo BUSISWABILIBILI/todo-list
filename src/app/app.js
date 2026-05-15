@@ -270,7 +270,6 @@ export function startApp(root) {
 
     view.workspaceHeader.hidden = !hasSelectedProject;
     view.todoForm.hidden = !hasSelectedProject;
-    view.todoListArea.hidden = !hasSelectedProject;
     view.todoFooter.hidden = !hasSelectedProject;
   }
 
