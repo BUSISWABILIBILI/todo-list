@@ -1,17 +1,27 @@
 {
   "name": "todo-project",
   "version": "1.0.0",
-  "description": "A small todo app built with HTML, CSS, JavaScript, and a local Node server.",
+  "description": "A small todo app built with HTML, CSS, JavaScript, and webpack.",
+  "type": "module",
   "main": "server.js",
   "scripts": {
-    "dev": "node server.js",
-    "start": "node server.js",
-    "test": "node --check server.js && node --check src/appLogic.js && node --check src/dateUtils.js && node --check src/script.js && node --check src/storage.js && node --check src/todoItem.js"
+    "build": "webpack",
+    "dev": "webpack serve",
+    "start": "webpack serve",
+    "test": "node --check server.js && node --check webpack.config.js && node --check src/index.js && node --check src/app/app.js && node --check src/domain/appLogic.js && node --check src/storage/projectStorage.js && node --check src/ui/appView.js && node --check src/ui/todoItem.js && node --check src/utils/dateUtils.js"
   },
   "keywords": [
     "todo",
     "javascript"
   ],
   "author": "Busiswa Bili-bili",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.3",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.0"
+  }
 }

@@ -1,4 +1,4 @@
-import { createDefaultProject, normalizeProjects } from "./appLogic.js";
+import { createDefaultProject, normalizeProjects } from "../domain/appLogic.js";
 
 const projectsStorageKey = "todo-project-projects";
 const legacyTodosStorageKey = "todo-project-tasks";

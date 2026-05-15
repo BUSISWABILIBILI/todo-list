@@ -1,11 +1,16 @@
-const http = require("node:http");
-const fs = require("node:fs/promises");
-const serverConfig = require("./server.config.json");
-const path = require("node:path");
+import http from "node:http";
+import fs from "node:fs/promises";
+import path from "node:path";
+import { createRequire } from "node:module";
+import { fileURLToPath } from "node:url";
 
-const port = process.env.PORT || serverConfig.port;
-const publicDir = path.join(__dirname, "public");
-const sourceDir = path.join(__dirname, "src");
+const require = createRequire(import.meta.url);
+const serverConfig = require("./server.config.json");
+const directoryName = path.dirname(fileURLToPath(import.meta.url));
+
+let port = Number(process.env.PORT || serverConfig.port);
+const publicDir = path.join(directoryName, "public");
+const buildDir = path.join(directoryName, "docs");
 
 const mimeTypes = {
   ".css": "text/css; charset=utf-8",
@@ -18,9 +23,9 @@ const mimeTypes = {
 const server = http.createServer(async (request, response) => {
   const requestedUrl = new URL(request.url, `http://${request.headers.host}`);
   const requestedPath = requestedUrl.pathname === "/" ? "/index.html" : requestedUrl.pathname;
-  const staticRoot = requestedPath.startsWith("/src/") ? sourceDir : publicDir;
-  const staticPath = requestedPath.startsWith("/src/")
-    ? requestedPath.replace("/src/", "/")
+  const staticRoot = requestedPath.startsWith("/docs/") ? buildDir : publicDir;
+  const staticPath = requestedPath.startsWith("/docs/")
+    ? requestedPath.replace("/docs/", "/")
     : requestedPath;
   const filePath = path.join(staticRoot, staticPath);
   const relativePath = path.relative(staticRoot, filePath);
@@ -47,6 +52,22 @@ const server = http.createServer(async (request, response) => {
     response.writeHead(500, { "Content-Type": "text/plain; charset=utf-8" });
     response.end("Server error");
   }
+});
+
+server.on("error", (error) => {
+  if (error.code !== "EADDRINUSE") {
+    throw error;
+  }
+
+  if (process.env.PORT) {
+    console.error(`Port ${port} is already in use. Choose another port and try again.`);
+    process.exit(1);
+  }
+
+  const busyPort = port;
+  port += 1;
+  console.log(`Port ${busyPort} is already in use. Trying http://localhost:${port} instead.`);
+  server.listen(port);
 });
 
 server.listen(port, () => {

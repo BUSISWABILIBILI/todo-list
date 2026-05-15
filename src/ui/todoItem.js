@@ -1,4 +1,4 @@
-import { formatDueDate } from "./dateUtils.js";
+import { formatDueDate } from "../utils/dateUtils.js";
 
 export function createTodoItem(todo, options) {
   const item = document.createElement("li");
