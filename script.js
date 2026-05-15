@@ -168,11 +168,23 @@ function createEditForm(todo) {
     editingTodoId = null;
     saveTodos();
     renderTodos();
+    todoInput.focus();
+  });
+
+  input.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") {
+      return;
+    }
+
+    editingTodoId = null;
+    renderTodos();
+    todoInput.focus();
   });
 
   cancelButton.addEventListener("click", () => {
     editingTodoId = null;
     renderTodos();
+    todoInput.focus();
   });
 
   form.append(input, saveButton, cancelButton);
