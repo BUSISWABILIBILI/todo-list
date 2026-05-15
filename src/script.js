@@ -1,8 +1,14 @@
 import {
-  createProject,
-  createTodo,
+  addProject,
+  addTodoToProject,
+  clearCompletedTodos,
   defaultProjectId,
+  deleteTodoFromProject,
+  getProject,
+  getProjectTodos,
   normalizeProjects,
+  setTodoCompleted,
+  updateTodoDetails,
 } from "./appLogic.js";
 import { loadProjects, saveProjects } from "./storage.js";
 import { createTodoItem } from "./todoItem.js";
@@ -40,8 +46,7 @@ projectForm.addEventListener("submit", (event) => {
     return;
   }
 
-  const project = createProject({ name });
-  projects.push(project);
+  const project = addProject(projects, name);
   currentProjectId = project.id;
   currentFilter = "all";
   saveProjects(projects);
@@ -75,14 +80,12 @@ todoForm.addEventListener("submit", (event) => {
     return;
   }
 
-  getCurrentProject().todos.push(
-    createTodo({
-      title,
-      description: descriptionInput.value.trim(),
-      dueDate: dueDateInput.value,
-      priority: priorityInput.value,
-    })
-  );
+  addTodoToProject(projects, currentProjectId, {
+    title,
+    description: descriptionInput.value.trim(),
+    dueDate: dueDateInput.value,
+    priority: priorityInput.value,
+  });
 
   saveProjects(projects);
   renderTodos();
@@ -107,8 +110,7 @@ todoFilters.addEventListener("click", (event) => {
 });
 
 clearCompletedButton.addEventListener("click", () => {
-  const currentProject = getCurrentProject();
-  currentProject.todos = currentProject.todos.filter((todo) => !todo.completed);
+  clearCompletedTodos(projects, currentProjectId);
   saveProjects(projects);
   renderTodos();
 });
@@ -154,20 +156,13 @@ function getFilteredTodos() {
 }
 
 function toggleTodo(id, completed) {
-  const todo = getCurrentTodos().find((currentTodo) => currentTodo.id === id);
-
-  if (!todo) {
-    return;
-  }
-
-  todo.completed = completed;
+  setTodoCompleted(projects, currentProjectId, id, completed);
   saveProjects(projects);
   renderTodos();
 }
 
 function deleteTodo(id) {
-  const currentProject = getCurrentProject();
-  currentProject.todos = currentProject.todos.filter((todo) => todo.id !== id);
+  deleteTodoFromProject(projects, currentProjectId, id);
   saveProjects(projects);
   renderTodos();
 }
@@ -178,20 +173,16 @@ function editTodo(id) {
 }
 
 function saveEdit(id, details, priority) {
-  const todo = getCurrentTodos().find((currentTodo) => currentTodo.id === id);
+  const updatedTodo = updateTodoDetails(projects, currentProjectId, id, {
+    ...details,
+    notes: details.notes,
+    priority,
+  });
 
-  if (!todo) {
+  if (!updatedTodo) {
     return;
   }
 
-  Object.assign(todo, {
-    title: details.title,
-    description: details.description,
-    dueDate: details.dueDate,
-    priority,
-    notes: details.notes,
-    checklist: details.checklist,
-  });
   editingTodoId = null;
   saveProjects(projects);
   renderTodos();
@@ -268,12 +259,9 @@ function updateEmptyState(visibleCount) {
 }
 
 function getCurrentProject() {
-  return (
-    projects.find((project) => project.id === currentProjectId) ||
-    projects[0]
-  );
+  return getProject(projects, currentProjectId);
 }
 
 function getCurrentTodos() {
-  return getCurrentProject().todos;
+  return getProjectTodos(projects, currentProjectId);
 }

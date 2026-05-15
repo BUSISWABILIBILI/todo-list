@@ -28,7 +28,7 @@ $env:PORT=4000; npm run dev
 
 ## Features
 
-- Add tasks
+- Add tasks to separate projects
 - Mark tasks complete
 - Delete tasks
 - Save tasks in localStorage
@@ -36,13 +36,13 @@ $env:PORT=4000; npm run dev
 - Set todo description and due date
 - Filter all, active, and completed tasks
 - Clear completed tasks
-- Edit task names
+- Expand tasks to edit title, description, due date, priority, notes, and checklist text
 
 ## Project Structure
 
 - `public/` contains the HTML and CSS files served to the browser
 - `src/` contains ES module JavaScript for the todo app
-- `src/appLogic.js` contains todo and project factories plus data normalization
+- `src/appLogic.js` contains todo and project factories, data normalization, and app state changes
 - `src/dateUtils.js` formats due dates without a build step, keeping GitHub Pages deployment simple
 - `index.html` is the GitHub Pages entry file
 - `server.config.json` sets the default server port
@@ -58,7 +58,7 @@ $env:PORT=4000; npm run dev
 - Done: project UI can view and create separate projects
 - Done: todos can expand to edit full details
 - Done: due dates are formatted for display
-- Next: final assignment review and cleanup
+- Done: final assignment review and cleanup
 
 ## Manual Test Checklist
 
@@ -72,4 +72,4 @@ $env:PORT=4000; npm run dev
 
 ## Current Step
 
-Step 26 improves due date display formatting.
+Step 27 completes the assignment cleanup by keeping project and todo state changes in `src/appLogic.js`.
