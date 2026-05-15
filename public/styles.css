@@ -287,6 +287,15 @@ h1 {
   border-radius: 14px;
   padding: 14px 12px;
   background: #f8fafc;
+  border-left: 4px solid var(--primary);
+}
+
+.stat-active {
+  border-left-color: var(--warning);
+}
+
+.stat-completed {
+  border-left-color: var(--success);
 }
 
 .stat-value {
