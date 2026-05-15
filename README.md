@@ -55,7 +55,8 @@ $env:PORT=4000; npm run dev
 - Done: data is persisted with localStorage
 - Done: visible todo form collects description and due date
 - Done: project UI can view and create separate projects
-- Next: add single-todo expanded detail editing
+- Done: todos can expand to edit full details
+- Next: improve due date formatting
 
 ## Manual Test Checklist
 
@@ -63,9 +64,10 @@ $env:PORT=4000; npm run dev
 - Refresh the page and confirm the task is still there
 - Mark a task complete and confirm it moves between filters correctly
 - Edit a task, save it, and confirm the new name stays after refresh
+- Expand a task with Details and confirm description, due date, notes, and checklist can be saved
 - Edit a task, press `Escape`, and confirm the old name is kept
 - Clear completed tasks and confirm only active tasks remain
 
 ## Current Step
 
-Step 24 adds project viewing and creation.
+Step 25 adds expanded todo detail editing.

@@ -190,6 +190,7 @@ h1 {
 .todo-entry select,
 .todo-form textarea,
 .edit-form input,
+.edit-form textarea,
 .edit-form select {
   min-width: 0;
   border: 1px solid #cfd8e5;
@@ -494,15 +495,33 @@ h1 {
   background: #ffe4e9;
 }
 
+.edit-form input,
+.edit-form textarea,
+.edit-form select {
+  padding: 9px 11px;
+}
+
 .edit-form {
   display: grid;
-  grid-template-columns: 1fr auto auto auto;
+  gap: 10px;
+}
+
+.edit-form textarea {
+  width: 100%;
+  min-height: 84px;
+  resize: vertical;
+}
+
+.edit-field-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(145px, auto) minmax(130px, auto);
   gap: 8px;
 }
 
-.edit-form input,
-.edit-form select {
-  padding: 9px 11px;
+.edit-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
 }
 
 .empty-state {
@@ -609,6 +628,15 @@ h1 {
 
   .edit-form {
     grid-template-columns: 1fr;
+  }
+
+  .edit-field-row,
+  .edit-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .edit-actions {
+    display: grid;
   }
 
   .todo-footer {

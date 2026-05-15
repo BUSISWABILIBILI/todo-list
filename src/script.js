@@ -177,15 +177,21 @@ function editTodo(id) {
   renderTodos();
 }
 
-function saveEdit(id, text, priority) {
+function saveEdit(id, details, priority) {
   const todo = getCurrentTodos().find((currentTodo) => currentTodo.id === id);
 
   if (!todo) {
     return;
   }
 
-  todo.title = text;
-  todo.priority = priority;
+  Object.assign(todo, {
+    title: details.title,
+    description: details.description,
+    dueDate: details.dueDate,
+    priority,
+    notes: details.notes,
+    checklist: details.checklist,
+  });
   editingTodoId = null;
   saveProjects(projects);
   renderTodos();

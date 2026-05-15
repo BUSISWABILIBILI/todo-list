@@ -30,7 +30,7 @@ export function createTodoItem(todo, options) {
   const editButton = document.createElement("button");
   editButton.className = "edit-button";
   editButton.type = "button";
-  editButton.textContent = "Edit";
+  editButton.textContent = "Details";
 
   const deleteButton = document.createElement("button");
   deleteButton.className = "delete-button";
@@ -72,10 +72,15 @@ function createEditForm(todo, options) {
   const form = document.createElement("form");
   form.className = "edit-form";
 
-  const input = document.createElement("input");
-  input.type = "text";
-  input.value = todo.title;
-  input.setAttribute("aria-label", "Edit task");
+  const titleInput = document.createElement("input");
+  titleInput.type = "text";
+  titleInput.value = todo.title;
+  titleInput.setAttribute("aria-label", "Edit task title");
+
+  const dueDateInput = document.createElement("input");
+  dueDateInput.type = "date";
+  dueDateInput.value = todo.dueDate || "";
+  dueDateInput.setAttribute("aria-label", "Edit due date");
 
   const prioritySelect = document.createElement("select");
   prioritySelect.setAttribute("aria-label", "Edit task priority");
@@ -87,6 +92,24 @@ function createEditForm(todo, options) {
     option.selected = (todo.priority || "medium") === priority;
     prioritySelect.append(option);
   });
+
+  const descriptionInput = document.createElement("textarea");
+  descriptionInput.value = todo.description || "";
+  descriptionInput.rows = 3;
+  descriptionInput.setAttribute("aria-label", "Edit description");
+  descriptionInput.placeholder = "Description";
+
+  const notesInput = document.createElement("textarea");
+  notesInput.value = todo.notes || "";
+  notesInput.rows = 3;
+  notesInput.setAttribute("aria-label", "Edit notes");
+  notesInput.placeholder = "Notes";
+
+  const checklistInput = document.createElement("textarea");
+  checklistInput.value = (todo.checklist || []).join("\n");
+  checklistInput.rows = 3;
+  checklistInput.setAttribute("aria-label", "Edit checklist");
+  checklistInput.placeholder = "Checklist items, one per line";
 
   const saveButton = document.createElement("button");
   saveButton.className = "save-button";
@@ -101,16 +124,29 @@ function createEditForm(todo, options) {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const updatedText = input.value.trim();
+    const updatedTitle = titleInput.value.trim();
 
-    if (!updatedText) {
+    if (!updatedTitle) {
       return;
     }
 
-    options.onSaveEdit(todo.id, updatedText, prioritySelect.value);
+    options.onSaveEdit(
+      todo.id,
+      {
+        title: updatedTitle,
+        description: descriptionInput.value.trim(),
+        dueDate: dueDateInput.value,
+        notes: notesInput.value.trim(),
+        checklist: checklistInput.value
+          .split("\n")
+          .map((item) => item.trim())
+          .filter(Boolean),
+      },
+      prioritySelect.value
+    );
   });
 
-  input.addEventListener("keydown", (event) => {
+  form.addEventListener("keydown", (event) => {
     if (event.key !== "Escape") {
       return;
     }
@@ -122,11 +158,25 @@ function createEditForm(todo, options) {
     options.onCancelEdit();
   });
 
-  form.append(input, prioritySelect, saveButton, cancelButton);
+  const fieldRow = document.createElement("div");
+  fieldRow.className = "edit-field-row";
+  fieldRow.append(titleInput, dueDateInput, prioritySelect);
+
+  const actions = document.createElement("div");
+  actions.className = "edit-actions";
+  actions.append(saveButton, cancelButton);
+
+  form.append(
+    fieldRow,
+    descriptionInput,
+    notesInput,
+    checklistInput,
+    actions
+  );
 
   requestAnimationFrame(() => {
-    input.focus();
-    input.select();
+    titleInput.focus();
+    titleInput.select();
   });
 
   return form;
