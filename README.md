@@ -55,4 +55,4 @@ $env:PORT=4000; npm run dev
 
 ## Current Step
 
-Step 17 adds a GitHub Pages entry file for the live site.
+Step 18 improves the visual design for a more professional todo app.
