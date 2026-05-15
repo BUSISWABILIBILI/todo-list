@@ -78,6 +78,14 @@ export function deleteTodoFromProject(projects, projectId, todoId) {
   return project;
 }
 
+export function deleteProject(projects, projectId) {
+  if (projectId === defaultProjectId || projects.length <= 1) {
+    return projects;
+  }
+
+  return projects.filter((project) => project.id !== projectId);
+}
+
 export function getProject(projects, projectId) {
   return projects.find((project) => project.id === projectId) || projects[0] || null;
 }
@@ -115,6 +123,18 @@ export function updateTodoDetails(projects, projectId, todoId, details) {
   });
 
   return todo;
+}
+
+export function updateProjectName(projects, projectId, name) {
+  const project = getProject(projects, projectId);
+  const trimmedName = name.trim();
+
+  if (!project || !trimmedName) {
+    return null;
+  }
+
+  project.name = trimmedName;
+  return project;
 }
 
 export function normalizeProjects(projects) {

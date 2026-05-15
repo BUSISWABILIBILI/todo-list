@@ -29,6 +29,7 @@ $env:PORT=4000; npm run dev
 ## Features
 
 - Add tasks to separate projects
+- Rename and delete projects
 - Mark tasks complete
 - Delete tasks
 - Save tasks in localStorage
@@ -56,6 +57,7 @@ $env:PORT=4000; npm run dev
 - Done: data is persisted with localStorage
 - Done: visible todo form collects description and due date
 - Done: project UI can view and create separate projects
+- Done: projects can be renamed and deleted
 - Done: todos can expand to edit full details
 - Done: due dates are formatted for display
 - Done: final assignment review and cleanup
@@ -72,4 +74,4 @@ $env:PORT=4000; npm run dev
 
 ## Current Step
 
-Step 27 completes the assignment cleanup by keeping project and todo state changes in `src/appLogic.js`.
+Step 28 improves project management with selected-project context plus project edit and delete actions.
