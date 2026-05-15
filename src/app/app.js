@@ -133,7 +133,7 @@ export function startApp(root) {
     updateEmptyState();
     updateTodoFooter();
     updateWorkspaceHeader();
-    updateTaskComposer();
+    updateWorkspaceVisibility();
     renderProjects();
   }
 
@@ -265,8 +265,13 @@ export function startApp(root) {
       : "Create or select a project to add tasks.";
   }
 
-  function updateTaskComposer() {
-    view.todoForm.hidden = !getCurrentProject();
+  function updateWorkspaceVisibility() {
+    const hasSelectedProject = Boolean(getCurrentProject());
+
+    view.workspaceHeader.hidden = !hasSelectedProject;
+    view.todoForm.hidden = !hasSelectedProject;
+    view.todoListArea.hidden = !hasSelectedProject;
+    view.todoFooter.hidden = !hasSelectedProject;
   }
 
   function renderProjects() {

@@ -18,10 +18,13 @@ export function createAppView(root) {
     projectList: root.querySelector("#project-list"),
     todoCount: root.querySelector("#todo-count"),
     todoFilters: root.querySelector("#todo-filters"),
+    todoFooter: root.querySelector("#todo-footer"),
     todoForm: root.querySelector("#todo-form"),
+    todoListArea: root.querySelector("#todo-list-area"),
     todoInput: root.querySelector("#todo-input"),
     todoList: root.querySelector("#todo-list"),
     totalCount: root.querySelector("#total-count"),
+    workspaceHeader: root.querySelector("#workspace-header"),
     createProjectRow,
   };
 }
@@ -180,7 +183,7 @@ function createProjectComposer() {
 }
 
 function createWorkspaceHeader() {
-  return createElement("header", { className: "workspace-header" }, [
+  return createElement("header", { className: "workspace-header", id: "workspace-header" }, [
     createElement("div", { className: "workspace-title" }, [
       createElement("p", { className: "status-label", text: "Selected project" }),
       createElement("h2", { id: "current-project-name", text: "No project selected" }),
@@ -257,7 +260,7 @@ function createPrioritySelect() {
 }
 
 function createTodoList() {
-  return createElement("div", {}, [
+  return createElement("div", { id: "todo-list-area" }, [
     createElement("ul", {
       className: "todo-list",
       id: "todo-list",
@@ -280,7 +283,7 @@ function createTodoList() {
 }
 
 function createFooter() {
-  return createElement("footer", { className: "todo-footer" }, [
+  return createElement("footer", { className: "todo-footer", id: "todo-footer" }, [
     createElement("button", {
       className: "clear-button",
       id: "clear-completed",
