@@ -112,4 +112,4 @@ For GitHub Pages, set the repository Pages source to:
 
 ## Current Step
 
-Step 32 updates the README for the webpack module structure and GitHub Pages build.
+Step 33 improves the main layout with a dashboard-style selected project header.

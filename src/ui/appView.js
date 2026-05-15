@@ -20,6 +20,9 @@ export function createAppView(root) {
     todoInput: root.querySelector("#todo-input"),
     todoList: root.querySelector("#todo-list"),
     totalCount: root.querySelector("#total-count"),
+    workspaceActiveCount: root.querySelector("#workspace-active-count"),
+    workspaceCompletedCount: root.querySelector("#workspace-completed-count"),
+    workspaceTotalCount: root.querySelector("#workspace-total-count"),
     createProjectRow,
   };
 }
@@ -41,11 +44,11 @@ function createLeftPanel() {
   const panel = createElement("aside", { className: "left-panel" });
 
   const header = createElement("header", { className: "app-header" }, [
-    createElement("p", { className: "eyebrow", text: "Simple task tracker" }),
-    createElement("h1", { id: "app-title", text: "Todo Project" }),
+    createElement("p", { className: "eyebrow", text: "Project planner" }),
+    createElement("h1", { id: "app-title", text: "Todo Dashboard" }),
     createElement("p", {
       className: "app-intro",
-      text: "Plan the day, keep active work visible, and clear finished tasks when you are ready.",
+      text: "Organize project work, priorities, and deadlines in one focused workspace.",
     }),
   ]);
 
@@ -144,15 +147,30 @@ function createRightPanel() {
 
 function createWorkspaceHeader() {
   return createElement("header", { className: "workspace-header" }, [
-    createElement("div", {}, [
+    createElement("div", { className: "workspace-title" }, [
       createElement("p", { className: "status-label", text: "Selected project" }),
       createElement("h2", { id: "current-project-name", text: "Default" }),
+      createElement("p", {
+        className: "workspace-meta",
+        id: "current-project-meta",
+        text: "0 tasks in this project",
+      }),
     ]),
-    createElement("p", {
-      className: "workspace-meta",
-      id: "current-project-meta",
-      text: "0 tasks in this project",
-    }),
+    createElement("div", {
+      className: "workspace-summary",
+      attributes: { "aria-label": "Selected project summary" },
+    }, [
+      createWorkspaceStat("workspace-total-count", "Total"),
+      createWorkspaceStat("workspace-active-count", "Active"),
+      createWorkspaceStat("workspace-completed-count", "Done"),
+    ]),
+  ]);
+}
+
+function createWorkspaceStat(id, label) {
+  return createElement("article", { className: "workspace-stat" }, [
+    createElement("span", { className: "workspace-stat-value", id, text: "0" }),
+    createElement("span", { className: "workspace-stat-label", text: label }),
   ]);
 }
 

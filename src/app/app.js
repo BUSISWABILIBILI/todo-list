@@ -254,6 +254,9 @@ export function startApp(root) {
     view.totalCount.textContent = todos.length;
     view.activeCount.textContent = activeTotal;
     view.completedCount.textContent = completedTotal;
+    view.workspaceTotalCount.textContent = todos.length;
+    view.workspaceActiveCount.textContent = activeTotal;
+    view.workspaceCompletedCount.textContent = completedTotal;
     view.todoCount.textContent = `${activeTotal} active ${taskLabel}`;
     view.clearCompletedButton.disabled = completedTotal === 0;
   }
