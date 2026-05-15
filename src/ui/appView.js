@@ -72,7 +72,7 @@ function createStatusPanel() {
 }
 
 function createStatCard(id, label) {
-  return createElement("article", { className: "stat-card" }, [
+  return createElement("article", { className: `stat-card stat-${id.replace("-count", "")}` }, [
     createElement("span", { className: "stat-value", id, text: "0" }),
     createElement("span", { className: "stat-label", text: label }),
   ]);
@@ -170,7 +170,9 @@ function createWorkspaceHeader() {
 }
 
 function createWorkspaceStat(id, label) {
-  return createElement("article", { className: "workspace-stat" }, [
+  return createElement("article", {
+    className: `workspace-stat workspace-stat-${id.replace("workspace-", "").replace("-count", "")}`,
+  }, [
     createElement("span", { className: "workspace-stat-value", id, text: "0" }),
     createElement("span", { className: "workspace-stat-label", text: label }),
   ]);

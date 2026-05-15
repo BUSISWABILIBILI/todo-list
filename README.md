@@ -112,4 +112,4 @@ For GitHub Pages, set the repository Pages source to:
 
 ## Current Step
 
-Step 39 refines visible UI wording for a more professional planning tool.
+Step 40 applies a premium SaaS visual pass with stronger hierarchy, depth, and priority accents.
