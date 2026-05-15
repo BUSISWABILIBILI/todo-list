@@ -112,4 +112,4 @@ For GitHub Pages, set the repository Pages source to:
 
 ## Current Step
 
-Step 36 improves the add-task form into a compact, professional task composer.
+Step 37 improves empty states with project-aware messaging and polished layout.

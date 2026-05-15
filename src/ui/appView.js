@@ -10,6 +10,8 @@ export function createAppView(root) {
     descriptionInput: root.querySelector("#description-input"),
     dueDateInput: root.querySelector("#due-date-input"),
     emptyState: root.querySelector("#empty-state"),
+    emptyStateBody: root.querySelector("#empty-state-body"),
+    emptyStateTitle: root.querySelector("#empty-state-title"),
     priorityInput: root.querySelector("#priority-input"),
     projectForm: root.querySelector("#project-form"),
     projectInput: root.querySelector("#project-input"),
@@ -244,12 +246,19 @@ function createTodoList() {
       id: "todo-list",
       attributes: { "aria-label": "Todo list" },
     }),
-    createElement("p", {
+    createElement("section", {
       className: "empty-state",
       id: "empty-state",
-      text: "No tasks yet.",
       properties: { hidden: true },
-    }),
+    }, [
+      createElement("p", { className: "empty-state-kicker", text: "No matching tasks" }),
+      createElement("h3", { id: "empty-state-title", text: "No tasks yet" }),
+      createElement("p", {
+        className: "empty-state-body",
+        id: "empty-state-body",
+        text: "Add your first task to start planning this project.",
+      }),
+    ]),
   ]);
 }
 

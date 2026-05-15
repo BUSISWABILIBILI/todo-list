@@ -771,13 +771,35 @@ h1 {
 
 .empty-state {
   margin: 24px 0 0;
-  border: 1px dashed #b8c4d4;
+  border: 1px dashed #bfd0e4;
   border-radius: 8px;
-  padding: 22px;
-  background: #f8fafc;
-  color: var(--muted);
-  font-weight: 750;
+  padding: 34px 24px;
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
   text-align: center;
+}
+
+.empty-state-kicker {
+  margin: 0 0 8px;
+  color: var(--primary);
+  font-size: 0.76rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.empty-state h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.25rem;
+  line-height: 1.25;
+}
+
+.empty-state-body {
+  max-width: 36rem;
+  margin: 10px auto 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 650;
+  line-height: 1.6;
 }
 
 .todo-footer {

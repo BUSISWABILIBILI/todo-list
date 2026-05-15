@@ -287,6 +287,7 @@ export function startApp(root) {
 
   function updateEmptyState() {
     const visibleCount = getFilteredTodos().length;
+    const currentProject = getCurrentProject();
     view.emptyState.hidden = visibleCount > 0;
 
     if (visibleCount > 0) {
@@ -294,16 +295,19 @@ export function startApp(root) {
     }
 
     if (getCurrentTodos().length === 0) {
-      view.emptyState.textContent = "No tasks yet. Add one above.";
+      view.emptyStateTitle.textContent = `No tasks in ${currentProject.name}`;
+      view.emptyStateBody.textContent = "Add a task with a due date and priority to start planning this project.";
       return;
     }
 
     if (currentFilter === "active") {
-      view.emptyState.textContent = "No active tasks.";
+      view.emptyStateTitle.textContent = "No active tasks";
+      view.emptyStateBody.textContent = "Everything in this project is complete. Switch filters to review finished work.";
       return;
     }
 
-    view.emptyState.textContent = "No completed tasks.";
+    view.emptyStateTitle.textContent = "No completed tasks";
+    view.emptyStateBody.textContent = "Completed tasks will appear here after you check them off.";
   }
 
   function saveAndRender() {
