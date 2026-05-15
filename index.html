@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo Project</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="todo-panel" aria-labelledby="app-title">
+        <header class="app-header">
+          <p class="eyebrow">Simple task tracker</p>
+          <h1 id="app-title">Todo Project</h1>
+        </header>
+
+        <form class="todo-form" id="todo-form">
+          <label for="todo-input">New task</label>
+          <div class="todo-entry">
+            <input
+              id="todo-input"
+              name="todo"
+              type="text"
+              placeholder="Add a task"
+              autocomplete="off"
+            />
+            <button type="submit">Add</button>
+          </div>
+        </form>
+
+        <ul class="todo-list" id="todo-list" aria-label="Todo list"></ul>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
