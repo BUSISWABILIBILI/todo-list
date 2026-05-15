@@ -12,6 +12,11 @@ npm run start
 
 Then open `http://localhost:3000` in a browser.
 
+## Scripts
+
+- `npm run start` starts the local server
+- `npm run test` checks JavaScript syntax
+
 ## Features
 
 - Add tasks
@@ -39,4 +44,4 @@ Then open `http://localhost:3000` in a browser.
 
 ## Current Step
 
-Step 13 splits the browser JavaScript into ES modules.
+Step 14 adds `npm run test` for JavaScript syntax checks.
