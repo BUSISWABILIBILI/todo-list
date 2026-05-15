@@ -133,6 +133,10 @@ h1 {
   background: #f8fafc;
 }
 
+.todo-item.is-editing {
+  grid-template-columns: 1fr;
+}
+
 .todo-check {
   display: flex;
   align-items: center;
@@ -157,18 +161,65 @@ h1 {
   text-decoration: line-through;
 }
 
+.todo-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-button,
+.save-button,
+.cancel-button,
 .delete-button {
-  border: 1px solid #fecaca;
   border-radius: 6px;
   padding: 8px 10px;
-  background: #fff1f2;
-  color: #be123c;
   font-weight: 700;
   cursor: pointer;
 }
 
+.edit-button,
+.cancel-button {
+  border: 1px solid #c8d3e1;
+  background: #ffffff;
+  color: #475569;
+}
+
+.edit-button:hover,
+.cancel-button:hover {
+  border-color: #475569;
+  color: #1f2937;
+}
+
+.save-button {
+  border: 0;
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.save-button:hover {
+  background: #1d4ed8;
+}
+
+.delete-button {
+  border: 1px solid #fecaca;
+  background: #fff1f2;
+  color: #be123c;
+}
+
 .delete-button:hover {
   background: #ffe4e6;
+}
+
+.edit-form {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+}
+
+.edit-form input {
+  min-width: 0;
+  border: 1px solid #c8d3e1;
+  border-radius: 6px;
+  padding: 8px 10px;
 }
 
 .empty-state {
@@ -228,6 +279,15 @@ h1 {
   .todo-item {
     grid-template-columns: 1fr;
     align-items: stretch;
+  }
+
+  .todo-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .edit-form {
+    grid-template-columns: 1fr;
   }
 
   .todo-footer {

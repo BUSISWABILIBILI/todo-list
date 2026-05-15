@@ -9,6 +9,7 @@ const storageKey = "todo-project-tasks";
 
 let todos = loadTodos();
 let currentFilter = "all";
+let editingTodoId = null;
 
 renderTodos();
 
@@ -82,6 +83,12 @@ function createTodoItem(todo) {
   item.className = "todo-item";
   item.classList.toggle("is-complete", todo.completed);
 
+  if (editingTodoId === todo.id) {
+    item.classList.add("is-editing");
+    item.append(createEditForm(todo));
+    return item;
+  }
+
   const label = document.createElement("label");
   label.className = "todo-check";
 
@@ -97,6 +104,11 @@ function createTodoItem(todo) {
   deleteButton.type = "button";
   deleteButton.textContent = "Delete";
 
+  const editButton = document.createElement("button");
+  editButton.className = "edit-button";
+  editButton.type = "button";
+  editButton.textContent = "Edit";
+
   checkbox.addEventListener("change", () => {
     todo.completed = checkbox.checked;
     saveTodos();
@@ -109,10 +121,68 @@ function createTodoItem(todo) {
     renderTodos();
   });
 
+  editButton.addEventListener("click", () => {
+    editingTodoId = todo.id;
+    renderTodos();
+  });
+
   label.append(checkbox, text);
-  item.append(label, deleteButton);
+  const actions = document.createElement("div");
+  actions.className = "todo-actions";
+  actions.append(editButton, deleteButton);
+
+  item.append(label, actions);
 
   return item;
+}
+
+function createEditForm(todo) {
+  const form = document.createElement("form");
+  form.className = "edit-form";
+
+  const input = document.createElement("input");
+  input.type = "text";
+  input.value = todo.text;
+  input.setAttribute("aria-label", "Edit task");
+
+  const saveButton = document.createElement("button");
+  saveButton.className = "save-button";
+  saveButton.type = "submit";
+  saveButton.textContent = "Save";
+
+  const cancelButton = document.createElement("button");
+  cancelButton.className = "cancel-button";
+  cancelButton.type = "button";
+  cancelButton.textContent = "Cancel";
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const updatedText = input.value.trim();
+
+    if (!updatedText) {
+      return;
+    }
+
+    todo.text = updatedText;
+    editingTodoId = null;
+    saveTodos();
+    renderTodos();
+  });
+
+  cancelButton.addEventListener("click", () => {
+    editingTodoId = null;
+    renderTodos();
+  });
+
+  form.append(input, saveButton, cancelButton);
+
+  requestAnimationFrame(() => {
+    input.focus();
+    input.select();
+  });
+
+  return form;
 }
 
 function loadTodos() {
