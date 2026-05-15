@@ -55,4 +55,4 @@ $env:PORT=4000; npm run dev
 
 ## Current Step
 
-Step 18 improves the visual design for a more professional todo app.
+Step 19 changes the app to a full-width left/right panel layout.
