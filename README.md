@@ -14,6 +14,7 @@ Then open `http://localhost:3000` in a browser.
 
 ## Scripts
 
+- `npm run dev` starts the local server for development
 - `npm run start` starts the local server
 - `npm run test` checks JavaScript syntax
 
@@ -31,7 +32,7 @@ Then open `http://localhost:3000` in a browser.
 
 - `public/` contains the HTML and CSS files served to the browser
 - `src/` contains ES module JavaScript for the todo app
-- `server.js` runs the local Node server used by `npm run start`
+- `server.js` runs the local Node server used by `npm run dev` and `npm run start`
 
 ## Manual Test Checklist
 
@@ -44,4 +45,4 @@ Then open `http://localhost:3000` in a browser.
 
 ## Current Step
 
-Step 14 adds `npm run test` for JavaScript syntax checks.
+Step 15 adds `npm run dev` for a clear development command.
