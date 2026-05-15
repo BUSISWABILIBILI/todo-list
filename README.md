@@ -112,4 +112,4 @@ For GitHub Pages, set the repository Pages source to:
 
 ## Current Step
 
-Step 40 applies a premium SaaS visual pass with stronger hierarchy, depth, and priority accents.
+Step 41 upgrades the sidebar with clearer filters, project sectioning, and a workspace footer.

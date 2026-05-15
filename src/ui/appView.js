@@ -54,7 +54,13 @@ function createLeftPanel() {
     }),
   ]);
 
-  panel.append(header, createStatusPanel(), createFilters(), createProjectsPanel());
+  panel.append(
+    header,
+    createStatusPanel(),
+    createFilters(),
+    createProjectsPanel(),
+    createSidebarFooter()
+  );
 
   return panel;
 }
@@ -91,14 +97,22 @@ function createFilters() {
 }
 
 function createFilterButton(filter, label, isActive = false) {
+  const icons = {
+    active: "Pending",
+    all: "All",
+    completed: "Done",
+  };
+
   return createElement("button", {
     className: isActive ? "filter-button is-active" : "filter-button",
-    text: label,
     attributes: {
       "data-filter": filter,
       type: "button",
     },
-  });
+  }, [
+    createElement("span", { className: "filter-icon", text: icons[filter] }),
+    createElement("span", { text: label }),
+  ]);
 }
 
 function createProjectsPanel() {
@@ -132,6 +146,16 @@ function createProjectsPanel() {
     createElement("form", { className: "project-form", id: "project-form" }, [
       projectInput,
       addButton,
+    ]),
+  ]);
+}
+
+function createSidebarFooter() {
+  return createElement("footer", { className: "sidebar-footer" }, [
+    createElement("div", { className: "profile-avatar", text: "TB" }),
+    createElement("div", {}, [
+      createElement("p", { className: "profile-name", text: "Taskboard workspace" }),
+      createElement("p", { className: "profile-meta", text: "Local data saved in browser" }),
     ]),
   ]);
 }
