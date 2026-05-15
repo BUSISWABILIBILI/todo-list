@@ -267,6 +267,86 @@ h1 {
   box-shadow: 0 6px 14px rgba(24, 34, 48, 0.08);
 }
 
+.projects-panel {
+  display: grid;
+  gap: 10px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.project-list {
+  display: grid;
+  gap: 8px;
+}
+
+.project-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  border: 1px solid #e4e9f1;
+  border-radius: 8px;
+  padding: 11px 12px;
+  background: #ffffff;
+  color: #344054;
+  font-weight: 800;
+  text-align: left;
+  cursor: pointer;
+}
+
+.project-button:hover,
+.project-button.is-active {
+  border-color: #dbe7ff;
+  background: var(--primary-soft);
+  color: var(--primary-hover);
+  box-shadow: 0 6px 14px rgba(24, 34, 48, 0.08);
+}
+
+.project-count {
+  min-width: 28px;
+  border-radius: 999px;
+  padding: 3px 8px;
+  background: #ffffff;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 850;
+  text-align: center;
+}
+
+.project-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+}
+
+.project-form input {
+  min-width: 0;
+  border: 1px solid #cfd8e5;
+  border-radius: 8px;
+  padding: 10px 11px;
+  background: #ffffff;
+  color: var(--text);
+}
+
+.project-form button {
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: var(--primary);
+  color: #ffffff;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.project-form button:hover {
+  background: var(--primary-hover);
+}
+
 .todo-list {
   list-style: none;
   margin: 24px 0 0;
@@ -510,6 +590,10 @@ h1 {
   }
 
   .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-form {
     grid-template-columns: 1fr;
   }
 

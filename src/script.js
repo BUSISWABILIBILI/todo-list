@@ -1,7 +1,15 @@
-import { createTodo, defaultProjectId, normalizeProjects } from "./appLogic.js";
+import {
+  createProject,
+  createTodo,
+  defaultProjectId,
+  normalizeProjects,
+} from "./appLogic.js";
 import { loadProjects, saveProjects } from "./storage.js";
 import { createTodoItem } from "./todoItem.js";
 
+const projectForm = document.querySelector("#project-form");
+const projectInput = document.querySelector("#project-input");
+const projectList = document.querySelector("#project-list");
 const todoForm = document.querySelector("#todo-form");
 const todoInput = document.querySelector("#todo-input");
 const descriptionInput = document.querySelector("#description-input");
@@ -22,6 +30,41 @@ let currentFilter = "all";
 let editingTodoId = null;
 
 renderTodos();
+
+projectForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const name = projectInput.value.trim();
+
+  if (!name) {
+    return;
+  }
+
+  const project = createProject({ name });
+  projects.push(project);
+  currentProjectId = project.id;
+  currentFilter = "all";
+  saveProjects(projects);
+  updateFilterButtons();
+  renderTodos();
+
+  projectInput.value = "";
+  projectInput.focus();
+});
+
+projectList.addEventListener("click", (event) => {
+  const projectButton = event.target.closest("[data-project-id]");
+
+  if (!projectButton) {
+    return;
+  }
+
+  currentProjectId = projectButton.dataset.projectId;
+  currentFilter = "all";
+  editingTodoId = null;
+  updateFilterButtons();
+  renderTodos();
+});
 
 todoForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -74,6 +117,7 @@ function renderTodos() {
   todoList.innerHTML = "";
   projects = normalizeProjects(projects);
   currentProjectId = getCurrentProject().id;
+  saveProjects(projects);
 
   const visibleTodos = getFilteredTodos();
 
@@ -92,6 +136,7 @@ function renderTodos() {
 
   updateEmptyState(visibleTodos.length);
   updateTodoFooter();
+  renderProjects();
 }
 
 function getFilteredTodos() {
@@ -172,6 +217,28 @@ function updateTodoFooter() {
   completedCount.textContent = completedTotal;
   todoCount.textContent = `${activeTotal} active ${taskLabel}`;
   clearCompletedButton.disabled = completedTotal === 0;
+}
+
+function renderProjects() {
+  projectList.innerHTML = "";
+
+  projects.forEach((project) => {
+    const button = document.createElement("button");
+    button.className = "project-button";
+    button.classList.toggle("is-active", project.id === currentProjectId);
+    button.type = "button";
+    button.dataset.projectId = project.id;
+
+    const name = document.createElement("span");
+    name.textContent = project.name;
+
+    const count = document.createElement("span");
+    count.className = "project-count";
+    count.textContent = project.todos.length;
+
+    button.append(name, count);
+    projectList.append(button);
+  });
 }
 
 function updateEmptyState(visibleCount) {

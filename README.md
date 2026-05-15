@@ -54,8 +54,8 @@ $env:PORT=4000; npm run dev
 - Done: app logic is separated from DOM rendering modules
 - Done: data is persisted with localStorage
 - Done: visible todo form collects description and due date
-- In progress: project UI for viewing and creating separate projects
-- Next: add project UI for viewing and creating separate projects
+- Done: project UI can view and create separate projects
+- Next: add single-todo expanded detail editing
 
 ## Manual Test Checklist
 
@@ -68,4 +68,4 @@ $env:PORT=4000; npm run dev
 
 ## Current Step
 
-Step 23 adds description and due date fields.
+Step 24 adds project viewing and creation.
