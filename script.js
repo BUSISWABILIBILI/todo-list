@@ -2,6 +2,8 @@ const todoForm = document.querySelector("#todo-form");
 const todoInput = document.querySelector("#todo-input");
 const todoList = document.querySelector("#todo-list");
 const todoFilters = document.querySelector("#todo-filters");
+const todoCount = document.querySelector("#todo-count");
+const clearCompletedButton = document.querySelector("#clear-completed");
 const storageKey = "todo-project-tasks";
 
 let todos = loadTodos();
@@ -43,12 +45,20 @@ todoFilters.addEventListener("click", (event) => {
   renderTodos();
 });
 
+clearCompletedButton.addEventListener("click", () => {
+  todos = todos.filter((todo) => !todo.completed);
+  saveTodos();
+  renderTodos();
+});
+
 function renderTodos() {
   todoList.innerHTML = "";
 
   getFilteredTodos().forEach((todo) => {
     todoList.append(createTodoItem(todo));
   });
+
+  updateTodoFooter();
 }
 
 function getFilteredTodos() {
@@ -121,4 +131,13 @@ function updateFilterButtons() {
   filterButtons.forEach((button) => {
     button.classList.toggle("is-active", button.dataset.filter === currentFilter);
   });
+}
+
+function updateTodoFooter() {
+  const activeCount = todos.filter((todo) => !todo.completed).length;
+  const completedCount = todos.length - activeCount;
+  const taskLabel = activeCount === 1 ? "task" : "tasks";
+
+  todoCount.textContent = `${activeCount} active ${taskLabel}`;
+  clearCompletedButton.disabled = completedCount === 0;
 }

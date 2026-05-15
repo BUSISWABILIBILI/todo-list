@@ -4,4 +4,4 @@ A small todo app built one step at a time with HTML, CSS, and JavaScript.
 
 ## Current Step
 
-Step 4 adds filters for viewing all, active, or completed tasks.
+Step 5 adds an active task counter and a button to clear completed tasks.
