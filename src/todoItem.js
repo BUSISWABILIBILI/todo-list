@@ -1,3 +1,5 @@
+import { formatDueDate } from "./dateUtils.js";
+
 export function createTodoItem(todo, options) {
   const item = document.createElement("li");
   item.className = "todo-item";
@@ -198,7 +200,7 @@ function getTaskMeta(todo) {
   const details = [];
 
   if (todo.dueDate) {
-    details.push(`Due ${todo.dueDate}`);
+    details.push(`Due ${formatDueDate(todo.dueDate)}`);
   }
 
   if (todo.description) {

@@ -43,6 +43,7 @@ $env:PORT=4000; npm run dev
 - `public/` contains the HTML and CSS files served to the browser
 - `src/` contains ES module JavaScript for the todo app
 - `src/appLogic.js` contains todo and project factories plus data normalization
+- `src/dateUtils.js` formats due dates without a build step, keeping GitHub Pages deployment simple
 - `index.html` is the GitHub Pages entry file
 - `server.config.json` sets the default server port
 - `server.js` runs the local Node server used by `npm run dev` and `npm run start`
@@ -56,7 +57,8 @@ $env:PORT=4000; npm run dev
 - Done: visible todo form collects description and due date
 - Done: project UI can view and create separate projects
 - Done: todos can expand to edit full details
-- Next: improve due date formatting
+- Done: due dates are formatted for display
+- Next: final assignment review and cleanup
 
 ## Manual Test Checklist
 
@@ -70,4 +72,4 @@ $env:PORT=4000; npm run dev
 
 ## Current Step
 
-Step 25 adds expanded todo detail editing.
+Step 26 improves due date display formatting.
