@@ -144,10 +144,7 @@ button:disabled {
 }
 
 .workspace-header {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, auto);
-  align-items: stretch;
-  gap: 20px;
+  display: block;
   margin-bottom: 6px;
   padding: 26px;
   border: 1px solid #dce4ee;
@@ -175,56 +172,6 @@ button:disabled {
   color: var(--muted);
   font-size: 0.92rem;
   font-weight: 750;
-}
-
-.workspace-summary {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(90px, 1fr));
-  gap: 10px;
-}
-
-.workspace-stat {
-  display: grid;
-  align-content: center;
-  gap: 6px;
-  min-width: 0;
-  border: 1px solid #e3e9f1;
-  border-radius: 16px;
-  padding: 16px 18px;
-  background: #ffffff;
-  border-top: 4px solid var(--primary);
-  transition:
-    border-color 160ms ease,
-    transform 160ms ease,
-    box-shadow 160ms ease;
-}
-
-.workspace-stat:hover {
-  border-color: #d4deeb;
-  box-shadow: var(--shadow-card);
-  transform: translateY(-2px);
-}
-
-.workspace-stat-active {
-  border-top-color: var(--warning);
-}
-
-.workspace-stat-completed {
-  border-top-color: var(--success);
-}
-
-.workspace-stat-value {
-  color: var(--text);
-  font-size: 1.9rem;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.workspace-stat-label {
-  color: var(--muted);
-  font-size: 0.76rem;
-  font-weight: 700;
-  text-transform: uppercase;
 }
 
 .app-header {
@@ -287,15 +234,6 @@ h1 {
   border-radius: 14px;
   padding: 14px 12px;
   background: #f8fafc;
-  border-left: 4px solid var(--primary);
-}
-
-.stat-active {
-  border-left-color: var(--warning);
-}
-
-.stat-completed {
-  border-left-color: var(--success);
 }
 
 .stat-value {
@@ -1048,10 +986,6 @@ h1 {
     max-height: none;
   }
 
-  .workspace-header {
-    grid-template-columns: 1fr;
-  }
-
   .project-composer {
     grid-template-columns: 1fr;
   }
@@ -1063,9 +997,6 @@ h1 {
     border-top: 1px solid #e6ebf2;
   }
 
-  .workspace-summary {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
 }
 
 @media (max-width: 520px) {
@@ -1083,10 +1014,6 @@ h1 {
 
   .composer-hint {
     flex: 0 1 auto;
-  }
-
-  .workspace-summary {
-    grid-template-columns: 1fr;
   }
 
   .todo-entry button {

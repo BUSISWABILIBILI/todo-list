@@ -22,9 +22,6 @@ export function createAppView(root) {
     todoInput: root.querySelector("#todo-input"),
     todoList: root.querySelector("#todo-list"),
     totalCount: root.querySelector("#total-count"),
-    workspaceActiveCount: root.querySelector("#workspace-active-count"),
-    workspaceCompletedCount: root.querySelector("#workspace-completed-count"),
-    workspaceTotalCount: root.querySelector("#workspace-total-count"),
     createProjectRow,
   };
 }
@@ -193,23 +190,6 @@ function createWorkspaceHeader() {
         text: "0 tasks in this project",
       }),
     ]),
-    createElement("div", {
-      className: "workspace-summary",
-      attributes: { "aria-label": "Selected project summary" },
-    }, [
-      createWorkspaceStat("workspace-total-count", "Total"),
-      createWorkspaceStat("workspace-active-count", "Active"),
-      createWorkspaceStat("workspace-completed-count", "Done"),
-    ]),
-  ]);
-}
-
-function createWorkspaceStat(id, label) {
-  return createElement("article", {
-    className: `workspace-stat workspace-stat-${id.replace("workspace-", "").replace("-count", "")}`,
-  }, [
-    createElement("span", { className: "workspace-stat-value", id, text: "0" }),
-    createElement("span", { className: "workspace-stat-label", text: label }),
   ]);
 }
 

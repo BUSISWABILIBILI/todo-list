@@ -18,7 +18,7 @@ import { createTodoItem } from "../ui/todoItem.js";
 export function startApp(root) {
   const view = createAppView(root);
   let projects = loadProjects();
-  let currentProjectId = projects[0]?.id || null;
+  let currentProjectId = null;
   let currentFilter = "all";
   let editingTodoId = null;
   let editingProjectId = null;
@@ -32,8 +32,7 @@ export function startApp(root) {
       return;
     }
 
-    const project = addProject(projects, name);
-    currentProjectId = project.id;
+    addProject(projects, name);
     currentFilter = "all";
     saveAndRender();
 
@@ -112,7 +111,7 @@ export function startApp(root) {
   function render() {
     view.todoList.innerHTML = "";
     projects = normalizeProjects(projects);
-    currentProjectId = getCurrentProject()?.id || projects[0]?.id || null;
+    currentProjectId = getCurrentProject()?.id || null;
     editingProjectId = projects.some((project) => project.id === editingProjectId)
       ? editingProjectId
       : null;
@@ -227,10 +226,7 @@ export function startApp(root) {
 
     if (action === "delete") {
       projects = deleteProject(projects, projectId);
-
-      if (currentProjectId === projectId) {
-        currentProjectId = projects[0]?.id || null;
-      }
+      currentProjectId = currentProjectId === projectId ? null : currentProjectId;
 
       editingProjectId = null;
       saveAndRender();
@@ -254,9 +250,6 @@ export function startApp(root) {
     view.totalCount.textContent = todos.length;
     view.activeCount.textContent = activeTotal;
     view.completedCount.textContent = completedTotal;
-    view.workspaceTotalCount.textContent = todos.length;
-    view.workspaceActiveCount.textContent = activeTotal;
-    view.workspaceCompletedCount.textContent = completedTotal;
     view.todoCount.textContent = `${activeTotal} open ${taskLabel}`;
     view.clearCompletedButton.disabled = completedTotal === 0;
   }
