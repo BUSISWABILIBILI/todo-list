@@ -4,7 +4,13 @@ A small todo app built one step at a time with HTML, CSS, and JavaScript.
 
 ## How to Open
 
-Open `index.html` in a browser.
+Run the app with npm:
+
+```bash
+npm run start
+```
+
+Then open `http://localhost:3000` in a browser.
 
 ## Features
 
@@ -27,4 +33,4 @@ Open `index.html` in a browser.
 
 ## Current Step
 
-Step 10 verifies the main app behaviors and adds a manual test checklist.
+Step 11 adds npm start support with a local Node server.
