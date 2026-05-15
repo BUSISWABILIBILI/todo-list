@@ -4,6 +4,7 @@ const todoList = document.querySelector("#todo-list");
 const todoFilters = document.querySelector("#todo-filters");
 const todoCount = document.querySelector("#todo-count");
 const clearCompletedButton = document.querySelector("#clear-completed");
+const emptyState = document.querySelector("#empty-state");
 const storageKey = "todo-project-tasks";
 
 let todos = loadTodos();
@@ -54,10 +55,13 @@ clearCompletedButton.addEventListener("click", () => {
 function renderTodos() {
   todoList.innerHTML = "";
 
-  getFilteredTodos().forEach((todo) => {
+  const visibleTodos = getFilteredTodos();
+
+  visibleTodos.forEach((todo) => {
     todoList.append(createTodoItem(todo));
   });
 
+  updateEmptyState(visibleTodos.length);
   updateTodoFooter();
 }
 
@@ -140,4 +144,24 @@ function updateTodoFooter() {
 
   todoCount.textContent = `${activeCount} active ${taskLabel}`;
   clearCompletedButton.disabled = completedCount === 0;
+}
+
+function updateEmptyState(visibleCount) {
+  emptyState.hidden = visibleCount > 0;
+
+  if (visibleCount > 0) {
+    return;
+  }
+
+  if (todos.length === 0) {
+    emptyState.textContent = "No tasks yet. Add one above.";
+    return;
+  }
+
+  if (currentFilter === "active") {
+    emptyState.textContent = "No active tasks.";
+    return;
+  }
+
+  emptyState.textContent = "No completed tasks.";
 }

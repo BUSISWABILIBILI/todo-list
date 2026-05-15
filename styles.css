@@ -171,6 +171,17 @@ h1 {
   background: #ffe4e6;
 }
 
+.empty-state {
+  margin: 24px 0 0;
+  border: 1px dashed #c8d3e1;
+  border-radius: 6px;
+  padding: 18px;
+  background: #f8fafc;
+  color: #64748b;
+  font-weight: 700;
+  text-align: center;
+}
+
 .todo-footer {
   display: flex;
   align-items: center;
