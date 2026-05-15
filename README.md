@@ -12,6 +12,8 @@ npm run start
 
 Then open `http://localhost:3000` in a browser.
 
+GitHub Pages can serve the root `index.html` directly from the `main` branch.
+
 To use another port in PowerShell:
 
 ```powershell
@@ -38,6 +40,7 @@ $env:PORT=4000; npm run dev
 
 - `public/` contains the HTML and CSS files served to the browser
 - `src/` contains ES module JavaScript for the todo app
+- `index.html` is the GitHub Pages entry file
 - `server.config.json` sets the default server port
 - `server.js` runs the local Node server used by `npm run dev` and `npm run start`
 
@@ -52,4 +55,4 @@ $env:PORT=4000; npm run dev
 
 ## Current Step
 
-Step 16 adds server port config with a `PORT` override.
+Step 17 adds a GitHub Pages entry file for the live site.

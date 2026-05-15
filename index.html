@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo Project</title>
+    <link rel="stylesheet" href="public/styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="todo-panel" aria-labelledby="app-title">
+        <header class="app-header">
+          <p class="eyebrow">Simple task tracker</p>
+          <h1 id="app-title">Todo Project</h1>
+        </header>
+
+        <form class="todo-form" id="todo-form">
+          <label for="todo-input">New task</label>
+          <div class="todo-entry">
+            <input
+              id="todo-input"
+              name="todo"
+              type="text"
+              placeholder="Add a task"
+              autocomplete="off"
+            />
+            <button type="submit">Add</button>
+          </div>
+        </form>
+
+        <div class="todo-filters" id="todo-filters" aria-label="Todo filters">
+          <button class="filter-button is-active" type="button" data-filter="all">
+            All
+          </button>
+          <button class="filter-button" type="button" data-filter="active">
+            Active
+          </button>
+          <button class="filter-button" type="button" data-filter="completed">
+            Completed
+          </button>
+        </div>
+
+        <ul class="todo-list" id="todo-list" aria-label="Todo list"></ul>
+        <p class="empty-state" id="empty-state" hidden>No tasks yet.</p>
+
+        <footer class="todo-footer">
+          <p class="todo-count" id="todo-count">0 active tasks</p>
+          <button class="clear-button" id="clear-completed" type="button">
+            Clear completed
+          </button>
+        </footer>
+      </section>
+    </main>
+
+    <script type="module" src="src/script.js"></script>
+  </body>
+</html>
