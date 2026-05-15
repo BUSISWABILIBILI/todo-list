@@ -1,8 +1,11 @@
 import { loadTodos, saveTodos } from "./storage.js";
 import { createTodoItem } from "./todoItem.js";
 
+const priorityLevels = ["low", "medium", "high"];
+
 const todoForm = document.querySelector("#todo-form");
 const todoInput = document.querySelector("#todo-input");
+const priorityInput = document.querySelector("#priority-input");
 const todoList = document.querySelector("#todo-list");
 const todoFilters = document.querySelector("#todo-filters");
 const todoCount = document.querySelector("#todo-count");
@@ -30,6 +33,7 @@ todoForm.addEventListener("submit", (event) => {
   todos.push({
     id: crypto.randomUUID(),
     text,
+    priority: priorityInput.value,
     completed: false,
   });
 
@@ -37,6 +41,7 @@ todoForm.addEventListener("submit", (event) => {
   renderTodos();
 
   todoInput.value = "";
+  priorityInput.value = "medium";
   todoInput.focus();
 });
 
@@ -60,6 +65,7 @@ clearCompletedButton.addEventListener("click", () => {
 
 function renderTodos() {
   todoList.innerHTML = "";
+  normalizeTodos();
 
   const visibleTodos = getFilteredTodos();
 
@@ -115,7 +121,7 @@ function editTodo(id) {
   renderTodos();
 }
 
-function saveEdit(id, text) {
+function saveEdit(id, text, priority) {
   const todo = todos.find((currentTodo) => currentTodo.id === id);
 
   if (!todo) {
@@ -123,6 +129,7 @@ function saveEdit(id, text) {
   }
 
   todo.text = text;
+  todo.priority = priority;
   editingTodoId = null;
   saveTodos(todos);
   renderTodos();
@@ -153,6 +160,21 @@ function updateTodoFooter() {
   completedCount.textContent = completedTotal;
   todoCount.textContent = `${activeTotal} active ${taskLabel}`;
   clearCompletedButton.disabled = completedTotal === 0;
+}
+
+function normalizeTodos() {
+  let changed = false;
+
+  todos.forEach((todo) => {
+    if (!priorityLevels.includes(todo.priority)) {
+      todo.priority = "medium";
+      changed = true;
+    }
+  });
+
+  if (changed) {
+    saveTodos(todos);
+  }
 }
 
 function updateEmptyState(visibleCount) {

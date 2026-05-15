@@ -32,6 +32,7 @@ $env:PORT=4000; npm run dev
 - Mark tasks complete
 - Delete tasks
 - Save tasks in localStorage
+- Set task priority
 - Filter all, active, and completed tasks
 - Clear completed tasks
 - Edit task names
@@ -55,4 +56,4 @@ $env:PORT=4000; npm run dev
 
 ## Current Step
 
-Step 20 adds sidebar task summary stats.
+Step 21 adds task priority.

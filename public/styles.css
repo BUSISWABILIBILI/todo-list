@@ -32,7 +32,8 @@ body {
 }
 
 button,
-input {
+input,
+select {
   font: inherit;
 }
 
@@ -50,7 +51,8 @@ button:active:not(:disabled) {
 }
 
 button:focus-visible,
-input:focus-visible {
+input:focus-visible,
+select:focus-visible {
   outline: 3px solid rgba(37, 99, 235, 0.22);
   outline-offset: 2px;
 }
@@ -178,12 +180,14 @@ h1 {
 
 .todo-entry {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: minmax(0, 1fr) minmax(130px, auto) auto;
   gap: 10px;
 }
 
 .todo-entry input,
-.edit-form input {
+.todo-entry select,
+.edit-form input,
+.edit-form select {
   min-width: 0;
   border: 1px solid #cfd8e5;
   border-radius: 8px;
@@ -192,7 +196,8 @@ h1 {
   box-shadow: inset 0 1px 2px rgba(24, 34, 48, 0.04);
 }
 
-.todo-entry input {
+.todo-entry input,
+.todo-entry select {
   padding: 13px 14px;
 }
 
@@ -302,7 +307,39 @@ h1 {
   overflow-wrap: anywhere;
 }
 
-.todo-item.is-complete .todo-check span {
+.task-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.priority-badge {
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: 0.72rem;
+  font-weight: 850;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.priority-low {
+  background: #ecfdf3;
+  color: #047857;
+}
+
+.priority-medium {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.priority-high {
+  background: #fff1f3;
+  color: #be123c;
+}
+
+.todo-item.is-complete .task-content > span:first-child {
   color: var(--muted);
   text-decoration: line-through;
 }
@@ -357,11 +394,12 @@ h1 {
 
 .edit-form {
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: 1fr auto auto auto;
   gap: 8px;
 }
 
-.edit-form input {
+.edit-form input,
+.edit-form select {
   padding: 9px 11px;
 }
 

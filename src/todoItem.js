@@ -19,6 +19,10 @@ export function createTodoItem(todo, options) {
   const text = document.createElement("span");
   text.textContent = todo.text;
 
+  const priority = document.createElement("span");
+  priority.className = `priority-badge priority-${todo.priority || "medium"}`;
+  priority.textContent = getPriorityLabel(todo.priority);
+
   const editButton = document.createElement("button");
   editButton.className = "edit-button";
   editButton.type = "button";
@@ -41,7 +45,11 @@ export function createTodoItem(todo, options) {
     options.onDelete(todo.id);
   });
 
-  label.append(checkbox, text);
+  const taskContent = document.createElement("span");
+  taskContent.className = "task-content";
+  taskContent.append(text, priority);
+
+  label.append(checkbox, taskContent);
 
   const actions = document.createElement("div");
   actions.className = "todo-actions";
@@ -60,6 +68,17 @@ function createEditForm(todo, options) {
   input.type = "text";
   input.value = todo.text;
   input.setAttribute("aria-label", "Edit task");
+
+  const prioritySelect = document.createElement("select");
+  prioritySelect.setAttribute("aria-label", "Edit task priority");
+
+  ["low", "medium", "high"].forEach((priority) => {
+    const option = document.createElement("option");
+    option.value = priority;
+    option.textContent = getPriorityLabel(priority);
+    option.selected = (todo.priority || "medium") === priority;
+    prioritySelect.append(option);
+  });
 
   const saveButton = document.createElement("button");
   saveButton.className = "save-button";
@@ -80,7 +99,7 @@ function createEditForm(todo, options) {
       return;
     }
 
-    options.onSaveEdit(todo.id, updatedText);
+    options.onSaveEdit(todo.id, updatedText, prioritySelect.value);
   });
 
   input.addEventListener("keydown", (event) => {
@@ -95,7 +114,7 @@ function createEditForm(todo, options) {
     options.onCancelEdit();
   });
 
-  form.append(input, saveButton, cancelButton);
+  form.append(input, prioritySelect, saveButton, cancelButton);
 
   requestAnimationFrame(() => {
     input.focus();
@@ -103,4 +122,16 @@ function createEditForm(todo, options) {
   });
 
   return form;
+}
+
+function getPriorityLabel(priority) {
+  if (priority === "high") {
+    return "High";
+  }
+
+  if (priority === "low") {
+    return "Low";
+  }
+
+  return "Medium";
 }
