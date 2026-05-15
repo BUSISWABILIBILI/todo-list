@@ -3,7 +3,8 @@ const fs = require("node:fs/promises");
 const path = require("node:path");
 
 const port = process.env.PORT || 3000;
-const publicDir = __dirname;
+const publicDir = path.join(__dirname, "public");
+const sourceDir = path.join(__dirname, "src");
 
 const mimeTypes = {
   ".css": "text/css; charset=utf-8",
@@ -16,8 +17,12 @@ const mimeTypes = {
 const server = http.createServer(async (request, response) => {
   const requestedUrl = new URL(request.url, `http://${request.headers.host}`);
   const requestedPath = requestedUrl.pathname === "/" ? "/index.html" : requestedUrl.pathname;
-  const filePath = path.join(publicDir, requestedPath);
-  const relativePath = path.relative(publicDir, filePath);
+  const staticRoot = requestedPath.startsWith("/src/") ? sourceDir : publicDir;
+  const staticPath = requestedPath.startsWith("/src/")
+    ? requestedPath.replace("/src/", "/")
+    : requestedPath;
+  const filePath = path.join(staticRoot, staticPath);
+  const relativePath = path.relative(staticRoot, filePath);
 
   if (relativePath.startsWith("..") || path.isAbsolute(relativePath)) {
     response.writeHead(403, { "Content-Type": "text/plain; charset=utf-8" });

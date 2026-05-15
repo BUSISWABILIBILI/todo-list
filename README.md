@@ -22,6 +22,12 @@ Then open `http://localhost:3000` in a browser.
 - Clear completed tasks
 - Edit task names
 
+## Project Structure
+
+- `public/` contains the HTML and CSS files served to the browser
+- `src/` contains the browser JavaScript for the todo app
+- `server.js` runs the local Node server used by `npm run start`
+
 ## Manual Test Checklist
 
 - Add a task and confirm it appears in the list
@@ -33,4 +39,4 @@ Then open `http://localhost:3000` in a browser.
 
 ## Current Step
 
-Step 11 adds npm start support with a local Node server.
+Step 12 organizes the app into `public/` and `src/` folders.
