@@ -6,6 +6,9 @@ const todoInput = document.querySelector("#todo-input");
 const todoList = document.querySelector("#todo-list");
 const todoFilters = document.querySelector("#todo-filters");
 const todoCount = document.querySelector("#todo-count");
+const totalCount = document.querySelector("#total-count");
+const activeCount = document.querySelector("#active-count");
+const completedCount = document.querySelector("#completed-count");
 const clearCompletedButton = document.querySelector("#clear-completed");
 const emptyState = document.querySelector("#empty-state");
 
@@ -141,12 +144,15 @@ function updateFilterButtons() {
 }
 
 function updateTodoFooter() {
-  const activeCount = todos.filter((todo) => !todo.completed).length;
-  const completedCount = todos.length - activeCount;
-  const taskLabel = activeCount === 1 ? "task" : "tasks";
+  const activeTotal = todos.filter((todo) => !todo.completed).length;
+  const completedTotal = todos.length - activeTotal;
+  const taskLabel = activeTotal === 1 ? "task" : "tasks";
 
-  todoCount.textContent = `${activeCount} active ${taskLabel}`;
-  clearCompletedButton.disabled = completedCount === 0;
+  totalCount.textContent = todos.length;
+  activeCount.textContent = activeTotal;
+  completedCount.textContent = completedTotal;
+  todoCount.textContent = `${activeTotal} active ${taskLabel}`;
+  clearCompletedButton.disabled = completedTotal === 0;
 }
 
 function updateEmptyState(visibleCount) {

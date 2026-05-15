@@ -10,17 +10,31 @@
     <main class="app">
       <section class="app-shell" aria-labelledby="app-title">
         <aside class="left-panel">
-        <header class="app-header">
-          <p class="eyebrow">Simple task tracker</p>
-          <h1 id="app-title">Todo Project</h1>
+          <header class="app-header">
+            <p class="eyebrow">Simple task tracker</p>
+            <h1 id="app-title">Todo Project</h1>
             <p class="app-intro">
               Plan the day, keep active work visible, and clear finished tasks
               when you are ready.
             </p>
-        </header>
+          </header>
 
           <div class="status-panel">
             <p class="status-label">Current workload</p>
+            <div class="stats-grid" aria-label="Task summary">
+              <article class="stat-card">
+                <span class="stat-value" id="total-count">0</span>
+                <span class="stat-label">Total</span>
+              </article>
+              <article class="stat-card">
+                <span class="stat-value" id="active-count">0</span>
+                <span class="stat-label">Active</span>
+              </article>
+              <article class="stat-card">
+                <span class="stat-value" id="completed-count">0</span>
+                <span class="stat-label">Done</span>
+              </article>
+            </div>
             <p class="todo-count" id="todo-count">0 active tasks</p>
           </div>
 
@@ -38,28 +52,28 @@
         </aside>
 
         <section class="right-panel" aria-label="Task workspace">
-        <form class="todo-form" id="todo-form">
-          <label for="todo-input">New task</label>
-          <div class="todo-entry">
-            <input
-              id="todo-input"
-              name="todo"
-              type="text"
-              placeholder="Add a task"
-              autocomplete="off"
-            />
-            <button type="submit">Add</button>
-          </div>
-        </form>
+          <form class="todo-form" id="todo-form">
+            <label for="todo-input">New task</label>
+            <div class="todo-entry">
+              <input
+                id="todo-input"
+                name="todo"
+                type="text"
+                placeholder="Add a task"
+                autocomplete="off"
+              />
+              <button type="submit">Add</button>
+            </div>
+          </form>
 
-        <ul class="todo-list" id="todo-list" aria-label="Todo list"></ul>
-        <p class="empty-state" id="empty-state" hidden>No tasks yet.</p>
+          <ul class="todo-list" id="todo-list" aria-label="Todo list"></ul>
+          <p class="empty-state" id="empty-state" hidden>No tasks yet.</p>
 
-        <footer class="todo-footer">
-          <button class="clear-button" id="clear-completed" type="button">
-            Clear completed
-          </button>
-        </footer>
+          <footer class="todo-footer">
+            <button class="clear-button" id="clear-completed" type="button">
+              Clear completed
+            </button>
+          </footer>
         </section>
       </section>
     </main>

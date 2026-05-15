@@ -135,6 +135,36 @@ h1 {
   text-transform: uppercase;
 }
 
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.stat-card {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  border: 1px solid #e3e9f1;
+  border-radius: 8px;
+  padding: 12px 10px;
+  background: #f8fafc;
+}
+
+.stat-value {
+  color: var(--text);
+  font-size: 1.55rem;
+  font-weight: 850;
+  line-height: 1;
+}
+
+.stat-label {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
 .todo-form {
   display: grid;
   gap: 10px;
@@ -358,7 +388,7 @@ h1 {
 }
 
 .todo-count {
-  margin: 0;
+  margin: 16px 0 0;
   color: var(--text);
   font-size: 1.35rem;
   font-weight: 800;
@@ -397,6 +427,10 @@ h1 {
     text-align: center;
   }
 
+  .stats-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .todo-list {
     max-height: none;
   }
@@ -413,6 +447,10 @@ h1 {
 
   .todo-entry button {
     width: 100%;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
   }
 
   .todo-item {

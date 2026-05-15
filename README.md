@@ -55,4 +55,4 @@ $env:PORT=4000; npm run dev
 
 ## Current Step
 
-Step 19 changes the app to a full-width left/right panel layout.
+Step 20 adds sidebar task summary stats.
