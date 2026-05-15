@@ -112,4 +112,4 @@ For GitHub Pages, set the repository Pages source to:
 
 ## Current Step
 
-Step 41 upgrades the sidebar with clearer filters, project sectioning, and a workspace footer.
+Step 43 removes the default project and moves project lists into the main workspace.

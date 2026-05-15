@@ -1,5 +1,4 @@
 export const priorityLevels = ["low", "medium", "high"];
-export const defaultProjectId = "default-project";
 
 export function createTodo({
   title,
@@ -28,14 +27,6 @@ export function createProject({ name, id = crypto.randomUUID(), todos = [] }) {
     name,
     todos: todos.map(normalizeTodo),
   };
-}
-
-export function createDefaultProject(todos = []) {
-  return createProject({
-    id: defaultProjectId,
-    name: "Default",
-    todos,
-  });
 }
 
 export function addProject(projects, name) {
@@ -79,15 +70,11 @@ export function deleteTodoFromProject(projects, projectId, todoId) {
 }
 
 export function deleteProject(projects, projectId) {
-  if (projectId === defaultProjectId || projects.length <= 1) {
-    return projects;
-  }
-
   return projects.filter((project) => project.id !== projectId);
 }
 
 export function getProject(projects, projectId) {
-  return projects.find((project) => project.id === projectId) || projects[0] || null;
+  return projects.find((project) => project.id === projectId) || null;
 }
 
 export function getProjectTodos(projects, projectId) {
@@ -138,8 +125,8 @@ export function updateProjectName(projects, projectId, name) {
 }
 
 export function normalizeProjects(projects) {
-  if (!Array.isArray(projects) || projects.length === 0) {
-    return [createDefaultProject()];
+  if (!Array.isArray(projects)) {
+    return [];
   }
 
   return projects.map((project) =>

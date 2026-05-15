@@ -2,7 +2,6 @@ import {
   addProject,
   addTodoToProject,
   clearCompletedTodos,
-  defaultProjectId,
   deleteProject,
   deleteTodoFromProject,
   getProject,
@@ -19,7 +18,7 @@ import { createTodoItem } from "../ui/todoItem.js";
 export function startApp(root) {
   const view = createAppView(root);
   let projects = loadProjects();
-  let currentProjectId = defaultProjectId;
+  let currentProjectId = projects[0]?.id || null;
   let currentFilter = "all";
   let editingTodoId = null;
   let editingProjectId = null;
@@ -113,7 +112,7 @@ export function startApp(root) {
   function render() {
     view.todoList.innerHTML = "";
     projects = normalizeProjects(projects);
-    currentProjectId = getCurrentProject().id;
+    currentProjectId = getCurrentProject()?.id || projects[0]?.id || null;
     editingProjectId = projects.some((project) => project.id === editingProjectId)
       ? editingProjectId
       : null;
@@ -135,6 +134,7 @@ export function startApp(root) {
     updateEmptyState();
     updateTodoFooter();
     updateWorkspaceHeader();
+    updateTaskComposer();
     renderProjects();
   }
 
@@ -229,7 +229,7 @@ export function startApp(root) {
       projects = deleteProject(projects, projectId);
 
       if (currentProjectId === projectId) {
-        currentProjectId = defaultProjectId;
+        currentProjectId = projects[0]?.id || null;
       }
 
       editingProjectId = null;
@@ -266,8 +266,14 @@ export function startApp(root) {
     const taskTotal = getCurrentTodos().length;
     const taskLabel = taskTotal === 1 ? "task" : "tasks";
 
-    view.currentProjectName.textContent = currentProject.name;
-    view.currentProjectMeta.textContent = `${taskTotal} ${taskLabel} in this project`;
+    view.currentProjectName.textContent = currentProject ? currentProject.name : "No project selected";
+    view.currentProjectMeta.textContent = currentProject
+      ? `${taskTotal} ${taskLabel} in this project`
+      : "Create or select a project to add tasks.";
+  }
+
+  function updateTaskComposer() {
+    view.todoForm.hidden = !getCurrentProject();
   }
 
   function renderProjects() {
@@ -278,7 +284,7 @@ export function startApp(root) {
         view.createProjectRow(project, {
           currentProjectId,
           editingProjectId,
-          isDeleteDisabled: project.id === defaultProjectId || projects.length <= 1,
+          isDeleteDisabled: false,
           onSaveEdit: handleProjectAction,
         })
       );
@@ -295,8 +301,12 @@ export function startApp(root) {
     }
 
     if (getCurrentTodos().length === 0) {
-      view.emptyStateTitle.textContent = `${currentProject.name} has no tasks`;
-      view.emptyStateBody.textContent = "Capture the first task with a due date and priority to start planning this project.";
+      view.emptyStateTitle.textContent = currentProject
+        ? `${currentProject.name} has no tasks`
+        : "No project selected";
+      view.emptyStateBody.textContent = currentProject
+        ? "Capture the first task with a due date and priority to start planning this project."
+        : "Create a project list on the right, then add tasks inside it.";
       return;
     }
 

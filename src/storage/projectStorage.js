@@ -1,4 +1,4 @@
-import { createDefaultProject, normalizeProjects } from "../domain/appLogic.js";
+import { createProject, normalizeProjects } from "../domain/appLogic.js";
 
 const projectsStorageKey = "todo-project-projects";
 const legacyTodosStorageKey = "todo-project-tasks";
@@ -13,10 +13,10 @@ export function loadProjects() {
   const legacyTodos = readStoredJson(legacyTodosStorageKey);
 
   if (legacyTodos) {
-    return [createDefaultProject(legacyTodos)];
+    return [createProject({ name: "Imported tasks", todos: legacyTodos })];
   }
 
-  return [createDefaultProject()];
+  return [];
 }
 
 export function saveProjects(projects) {

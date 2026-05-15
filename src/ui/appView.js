@@ -58,7 +58,6 @@ function createLeftPanel() {
     header,
     createStatusPanel(),
     createFilters(),
-    createProjectsPanel(),
     createSidebarFooter()
   );
 
@@ -115,41 +114,6 @@ function createFilterButton(filter, label, isActive = false) {
   ]);
 }
 
-function createProjectsPanel() {
-  const projectInput = createElement("input", {
-    id: "project-input",
-    attributes: {
-      autocomplete: "off",
-      name: "project",
-      placeholder: "New project",
-      type: "text",
-    },
-  });
-
-  const addButton = createElement("button", {
-    text: "Add",
-    attributes: { type: "submit" },
-  });
-
-  return createElement("section", {
-    className: "projects-panel",
-    attributes: { "aria-labelledby": "projects-title" },
-  }, [
-    createElement("div", { className: "section-heading" }, [
-      createElement("p", { className: "status-label", id: "projects-title", text: "Project lists" }),
-    ]),
-    createElement("div", {
-      className: "project-list",
-      id: "project-list",
-      attributes: { "aria-label": "Projects" },
-    }),
-    createElement("form", { className: "project-form", id: "project-form" }, [
-      projectInput,
-      addButton,
-    ]),
-  ]);
-}
-
 function createSidebarFooter() {
   return createElement("footer", { className: "sidebar-footer" }, [
     createElement("div", { className: "profile-avatar", text: "TB" }),
@@ -166,16 +130,63 @@ function createRightPanel() {
     attributes: { "aria-label": "Task workspace" },
   });
 
-  panel.append(createWorkspaceHeader(), createTodoForm(), createTodoList(), createFooter());
+  panel.append(
+    createProjectComposer(),
+    createWorkspaceHeader(),
+    createTodoForm(),
+    createTodoList(),
+    createFooter()
+  );
 
   return panel;
+}
+
+function createProjectComposer() {
+  const projectInput = createElement("input", {
+    id: "project-input",
+    attributes: {
+      autocomplete: "off",
+      name: "project",
+      placeholder: "Create a project list",
+      type: "text",
+    },
+  });
+
+  const addButton = createElement("button", {
+    text: "Add project",
+    attributes: { type: "submit" },
+  });
+
+  return createElement("section", { className: "project-composer" }, [
+    createElement("div", {}, [
+      createElement("p", { className: "status-label", text: "Project setup" }),
+      createElement("h2", { className: "project-composer-title", text: "Create a project list" }),
+    ]),
+    createElement("form", { className: "project-form", id: "project-form" }, [
+      projectInput,
+      addButton,
+    ]),
+    createElement("section", {
+      className: "projects-panel",
+      attributes: { "aria-labelledby": "projects-title" },
+    }, [
+      createElement("div", { className: "section-heading" }, [
+        createElement("p", { className: "status-label", id: "projects-title", text: "Project lists" }),
+      ]),
+      createElement("div", {
+        className: "project-list",
+        id: "project-list",
+        attributes: { "aria-label": "Projects" },
+      }),
+    ]),
+  ]);
 }
 
 function createWorkspaceHeader() {
   return createElement("header", { className: "workspace-header" }, [
     createElement("div", { className: "workspace-title" }, [
       createElement("p", { className: "status-label", text: "Selected project" }),
-      createElement("h2", { id: "current-project-name", text: "Default" }),
+      createElement("h2", { id: "current-project-name", text: "No project selected" }),
       createElement("p", {
         className: "workspace-meta",
         id: "current-project-meta",
@@ -206,7 +217,7 @@ function createTodoForm() {
   return createElement("form", { className: "todo-form", id: "todo-form" }, [
     createElement("div", { className: "composer-header" }, [
       createElement("div", {}, [
-        createElement("p", { className: "status-label", text: "New task" }),
+        createElement("p", { className: "status-label", text: "Selected project task" }),
         createElement("label", { text: "Capture work", attributes: { for: "todo-input" } }),
       ]),
       createElement("span", { className: "composer-hint", text: "Added to selected project" }),
