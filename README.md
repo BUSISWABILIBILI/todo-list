@@ -25,7 +25,7 @@ Then open `http://localhost:3000` in a browser.
 ## Project Structure
 
 - `public/` contains the HTML and CSS files served to the browser
-- `src/` contains the browser JavaScript for the todo app
+- `src/` contains ES module JavaScript for the todo app
 - `server.js` runs the local Node server used by `npm run start`
 
 ## Manual Test Checklist
@@ -39,4 +39,4 @@ Then open `http://localhost:3000` in a browser.
 
 ## Current Step
 
-Step 12 organizes the app into `public/` and `src/` folders.
+Step 13 splits the browser JavaScript into ES modules.
