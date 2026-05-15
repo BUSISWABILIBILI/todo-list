@@ -11,6 +11,7 @@ export function createAppView(root) {
     dueDateInput: root.querySelector("#due-date-input"),
     emptyState: root.querySelector("#empty-state"),
     emptyStateBody: root.querySelector("#empty-state-body"),
+    emptyStateKicker: root.querySelector("#empty-state-kicker"),
     emptyStateTitle: root.querySelector("#empty-state-title"),
     priorityInput: root.querySelector("#priority-input"),
     projectForm: root.querySelector("#project-form"),
@@ -158,9 +159,13 @@ function createProjectComposer() {
   });
 
   return createElement("section", { className: "project-composer" }, [
-    createElement("div", {}, [
+    createElement("div", { className: "project-composer-copy" }, [
       createElement("p", { className: "status-label", text: "Project setup" }),
-      createElement("h2", { className: "project-composer-title", text: "Create a project list" }),
+      createElement("h2", { className: "project-composer-title", text: "Create project lists" }),
+      createElement("p", {
+        className: "project-composer-text",
+        text: "Group tasks by client, course, or deadline.",
+      }),
     ]),
     createElement("form", { className: "project-form", id: "project-form" }, [
       projectInput,
@@ -271,7 +276,7 @@ function createTodoList() {
       id: "empty-state",
       properties: { hidden: true },
     }, [
-      createElement("p", { className: "empty-state-kicker", text: "Workspace clear" }),
+      createElement("p", { className: "empty-state-kicker", id: "empty-state-kicker", text: "Select a project" }),
       createElement("h3", { id: "empty-state-title", text: "No tasks yet" }),
       createElement("p", {
         className: "empty-state-body",

@@ -298,6 +298,7 @@ export function startApp(root) {
     }
 
     if (getCurrentTodos().length === 0) {
+      view.emptyStateKicker.textContent = currentProject ? "Project ready" : "Select a project";
       view.emptyStateTitle.textContent = currentProject
         ? `${currentProject.name} has no tasks`
         : "No project selected";
@@ -308,11 +309,13 @@ export function startApp(root) {
     }
 
     if (currentFilter === "active") {
+      view.emptyStateKicker.textContent = "No active work";
       view.emptyStateTitle.textContent = "No open tasks";
       view.emptyStateBody.textContent = "Everything in this project is complete. Switch filters to review finished work.";
       return;
     }
 
+    view.emptyStateKicker.textContent = "No completed work";
     view.emptyStateTitle.textContent = "No completed tasks";
     view.emptyStateBody.textContent = "Finished work will appear here after tasks are marked complete.";
   }
