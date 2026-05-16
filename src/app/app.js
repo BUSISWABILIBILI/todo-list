@@ -273,7 +273,6 @@ export function startApp(root) {
     const hasSelectedProject = Boolean(getCurrentProject());
 
     view.workspaceHeader.hidden = !hasSelectedProject;
-    view.todoFilters.hidden = !hasSelectedProject;
     view.todoForm.hidden = !hasSelectedProject;
     view.todoFooter.hidden = !hasSelectedProject;
   }

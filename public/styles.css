@@ -222,7 +222,7 @@ h1 {
 
 .right-panel > .status-panel {
   display: grid;
-  grid-template-columns: minmax(94px, auto) minmax(0, 1fr) auto;
+  grid-template-columns: minmax(94px, auto) minmax(0, 1fr);
   align-items: center;
   gap: 12px;
   padding: 10px 12px;

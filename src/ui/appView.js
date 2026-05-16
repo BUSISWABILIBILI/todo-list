@@ -73,7 +73,12 @@ function createStatusPanel() {
       createStatCard("active-count", "Active"),
       createStatCard("completed-count", "Done"),
     ]),
-    createElement("p", { className: "todo-count", id: "todo-count", text: "0 open tasks" }),
+    createElement("p", {
+      className: "todo-count",
+      id: "todo-count",
+      properties: { hidden: true },
+      text: "",
+    }),
   ]);
 }
 
