@@ -26,6 +26,7 @@ export function createAppView(root) {
     todoList: root.querySelector("#todo-list"),
     totalCount: root.querySelector("#total-count"),
     workspaceHeader: root.querySelector("#workspace-header"),
+    createProjectEmptyState,
     createProjectRow,
   };
 }
@@ -292,6 +293,13 @@ function createFooter() {
       attributes: { type: "button" },
     }),
   ]);
+}
+
+function createProjectEmptyState() {
+  return createElement("p", {
+    className: "project-empty-state",
+    text: "Create a project to start grouping tasks.",
+  });
 }
 
 function createProjectRow(project, options) {

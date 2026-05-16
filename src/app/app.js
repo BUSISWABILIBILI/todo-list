@@ -276,6 +276,11 @@ export function startApp(root) {
   function renderProjects() {
     view.projectList.innerHTML = "";
 
+    if (projects.length === 0) {
+      view.projectList.append(view.createProjectEmptyState());
+      return;
+    }
+
     projects.forEach((project) => {
       view.projectList.append(
         view.createProjectRow(project, {
@@ -298,26 +303,40 @@ export function startApp(root) {
     }
 
     if (getCurrentTodos().length === 0) {
-      view.emptyStateKicker.textContent = currentProject ? "Project ready" : "Select a project";
-      view.emptyStateTitle.textContent = currentProject
-        ? `${currentProject.name} has no tasks`
-        : "No project selected";
-      view.emptyStateBody.textContent = currentProject
-        ? "Capture the first task with a due date and priority to start planning this project."
-        : "Create a project list on the right, then add tasks inside it.";
+      setEmptyState(
+        currentProject ? "project-ready" : "no-project",
+        currentProject ? "Project ready" : "Choose a project",
+        currentProject ? `${currentProject.name} has no tasks` : "No project selected",
+        currentProject
+          ? "Add the first task above to start planning this project."
+          : "Create or select a project from the sidebar to open a task workspace."
+      );
       return;
     }
 
     if (currentFilter === "active") {
-      view.emptyStateKicker.textContent = "No active work";
-      view.emptyStateTitle.textContent = "No open tasks";
-      view.emptyStateBody.textContent = "Everything in this project is complete. Switch filters to review finished work.";
+      setEmptyState(
+        "no-active",
+        "No active work",
+        "No open tasks",
+        "Everything in this project is complete. Switch filters to review finished work."
+      );
       return;
     }
 
-    view.emptyStateKicker.textContent = "No completed work";
-    view.emptyStateTitle.textContent = "No completed tasks";
-    view.emptyStateBody.textContent = "Finished work will appear here after tasks are marked complete.";
+    setEmptyState(
+      "no-completed",
+      "No completed work",
+      "No completed tasks",
+      "Finished work will appear here after tasks are marked complete."
+    );
+  }
+
+  function setEmptyState(state, kicker, title, body) {
+    view.emptyState.dataset.state = state;
+    view.emptyStateKicker.textContent = kicker;
+    view.emptyStateTitle.textContent = title;
+    view.emptyStateBody.textContent = body;
   }
 
   function saveAndRender() {
