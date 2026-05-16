@@ -173,7 +173,7 @@ button:disabled {
 .workspace-header h2 {
   margin: 0;
   color: var(--text);
-  font-size: 2.4rem;
+  font-size: 1.85rem;
   font-weight: 800;
   line-height: 1.12;
 }
@@ -181,18 +181,18 @@ button:disabled {
 .workspace-meta {
   margin: 0;
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.84rem;
   font-weight: 750;
 }
 
 .add-task-button {
-  width: 46px;
-  height: 46px;
+  width: 38px;
+  height: 38px;
   border: 0;
   border-radius: 999px;
   background: var(--primary);
   color: #ffffff;
-  font-size: 1.55rem;
+  font-size: 1.25rem;
   font-weight: 800;
   line-height: 1;
   cursor: pointer;
@@ -328,8 +328,8 @@ h1 {
 
 .todo-form {
   display: grid;
-  gap: 14px;
-  padding: 24px;
+  gap: 10px;
+  padding: 16px;
   border: 1px solid #e3e9f1;
   border-radius: 18px;
   background: #ffffff;
@@ -340,19 +340,19 @@ h1 {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
 }
 
 .todo-form label {
   color: #344054;
-  font-size: 0.98rem;
+  font-size: 0.9rem;
   font-weight: 800;
 }
 
 .composer-hint {
   flex: 0 0 auto;
   border-radius: 999px;
-  padding: 5px 10px;
+  padding: 4px 9px;
   background: #f1f5f9;
   color: var(--muted);
   font-size: 0.78rem;
@@ -361,8 +361,8 @@ h1 {
 
 .todo-entry {
   display: grid;
-  grid-template-columns: minmax(260px, 1fr) minmax(170px, 0.22fr) minmax(150px, 0.18fr) auto;
-  gap: 12px;
+  grid-template-columns: minmax(220px, 1fr) minmax(145px, 0.22fr) minmax(124px, 0.18fr) auto;
+  gap: 8px;
   align-items: stretch;
 }
 
@@ -382,14 +382,14 @@ h1 {
 
 .todo-entry input,
 .todo-entry select {
-  min-height: 46px;
-  padding: 11px 14px;
+  min-height: 38px;
+  padding: 8px 11px;
 }
 
 .todo-form textarea {
   width: 100%;
-  min-height: 84px;
-  padding: 13px 14px;
+  min-height: 62px;
+  padding: 10px 11px;
   resize: vertical;
 }
 
@@ -410,9 +410,9 @@ h1 {
 }
 
 .todo-entry button {
-  min-height: 46px;
-  min-width: 112px;
-  padding: 11px 18px;
+  min-height: 38px;
+  min-width: 92px;
+  padding: 8px 14px;
 }
 
 .todo-entry button:hover,
@@ -497,7 +497,7 @@ h1 {
   padding: 12px;
   background: rgba(248, 250, 252, 0.72);
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 700;
   line-height: 1.45;
 }
@@ -586,8 +586,8 @@ h1 {
 }
 
 .button-icon {
-  width: 17px;
-  height: 17px;
+  width: 15px;
+  height: 15px;
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
@@ -706,7 +706,7 @@ h1 {
   margin: 10px 0 0;
   padding: 0;
   display: grid;
-  gap: 16px;
+  gap: 10px;
   max-height: none;
   overflow: visible;
   padding-right: 0;
@@ -732,12 +732,12 @@ h1 {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: start;
-  gap: 18px;
-  min-height: 76px;
+  gap: 12px;
+  min-height: 58px;
   border: 1px solid #e3e9f1;
   border-left: 4px solid var(--warning);
-  border-radius: 16px;
-  padding: 20px;
+  border-radius: 12px;
+  padding: 12px 14px;
   background: #ffffff;
   box-shadow: var(--shadow-soft);
   transition:
@@ -773,15 +773,15 @@ h1 {
 .todo-check {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 9px;
   min-width: 0;
   cursor: pointer;
 }
 
 .todo-check input {
-  width: 18px;
-  height: 18px;
-  margin-top: 2px;
+  width: 16px;
+  height: 16px;
+  margin-top: 1px;
   flex: 0 0 auto;
   accent-color: var(--success);
   cursor: pointer;
@@ -795,7 +795,7 @@ h1 {
 
 .task-content {
   display: grid;
-  gap: 6px;
+  gap: 4px;
   min-width: 0;
   flex: 1;
 }
@@ -803,14 +803,14 @@ h1 {
 .task-header {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   min-width: 0;
 }
 
 .task-title {
   min-width: 0;
   color: #263445;
-  font-size: 0.98rem;
+  font-size: 0.9rem;
   font-weight: 800;
   overflow-wrap: anywhere;
 }
@@ -819,10 +819,10 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 6px 8px;
+  gap: 5px 7px;
   min-width: 0;
   color: var(--muted);
-  font-size: 0.86rem;
+  font-size: 0.78rem;
   font-weight: 650;
   line-height: 1.45;
 }
@@ -830,10 +830,10 @@ h1 {
 .task-due-date {
   flex: 0 0 auto;
   border-radius: 999px;
-  padding: 3px 8px;
+  padding: 2px 7px;
   background: #f1f5f9;
   color: #475467;
-  font-size: 0.76rem;
+  font-size: 0.72rem;
   font-weight: 850;
 }
 
@@ -876,8 +876,8 @@ h1 {
 
 .priority-badge {
   border-radius: 999px;
-  padding: 4px 8px;
-  font-size: 0.68rem;
+  padding: 3px 7px;
+  font-size: 0.62rem;
   font-weight: 850;
   line-height: 1;
   text-transform: uppercase;
@@ -914,7 +914,7 @@ h1 {
 
 .todo-actions {
   display: flex;
-  gap: 6px;
+  gap: 5px;
 }
 
 .edit-button,
@@ -947,8 +947,8 @@ h1 {
 
 .edit-button,
 .delete-button {
-  width: 36px;
-  height: 34px;
+  width: 32px;
+  height: 30px;
   padding: 0;
 }
 
@@ -1005,7 +1005,7 @@ h1 {
   margin: 16px 0 0;
   border: 1px solid #dce4ee;
   border-radius: 18px;
-  padding: 42px 28px;
+  padding: 32px 24px;
   background: #f8fafc;
   text-align: center;
   overflow: hidden;
@@ -1071,7 +1071,7 @@ h1 {
 .empty-state h3 {
   margin: 0;
   color: var(--text);
-  font-size: 1.32rem;
+  font-size: 1.12rem;
   line-height: 1.25;
 }
 
@@ -1079,7 +1079,7 @@ h1 {
   max-width: 36rem;
   margin: 10px auto 0;
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.86rem;
   font-weight: 650;
   line-height: 1.6;
 }
@@ -1193,17 +1193,17 @@ h1 {
   }
 
   .workspace-header h2 {
-    font-size: 1.72rem;
+    font-size: 1.45rem;
   }
 
   .add-task-button {
-    width: 42px;
-    height: 42px;
+    width: 36px;
+    height: 36px;
   }
 
   .todo-form {
-    border-radius: 18px;
-    padding: 18px;
+    border-radius: 14px;
+    padding: 14px;
   }
 
   .todo-entry {
