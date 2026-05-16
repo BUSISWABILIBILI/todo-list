@@ -151,7 +151,6 @@ function createProjectComposer() {
   return createElement("section", { className: "project-composer" }, [
     createElement("div", { className: "project-composer-copy" }, [
       createElement("p", { className: "status-label", text: "Projects" }),
-      createElement("h2", { className: "project-composer-title", text: "Project lists" }),
     ]),
     createElement("form", { className: "project-form", id: "project-form" }, [
       projectInput,
@@ -287,7 +286,7 @@ function createFooter() {
 function createProjectEmptyState() {
   return createElement("p", {
     className: "project-empty-state",
-    text: "Create a project to start grouping tasks.",
+    text: "No projects",
   });
 }
 
