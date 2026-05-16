@@ -15,6 +15,7 @@ export function createAppView(root) {
     emptyStateTitle: root.querySelector("#empty-state-title"),
     priorityInput: root.querySelector("#priority-input"),
     projectForm: root.querySelector("#project-form"),
+    projectSubmitButton: root.querySelector("#project-submit"),
     projectInput: root.querySelector("#project-input"),
     projectList: root.querySelector("#project-list"),
     todoCount: root.querySelector("#todo-count"),
@@ -144,8 +145,14 @@ function createProjectComposer() {
   });
 
   const addButton = createElement("button", {
-    text: "Add project",
-    attributes: { type: "submit" },
+    id: "project-submit",
+    text: "+",
+    attributes: {
+      "aria-label": "Add project",
+      title: "Add project",
+      type: "submit",
+    },
+    properties: { disabled: true },
   });
 
   return createElement("section", { className: "project-composer" }, [

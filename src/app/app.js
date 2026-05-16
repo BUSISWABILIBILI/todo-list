@@ -23,6 +23,8 @@ export function startApp(root) {
   let editingTodoId = null;
   let editingProjectId = null;
 
+  view.projectInput.addEventListener("input", updateProjectSubmitState);
+
   view.projectForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -37,6 +39,7 @@ export function startApp(root) {
     saveAndRender();
 
     view.projectInput.value = "";
+    updateProjectSubmitState();
     view.projectInput.focus();
   });
 
@@ -107,6 +110,7 @@ export function startApp(root) {
   });
 
   render();
+  updateProjectSubmitState();
 
   function render() {
     view.todoList.innerHTML = "";
@@ -269,6 +273,7 @@ export function startApp(root) {
     const hasSelectedProject = Boolean(getCurrentProject());
 
     view.workspaceHeader.hidden = !hasSelectedProject;
+    view.todoFilters.hidden = !hasSelectedProject;
     view.todoForm.hidden = !hasSelectedProject;
     view.todoFooter.hidden = !hasSelectedProject;
   }
@@ -305,8 +310,8 @@ export function startApp(root) {
     if (getCurrentTodos().length === 0) {
       setEmptyState(
         currentProject ? "project-ready" : "no-project",
-        currentProject ? "Project ready" : "Choose a project",
-        currentProject ? `${currentProject.name} has no tasks` : "No project selected",
+        currentProject ? "Project ready" : "",
+        currentProject ? `${currentProject.name} has no tasks` : "",
         currentProject
           ? "Add the first task above to start planning this project."
           : "Create or select a project from the sidebar to open a task workspace."
@@ -330,6 +335,10 @@ export function startApp(root) {
       "No completed tasks",
       "Finished work will appear here after tasks are marked complete."
     );
+  }
+
+  function updateProjectSubmitState() {
+    view.projectSubmitButton.disabled = view.projectInput.value.trim().length === 0;
   }
 
   function setEmptyState(state, kicker, title, body) {

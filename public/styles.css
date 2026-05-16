@@ -614,8 +614,9 @@ h1 {
 
 .project-form {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 38px;
-  gap: 6px;
+  grid-template-columns: minmax(0, 1fr) 34px;
+  gap: 8px;
+  align-items: center;
 }
 
 .project-form input,
@@ -641,19 +642,30 @@ h1 {
 }
 
 .project-form button {
-  padding-inline: 0;
-  font-size: 0;
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  min-height: 34px;
+  border-radius: 999px;
+  padding: 0;
+  font-size: 1.25rem;
+  line-height: 1;
 }
 
 .project-form button::before {
-  content: "+";
-  font-size: 1.25rem;
-  line-height: 1;
+  content: none;
 }
 
 .project-form button:hover,
 .project-save-button:hover {
   background: var(--primary-hover);
+}
+
+.project-form button:disabled {
+  background: #d8e0ea;
+  color: #7a8899;
+  box-shadow: none;
 }
 
 .project-cancel-button {
@@ -1033,6 +1045,11 @@ h1 {
   text-transform: uppercase;
 }
 
+.empty-state-kicker:empty,
+.empty-state h3:empty {
+  display: none;
+}
+
 .empty-state h3 {
   margin: 0;
   color: var(--text);
@@ -1201,11 +1218,11 @@ h1 {
   }
 
   .project-form {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) 34px;
   }
 
   .project-form button {
-    min-height: 42px;
+    min-height: 34px;
   }
 
   .project-row,
