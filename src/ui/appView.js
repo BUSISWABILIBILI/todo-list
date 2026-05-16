@@ -59,8 +59,6 @@ function createLeftPanel() {
   panel.append(
     header,
     createProjectComposer(),
-    createStatusPanel(),
-    createFilters(),
     createSidebarFooter()
   );
 
@@ -134,6 +132,8 @@ function createRightPanel() {
   });
 
   panel.append(
+    createStatusPanel(),
+    createFilters(),
     createWorkspaceHeader(),
     createTodoForm(),
     createTodoList(),
