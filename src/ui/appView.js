@@ -188,7 +188,6 @@ function createProjectComposer() {
 function createWorkspaceHeader() {
   return createElement("header", { className: "workspace-header", id: "workspace-header" }, [
     createElement("div", { className: "workspace-title" }, [
-      createElement("p", { className: "status-label", text: "Selected project" }),
       createElement("h2", { id: "current-project-name", text: "No project selected" }),
       createElement("p", {
         className: "workspace-meta",
@@ -202,6 +201,8 @@ function createWorkspaceHeader() {
       text: "+",
       attributes: {
         "aria-label": "Add task",
+        "aria-expanded": "false",
+        "aria-controls": "todo-form",
         title: "Add task",
         type: "button",
       },

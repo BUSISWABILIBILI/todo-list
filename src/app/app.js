@@ -27,9 +27,12 @@ export function startApp(root) {
   view.projectInput.addEventListener("input", updateProjectSubmitState);
 
   view.addTaskButton.addEventListener("click", () => {
-    isTaskComposerOpen = true;
+    isTaskComposerOpen = !isTaskComposerOpen;
     updateWorkspaceVisibility();
-    view.todoInput.focus();
+
+    if (isTaskComposerOpen) {
+      view.todoInput.focus();
+    }
   });
 
   view.projectForm.addEventListener("submit", (event) => {
@@ -284,6 +287,12 @@ export function startApp(root) {
 
     view.workspaceHeader.hidden = !hasSelectedProject;
     view.addTaskButton.hidden = !hasSelectedProject;
+    view.addTaskButton.setAttribute("aria-expanded", String(isTaskComposerOpen));
+    view.addTaskButton.title = isTaskComposerOpen ? "Hide task form" : "Add task";
+    view.addTaskButton.setAttribute(
+      "aria-label",
+      isTaskComposerOpen ? "Hide task form" : "Add task"
+    );
     view.todoForm.hidden = !hasSelectedProject || !isTaskComposerOpen;
     view.todoFooter.hidden = !hasSelectedProject;
   }
