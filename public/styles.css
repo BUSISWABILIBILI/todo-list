@@ -91,12 +91,12 @@ button:disabled {
 
 .app {
   min-height: 100vh;
-  padding: 22px;
+  padding: 18px;
 }
 
 .app-shell {
   width: 100%;
-  min-height: calc(100vh - 48px);
+  min-height: calc(100vh - 36px);
   display: grid;
   grid-template-columns: minmax(310px, 24%) minmax(0, 1fr);
   background: rgba(255, 255, 255, 0.9);
@@ -109,14 +109,14 @@ button:disabled {
 
 .left-panel,
 .right-panel {
-  padding: 34px;
+  padding: 26px;
 }
 
 .left-panel {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) auto;
   align-content: stretch;
-  gap: 14px;
+  gap: 16px;
   background: linear-gradient(180deg, rgba(248, 250, 252, 0.92), rgba(241, 245, 249, 0.9));
   border-right: 1px solid #e1e7ef;
 }
@@ -124,7 +124,7 @@ button:disabled {
 .right-panel {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
   min-width: 0;
   background: rgba(255, 255, 255, 0.96);
 }
@@ -133,7 +133,7 @@ button:disabled {
   display: grid;
   grid-template-rows: auto auto minmax(0, 1fr);
   align-items: stretch;
-  gap: 10px;
+  gap: 12px;
   min-height: 0;
   border: 1px solid #dce4ee;
   border-radius: 14px;
@@ -157,7 +157,7 @@ button:disabled {
 
 .workspace-header {
   display: block;
-  padding: 4px 2px 14px;
+  padding: 2px 2px 12px;
   border-bottom: 1px solid #e6ebf2;
 }
 
@@ -222,7 +222,7 @@ h1 {
 
 .right-panel > .status-panel {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: minmax(94px, auto) minmax(0, 1fr) auto;
   align-items: center;
   gap: 12px;
   padding: 10px 12px;
@@ -268,7 +268,7 @@ h1 {
 .right-panel > .status-panel .stat-card {
   grid-template-columns: auto 1fr;
   align-items: baseline;
-  gap: 6px;
+  gap: 7px;
   min-height: 34px;
   padding: 7px 9px;
   border-radius: 12px;
@@ -298,10 +298,16 @@ h1 {
   font-size: 0.68rem;
 }
 
+.right-panel > .status-panel .todo-count {
+  color: var(--muted);
+  text-align: right;
+  white-space: nowrap;
+}
+
 .todo-form {
   display: grid;
   gap: 10px;
-  padding: 18px;
+  padding: 16px;
   border: 1px solid #e3e9f1;
   border-radius: 18px;
   background: #ffffff;
@@ -458,7 +464,7 @@ h1 {
 
 .project-list {
   display: grid;
-  gap: 8px;
+  gap: 6px;
   max-height: 100%;
   overflow: auto;
   padding-right: 2px;
@@ -708,7 +714,7 @@ h1 {
 
 .todo-list {
   list-style: none;
-  margin: 16px 0 0;
+  margin: 12px 0 0;
   padding: 0;
   display: grid;
   gap: 10px;
