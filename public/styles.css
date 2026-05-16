@@ -409,10 +409,6 @@ h1 {
   background: #eef3f8;
 }
 
-.right-panel > .todo-filters {
-  max-width: 520px;
-}
-
 .filter-button {
   display: grid;
   place-items: center;
@@ -1126,10 +1122,6 @@ h1 {
   .right-panel > .status-panel {
     grid-template-columns: 1fr;
     align-items: stretch;
-  }
-
-  .right-panel > .todo-filters {
-    max-width: none;
   }
 
   .todo-filters {
