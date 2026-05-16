@@ -98,7 +98,7 @@ button:disabled {
   width: 100%;
   min-height: calc(100vh - 48px);
   display: grid;
-  grid-template-columns: minmax(300px, 28%) minmax(0, 1fr);
+  grid-template-columns: minmax(310px, 24%) minmax(0, 1fr);
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid var(--panel-border);
   border-radius: 24px;
@@ -114,9 +114,9 @@ button:disabled {
 
 .left-panel {
   display: grid;
-  grid-template-rows: auto auto auto minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr) auto auto auto;
   align-content: stretch;
-  gap: 28px;
+  gap: 20px;
   background: linear-gradient(180deg, rgba(248, 250, 252, 0.92), rgba(241, 245, 249, 0.9));
   border-right: 1px solid #e1e7ef;
 }
@@ -131,14 +131,15 @@ button:disabled {
 
 .project-composer {
   display: grid;
-  grid-template-columns: minmax(210px, 0.28fr) minmax(300px, 0.34fr) minmax(320px, 1fr);
-  align-items: start;
-  gap: 20px;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  align-items: stretch;
+  gap: 14px;
+  min-height: 0;
   border: 1px solid #dce4ee;
-  border-radius: 22px;
-  padding: 24px;
+  border-radius: 18px;
+  padding: 16px;
   background: linear-gradient(180deg, #ffffff, #f8fbff);
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--shadow-soft);
 }
 
 .project-composer-copy {
@@ -149,27 +150,15 @@ button:disabled {
 .project-composer-title {
   margin: 0;
   color: var(--text);
-  font-size: 1.45rem;
+  font-size: 1rem;
   font-weight: 800;
   line-height: 1.2;
 }
 
-.project-composer-text {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.9rem;
-  font-weight: 650;
-  line-height: 1.55;
-}
-
 .workspace-header {
   display: block;
-  margin-bottom: 6px;
-  padding: 26px;
-  border: 1px solid #dce4ee;
-  border-radius: 22px;
-  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-  box-shadow: var(--shadow-card);
+  padding: 4px 2px 14px;
+  border-bottom: 1px solid #e6ebf2;
 }
 
 .workspace-title {
@@ -367,6 +356,7 @@ h1 {
 
 .todo-filters {
   display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
   padding: 4px;
   border: 1px solid #e4e9f1;
@@ -375,30 +365,21 @@ h1 {
 }
 
 .filter-button {
-  display: flex;
+  display: grid;
+  place-items: center;
   align-items: center;
-  gap: 9px;
   border: 1px solid transparent;
   border-radius: 12px;
   padding: 11px 13px;
   background: transparent;
   color: #475467;
   font-weight: 800;
-  text-align: left;
+  text-align: center;
   cursor: pointer;
 }
 
 .filter-icon {
-  display: inline-grid;
-  place-items: center;
-  width: 58px;
-  min-height: 24px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.72);
-  color: #64748b;
-  font-size: 0.68rem;
-  font-weight: 800;
-  text-transform: uppercase;
+  display: none;
 }
 
 .filter-button:hover {
@@ -422,8 +403,6 @@ h1 {
   align-content: start;
   gap: 12px;
   min-height: 0;
-  padding-left: 18px;
-  border-left: 1px solid #e6ebf2;
 }
 
 .section-heading {
@@ -435,7 +414,7 @@ h1 {
 .project-list {
   display: grid;
   gap: 8px;
-  max-height: 190px;
+  max-height: 100%;
   overflow: auto;
   padding-right: 2px;
   scrollbar-color: #cbd5e1 transparent;
@@ -567,8 +546,8 @@ h1 {
 
 .project-form {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 10px;
+  grid-template-columns: minmax(0, 1fr) 44px;
+  gap: 8px;
 }
 
 .project-form input,
@@ -591,6 +570,17 @@ h1 {
   font-weight: 800;
   cursor: pointer;
   box-shadow: 0 10px 18px rgba(37, 99, 235, 0.18);
+}
+
+.project-form button {
+  padding-inline: 0;
+  font-size: 0;
+}
+
+.project-form button::before {
+  content: "+";
+  font-size: 1.25rem;
+  line-height: 1;
 }
 
 .project-form button:hover,
@@ -660,7 +650,7 @@ h1 {
   padding: 0;
   display: grid;
   gap: 14px;
-  max-height: calc(100vh - 370px);
+  max-height: calc(100vh - 300px);
   overflow: auto;
   padding-right: 4px;
   scrollbar-color: #cbd5e1 transparent;
@@ -1032,17 +1022,6 @@ h1 {
 
   .todo-list {
     max-height: none;
-  }
-
-  .project-composer {
-    grid-template-columns: 1fr;
-  }
-
-  .projects-panel {
-    padding-left: 0;
-    padding-top: 16px;
-    border-left: 0;
-    border-top: 1px solid #e6ebf2;
   }
 
 }

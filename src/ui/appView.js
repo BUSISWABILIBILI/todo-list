@@ -57,6 +57,7 @@ function createLeftPanel() {
 
   panel.append(
     header,
+    createProjectComposer(),
     createStatusPanel(),
     createFilters(),
     createSidebarFooter()
@@ -132,7 +133,6 @@ function createRightPanel() {
   });
 
   panel.append(
-    createProjectComposer(),
     createWorkspaceHeader(),
     createTodoForm(),
     createTodoList(),
@@ -160,12 +160,8 @@ function createProjectComposer() {
 
   return createElement("section", { className: "project-composer" }, [
     createElement("div", { className: "project-composer-copy" }, [
-      createElement("p", { className: "status-label", text: "Project setup" }),
-      createElement("h2", { className: "project-composer-title", text: "Create project lists" }),
-      createElement("p", {
-        className: "project-composer-text",
-        text: "Group tasks by client, course, or deadline.",
-      }),
+      createElement("p", { className: "status-label", text: "Projects" }),
+      createElement("h2", { className: "project-composer-title", text: "Project lists" }),
     ]),
     createElement("form", { className: "project-form", id: "project-form" }, [
       projectInput,
