@@ -22,8 +22,15 @@ export function startApp(root) {
   let currentFilter = "all";
   let editingTodoId = null;
   let editingProjectId = null;
+  let isTaskComposerOpen = false;
 
   view.projectInput.addEventListener("input", updateProjectSubmitState);
+
+  view.addTaskButton.addEventListener("click", () => {
+    isTaskComposerOpen = true;
+    updateWorkspaceVisibility();
+    view.todoInput.focus();
+  });
 
   view.projectForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -63,6 +70,7 @@ export function startApp(root) {
     currentProjectId = projectRow.dataset.projectId;
     currentFilter = "all";
     editingTodoId = null;
+    isTaskComposerOpen = false;
     updateFilterButtons();
     render();
   });
@@ -89,7 +97,8 @@ export function startApp(root) {
     view.descriptionInput.value = "";
     view.dueDateInput.value = "";
     view.priorityInput.value = "medium";
-    view.todoInput.focus();
+    isTaskComposerOpen = false;
+    updateWorkspaceVisibility();
   });
 
   view.todoFilters.addEventListener("click", (event) => {
@@ -197,6 +206,7 @@ export function startApp(root) {
       currentFilter = "all";
       editingTodoId = null;
       editingProjectId = null;
+      isTaskComposerOpen = false;
       updateFilterButtons();
       render();
       return;
@@ -273,7 +283,8 @@ export function startApp(root) {
     const hasSelectedProject = Boolean(getCurrentProject());
 
     view.workspaceHeader.hidden = !hasSelectedProject;
-    view.todoForm.hidden = !hasSelectedProject;
+    view.addTaskButton.hidden = !hasSelectedProject;
+    view.todoForm.hidden = !hasSelectedProject || !isTaskComposerOpen;
     view.todoFooter.hidden = !hasSelectedProject;
   }
 
@@ -312,7 +323,7 @@ export function startApp(root) {
         currentProject ? "Project ready" : "",
         currentProject ? `${currentProject.name} has no tasks` : "",
         currentProject
-          ? "Add the first task above to start planning this project."
+          ? "Use the add task button to capture the first task for this project."
           : "Create or select a project from the sidebar to open a task workspace."
       );
       return;

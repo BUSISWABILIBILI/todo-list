@@ -3,6 +3,7 @@ export function createAppView(root) {
 
   return {
     activeCount: root.querySelector("#active-count"),
+    addTaskButton: root.querySelector("#add-task-button"),
     clearCompletedButton: root.querySelector("#clear-completed"),
     completedCount: root.querySelector("#completed-count"),
     currentProjectMeta: root.querySelector("#current-project-meta"),
@@ -195,6 +196,16 @@ function createWorkspaceHeader() {
         text: "0 tasks in this project",
       }),
     ]),
+    createElement("button", {
+      className: "icon-button add-task-button",
+      id: "add-task-button",
+      text: "+",
+      attributes: {
+        "aria-label": "Add task",
+        title: "Add task",
+        type: "button",
+      },
+    }),
   ]);
 }
 
