@@ -261,25 +261,24 @@ h1 {
 
 .todo-form {
   display: grid;
-  gap: 12px;
-  padding: 24px;
+  gap: 10px;
+  padding: 18px;
   border: 1px solid #e3e9f1;
-  border-radius: 22px;
-  background: linear-gradient(180deg, #ffffff, #fbfdff);
-  box-shadow: var(--shadow-card);
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: var(--shadow-soft);
 }
 
 .composer-header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 16px;
-  padding-bottom: 4px;
+  gap: 12px;
 }
 
 .todo-form label {
   color: #344054;
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   font-weight: 800;
 }
 
@@ -295,7 +294,7 @@ h1 {
 
 .todo-entry {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(150px, auto) minmax(132px, auto) auto;
+  grid-template-columns: minmax(220px, 1fr) minmax(145px, 0.22fr) minmax(126px, 0.18fr) auto;
   gap: 8px;
   align-items: stretch;
 }
@@ -316,14 +315,14 @@ h1 {
 
 .todo-entry input,
 .todo-entry select {
-  min-height: 46px;
-  padding: 11px 13px;
+  min-height: 42px;
+  padding: 9px 12px;
 }
 
 .todo-form textarea {
   width: 100%;
-  min-height: 76px;
-  padding: 12px 13px;
+  min-height: 58px;
+  padding: 10px 12px;
   resize: vertical;
 }
 
@@ -344,8 +343,9 @@ h1 {
 }
 
 .todo-entry button {
-  min-height: 46px;
-  padding: 11px 20px;
+  min-height: 42px;
+  min-width: 96px;
+  padding: 9px 16px;
 }
 
 .todo-entry button:hover,
@@ -1160,6 +1160,7 @@ h1 {
   }
 
   .todo-entry button {
+    min-width: 0;
     width: 100%;
   }
 

@@ -202,10 +202,10 @@ function createTodoForm() {
   return createElement("form", { className: "todo-form", id: "todo-form" }, [
     createElement("div", { className: "composer-header" }, [
       createElement("div", {}, [
-        createElement("p", { className: "status-label", text: "Selected project task" }),
-        createElement("label", { text: "Capture work", attributes: { for: "todo-input" } }),
+        createElement("p", { className: "status-label", text: "New task" }),
+        createElement("label", { text: "Quick capture", attributes: { for: "todo-input" } }),
       ]),
-      createElement("span", { className: "composer-hint", text: "Added to selected project" }),
+      createElement("span", { className: "composer-hint", text: "Selected project" }),
     ]),
     createElement("div", { className: "todo-entry" }, [
       createElement("input", {
@@ -213,7 +213,7 @@ function createTodoForm() {
         attributes: {
           autocomplete: "off",
           name: "todo",
-          placeholder: "What needs to be done?",
+          placeholder: "Task title",
           type: "text",
         },
       }),
@@ -226,13 +226,13 @@ function createTodoForm() {
         },
       }),
       createPrioritySelect(),
-      createElement("button", { text: "Add", attributes: { type: "submit" } }),
+      createElement("button", { text: "Add task", attributes: { type: "submit" } }),
     ]),
     createElement("textarea", {
       id: "description-input",
       attributes: {
         name: "description",
-        placeholder: "Add context or next steps",
+        placeholder: "Context or next steps",
         rows: "3",
       },
     }),
