@@ -114,7 +114,7 @@ button:disabled {
 
 .left-panel {
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-rows: auto minmax(0, 1fr);
   align-content: stretch;
   gap: 16px;
   background: linear-gradient(180deg, rgba(248, 250, 252, 0.92), rgba(241, 245, 249, 0.9));
@@ -669,47 +669,6 @@ h1 {
 .project-cancel-button:hover {
   border-color: #98a2b3;
   color: var(--text);
-}
-
-.sidebar-footer {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-width: 0;
-  border: 1px solid #e2e8f0;
-  border-radius: 14px;
-  padding: 10px;
-  background: rgba(255, 255, 255, 0.72);
-}
-
-.profile-avatar {
-  display: grid;
-  place-items: center;
-  width: 34px;
-  height: 34px;
-  flex: 0 0 auto;
-  border-radius: 11px;
-  background: var(--primary);
-  color: #ffffff;
-  font-size: 0.74rem;
-  font-weight: 800;
-}
-
-.profile-name,
-.profile-meta {
-  margin: 0;
-}
-
-.profile-name {
-  color: var(--text);
-  font-size: 0.8rem;
-  font-weight: 800;
-}
-
-.profile-meta {
-  color: var(--muted);
-  font-size: 0.7rem;
-  font-weight: 650;
 }
 
 .todo-list {

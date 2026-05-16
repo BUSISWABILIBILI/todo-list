@@ -58,8 +58,7 @@ function createLeftPanel() {
 
   panel.append(
     header,
-    createProjectComposer(),
-    createSidebarFooter()
+    createProjectComposer()
   );
 
   return panel;
@@ -112,16 +111,6 @@ function createFilterButton(filter, label, isActive = false) {
   }, [
     createElement("span", { className: "filter-icon", text: icons[filter] }),
     createElement("span", { text: label }),
-  ]);
-}
-
-function createSidebarFooter() {
-  return createElement("footer", { className: "sidebar-footer" }, [
-    createElement("div", { className: "profile-avatar", text: "TB" }),
-    createElement("div", {}, [
-      createElement("p", { className: "profile-name", text: "Taskboard workspace" }),
-      createElement("p", { className: "profile-meta", text: "Local data saved in browser" }),
-    ]),
   ]);
 }
 
