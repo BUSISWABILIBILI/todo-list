@@ -91,12 +91,12 @@ button:disabled {
 
 .app {
   min-height: 100vh;
-  padding: 18px;
+  padding: 24px;
 }
 
 .app-shell {
   width: 100%;
-  min-height: calc(100vh - 36px);
+  min-height: calc(100vh - 48px);
   display: grid;
   grid-template-columns: minmax(310px, 24%) minmax(0, 1fr);
   background: rgba(255, 255, 255, 0.9);
@@ -109,14 +109,14 @@ button:disabled {
 
 .left-panel,
 .right-panel {
-  padding: 26px;
+  padding: 32px;
 }
 
 .left-panel {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
   align-content: stretch;
-  gap: 16px;
+  gap: 22px;
   background: linear-gradient(180deg, rgba(248, 250, 252, 0.92), rgba(241, 245, 249, 0.9));
   border-right: 1px solid #e1e7ef;
 }
@@ -124,7 +124,7 @@ button:disabled {
 .right-panel {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 18px;
   min-width: 0;
   background: rgba(255, 255, 255, 0.96);
 }
@@ -137,7 +137,7 @@ button:disabled {
   min-height: 0;
   border: 1px solid #dce4ee;
   border-radius: 14px;
-  padding: 12px;
+  padding: 18px;
   background: linear-gradient(180deg, #ffffff, #f8fbff);
   box-shadow: var(--shadow-soft);
 }
@@ -157,7 +157,7 @@ button:disabled {
 
 .workspace-header {
   display: block;
-  padding: 2px 2px 12px;
+  padding: 4px 2px 18px;
   border-bottom: 1px solid #e6ebf2;
 }
 
@@ -306,8 +306,8 @@ h1 {
 
 .todo-form {
   display: grid;
-  gap: 10px;
-  padding: 16px;
+  gap: 14px;
+  padding: 24px;
   border: 1px solid #e3e9f1;
   border-radius: 18px;
   background: #ffffff;
@@ -318,7 +318,7 @@ h1 {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 12px;
+  gap: 16px;
 }
 
 .todo-form label {
@@ -339,8 +339,8 @@ h1 {
 
 .todo-entry {
   display: grid;
-  grid-template-columns: minmax(220px, 1fr) minmax(145px, 0.22fr) minmax(126px, 0.18fr) auto;
-  gap: 8px;
+  grid-template-columns: minmax(260px, 1fr) minmax(170px, 0.22fr) minmax(150px, 0.18fr) auto;
+  gap: 12px;
   align-items: stretch;
 }
 
@@ -360,14 +360,14 @@ h1 {
 
 .todo-entry input,
 .todo-entry select {
-  min-height: 42px;
-  padding: 9px 12px;
+  min-height: 46px;
+  padding: 11px 14px;
 }
 
 .todo-form textarea {
   width: 100%;
-  min-height: 58px;
-  padding: 10px 12px;
+  min-height: 84px;
+  padding: 13px 14px;
   resize: vertical;
 }
 
@@ -388,9 +388,9 @@ h1 {
 }
 
 .todo-entry button {
-  min-height: 42px;
-  min-width: 96px;
-  padding: 9px 16px;
+  min-height: 46px;
+  min-width: 112px;
+  padding: 11px 18px;
 }
 
 .todo-entry button:hover,
@@ -460,7 +460,7 @@ h1 {
 
 .project-list {
   display: grid;
-  gap: 6px;
+  gap: 10px;
   max-height: 100%;
   overflow: auto;
   padding-right: 2px;
@@ -488,7 +488,7 @@ h1 {
   width: 100%;
   border: 1px solid #e6edf5;
   border-radius: 12px;
-  padding: 4px;
+  padding: 7px;
   background: rgba(255, 255, 255, 0.72);
   transition:
     border-color 160ms ease,
@@ -517,7 +517,7 @@ h1 {
   min-width: 0;
   border: 0;
   border-radius: 8px;
-  padding: 8px 7px;
+  padding: 10px 9px;
   background: transparent;
   color: #344054;
   font-weight: 800;
@@ -610,8 +610,8 @@ h1 {
 
 .project-form {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 34px;
-  gap: 8px;
+  grid-template-columns: minmax(0, 1fr) 42px;
+  gap: 12px;
   align-items: center;
 }
 
@@ -620,7 +620,7 @@ h1 {
   min-width: 0;
   border: 1px solid #cfd8e5;
   border-radius: 11px;
-  padding: 9px 11px;
+  padding: 12px 14px;
   background: #ffffff;
   color: var(--text);
 }
@@ -640,9 +640,9 @@ h1 {
 .project-form button {
   display: inline-grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
-  min-height: 34px;
+  width: 42px;
+  height: 42px;
+  min-height: 42px;
   border-radius: 999px;
   padding: 0;
   font-size: 1.25rem;
@@ -681,13 +681,13 @@ h1 {
 
 .todo-list {
   list-style: none;
-  margin: 12px 0 0;
+  margin: 10px 0 0;
   padding: 0;
   display: grid;
-  gap: 10px;
-  max-height: calc(100vh - 390px);
-  overflow: auto;
-  padding-right: 4px;
+  gap: 16px;
+  max-height: none;
+  overflow: visible;
+  padding-right: 0;
   scrollbar-color: #cbd5e1 transparent;
   scrollbar-width: thin;
 }
@@ -710,12 +710,12 @@ h1 {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: start;
-  gap: 12px;
-  min-height: 62px;
+  gap: 18px;
+  min-height: 76px;
   border: 1px solid #e3e9f1;
   border-left: 4px solid var(--warning);
   border-radius: 16px;
-  padding: 14px;
+  padding: 20px;
   background: #ffffff;
   box-shadow: var(--shadow-soft);
   transition:
@@ -1210,11 +1210,11 @@ h1 {
   }
 
   .project-form {
-    grid-template-columns: minmax(0, 1fr) 34px;
+    grid-template-columns: minmax(0, 1fr) 42px;
   }
 
   .project-form button {
-    min-height: 34px;
+    min-height: 42px;
   }
 
   .project-row,
