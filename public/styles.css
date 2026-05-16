@@ -511,22 +511,31 @@ h1 {
   gap: 4px;
 }
 
+.icon-button {
+  display: inline-grid;
+  place-items: center;
+}
+
+.button-icon {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  pointer-events: none;
+}
+
 .project-action-button {
   border: 1px solid #cfd8e5;
   border-radius: 11px;
-  width: 42px;
+  width: 36px;
   height: 34px;
   padding: 0;
   background: #ffffff;
   color: #475467;
-  font-size: 0;
-  font-weight: 850;
   cursor: pointer;
-}
-
-.project-action-button::before {
-  content: "Edit";
-  font-size: 0.75rem;
 }
 
 .project-action-button:hover:not(:disabled) {
@@ -538,10 +547,6 @@ h1 {
   border-color: #ffd6de;
   background: var(--danger-soft);
   color: var(--danger);
-}
-
-.project-action-button.danger::before {
-  content: "Del";
 }
 
 .project-action-button:disabled {
@@ -902,7 +907,9 @@ h1 {
 
 .edit-button,
 .delete-button {
-  min-width: 48px;
+  width: 36px;
+  height: 34px;
+  padding: 0;
 }
 
 .save-button {
@@ -1063,16 +1070,30 @@ h1 {
   .app-shell {
     min-height: auto;
     grid-template-columns: 1fr;
+    border-radius: 20px;
   }
 
   .left-panel {
     border-right: 0;
     border-bottom: 1px solid #e1e7ef;
+    grid-template-rows: none;
   }
 
   .left-panel,
   .right-panel {
     padding: 24px;
+  }
+
+  .project-composer {
+    min-height: auto;
+  }
+
+  .project-list {
+    max-height: 260px;
+  }
+
+  .status-panel {
+    padding: 16px;
   }
 
   .todo-filters {
@@ -1094,8 +1115,36 @@ h1 {
 }
 
 @media (max-width: 520px) {
+  .app {
+    padding: 0;
+  }
+
+  .app-shell {
+    min-height: 100vh;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .left-panel,
+  .right-panel {
+    padding: 20px;
+  }
+
   h1 {
     font-size: 1.85rem;
+  }
+
+  .app-intro {
+    font-size: 0.92rem;
+  }
+
+  .workspace-header h2 {
+    font-size: 1.72rem;
+  }
+
+  .todo-form {
+    border-radius: 18px;
+    padding: 18px;
   }
 
   .todo-entry {
@@ -1118,8 +1167,17 @@ h1 {
     grid-template-columns: 1fr;
   }
 
+  .stat-card {
+    grid-template-columns: auto 1fr;
+    align-items: baseline;
+  }
+
   .project-form {
     grid-template-columns: 1fr;
+  }
+
+  .project-form button {
+    min-height: 42px;
   }
 
   .project-row,
@@ -1128,8 +1186,8 @@ h1 {
   }
 
   .project-actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: flex-end;
   }
 
   .todo-item {
@@ -1141,19 +1199,21 @@ h1 {
   .task-meta {
     align-items: flex-start;
     flex-direction: column;
+    gap: 6px;
   }
 
   .task-description {
     white-space: normal;
   }
 
-  .task-description::before {
+  .task-description::before,
+  .task-checklist-summary::before {
     display: none;
   }
 
   .todo-actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: flex-end;
   }
 
   .edit-form {
@@ -1172,5 +1232,9 @@ h1 {
   .todo-footer {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .empty-state {
+    padding: 34px 20px;
   }
 }

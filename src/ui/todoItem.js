@@ -39,15 +39,17 @@ export function createTodoItem(todo, options) {
   checklistSummary.textContent = getChecklistSummary(todo.checklist);
 
   const editButton = document.createElement("button");
-  editButton.className = "edit-button";
+  editButton.className = "icon-button edit-button";
   editButton.type = "button";
-  editButton.textContent = "Edit";
+  editButton.setAttribute("aria-label", "Edit task details");
+  editButton.append(createIcon("edit"));
   editButton.title = "Edit task details";
 
   const deleteButton = document.createElement("button");
-  deleteButton.className = "delete-button";
+  deleteButton.className = "icon-button delete-button";
   deleteButton.type = "button";
-  deleteButton.textContent = "Delete";
+  deleteButton.setAttribute("aria-label", "Delete task");
+  deleteButton.append(createIcon("delete"));
   deleteButton.title = "Delete task";
 
   checkbox.addEventListener("change", () => {
@@ -250,4 +252,34 @@ function getChecklistSummary(checklist = []) {
   }
 
   return `${checklist.length} checklist ${checklist.length === 1 ? "item" : "items"}`;
+}
+
+function createIcon(name) {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("class", "button-icon");
+  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("aria-hidden", "true");
+  svg.setAttribute("focusable", "false");
+
+  const paths = {
+    delete: [
+      "M4 7h16",
+      "M10 11v6",
+      "M14 11v6",
+      "M6 7l1 14h10l1-14",
+      "M9 7V4h6v3",
+    ],
+    edit: [
+      "M4 20h4l11-11a2.8 2.8 0 0 0-4-4L4 16v4Z",
+      "M13.5 6.5l4 4",
+    ],
+  };
+
+  paths[name].forEach((data) => {
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", data);
+    svg.append(path);
+  });
+
+  return svg;
 }

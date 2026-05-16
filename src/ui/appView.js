@@ -325,32 +325,35 @@ function createProjectRow(project, options) {
   ]);
 
   const actions = createElement("div", { className: "project-actions" }, [
-    createElement("button", {
-      className: "project-action-button",
-      text: "Edit",
-      attributes: {
-        "aria-label": `Edit ${project.name}`,
-        "data-project-action": "edit",
-        title: "Edit project",
-        type: "button",
-      },
+    createIconButton("edit", `Edit ${project.name}`, {
+      "data-project-action": "edit",
+      title: "Edit project",
     }),
-    createElement("button", {
-      className: "project-action-button danger",
-      text: "Delete",
-      attributes: {
-        "aria-label": `Delete ${project.name}`,
-        "data-project-action": "delete",
-        title: "Delete project",
-        type: "button",
-      },
-      properties: { disabled: options.isDeleteDisabled },
-    }),
+    createIconButton("delete", `Delete ${project.name}`, {
+      className: "danger",
+      "data-project-action": "delete",
+      title: "Delete project",
+    }, { disabled: options.isDeleteDisabled }),
   ]);
 
   row.append(selectButton, actions);
 
   return row;
+}
+
+function createIconButton(iconName, label, attributes = {}, properties = {}) {
+  const { className = "", ...buttonAttributes } = attributes;
+  const extraClass = className ? ` ${className}` : "";
+
+  return createElement("button", {
+    className: `icon-button project-action-button${extraClass}`,
+    attributes: {
+      ...buttonAttributes,
+      "aria-label": label,
+      type: "button",
+    },
+    properties,
+  }, [createIcon(iconName)]);
 }
 
 function createProjectEditForm(project, onSaveEdit) {
@@ -413,4 +416,34 @@ function createElement(tagName, options = {}, children = []) {
   element.append(...children);
 
   return element;
+}
+
+function createIcon(name) {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("class", "button-icon");
+  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("aria-hidden", "true");
+  svg.setAttribute("focusable", "false");
+
+  const paths = {
+    delete: [
+      "M4 7h16",
+      "M10 11v6",
+      "M14 11v6",
+      "M6 7l1 14h10l1-14",
+      "M9 7V4h6v3",
+    ],
+    edit: [
+      "M4 20h4l11-11a2.8 2.8 0 0 0-4-4L4 16v4Z",
+      "M13.5 6.5l4 4",
+    ],
+  };
+
+  paths[name].forEach((data) => {
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", data);
+    svg.append(path);
+  });
+
+  return svg;
 }
