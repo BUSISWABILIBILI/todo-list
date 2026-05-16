@@ -27,17 +27,21 @@ export function createTodoItem(todo, options) {
   priority.textContent = getPriorityLabel(todo.priority);
 
   const dueDate = document.createElement("span");
-  dueDate.className = "task-due-date";
+  dueDate.className = `task-due-date ${getDueDateClass(todo.dueDate, todo.completed)}`;
   dueDate.textContent = todo.dueDate ? `Due ${formatDueDate(todo.dueDate)}` : "No due date";
 
   const description = document.createElement("span");
   description.className = "task-description";
   description.textContent = todo.description || "No added context";
 
+  const checklistSummary = document.createElement("span");
+  checklistSummary.className = "task-checklist-summary";
+  checklistSummary.textContent = getChecklistSummary(todo.checklist);
+
   const editButton = document.createElement("button");
   editButton.className = "edit-button";
   editButton.type = "button";
-  editButton.textContent = "Details";
+  editButton.textContent = "Edit";
   editButton.title = "Edit task details";
 
   const deleteButton = document.createElement("button");
@@ -67,6 +71,10 @@ export function createTodoItem(todo, options) {
   const taskMeta = document.createElement("span");
   taskMeta.className = "task-meta";
   taskMeta.append(dueDate, description);
+
+  if (checklistSummary.textContent) {
+    taskMeta.append(checklistSummary);
+  }
 
   taskContent.append(taskHeader, taskMeta);
 
@@ -205,4 +213,41 @@ function getPriorityLabel(priority) {
   }
 
   return "Medium";
+}
+
+function getDueDateClass(dueDate, completed) {
+  if (!dueDate) {
+    return "is-unscheduled";
+  }
+
+  if (completed) {
+    return "is-complete";
+  }
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const taskDate = new Date(`${dueDate}T00:00:00`);
+
+  if (Number.isNaN(taskDate.getTime())) {
+    return "is-unscheduled";
+  }
+
+  if (taskDate < today) {
+    return "is-overdue";
+  }
+
+  if (taskDate.getTime() === today.getTime()) {
+    return "is-today";
+  }
+
+  return "is-upcoming";
+}
+
+function getChecklistSummary(checklist = []) {
+  if (!checklist.length) {
+    return "";
+  }
+
+  return `${checklist.length} checklist ${checklist.length === 1 ? "item" : "items"}`;
 }
