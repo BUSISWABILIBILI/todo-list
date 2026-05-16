@@ -116,7 +116,7 @@ button:disabled {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) auto;
   align-content: stretch;
-  gap: 20px;
+  gap: 14px;
   background: linear-gradient(180deg, rgba(248, 250, 252, 0.92), rgba(241, 245, 249, 0.9));
   border-right: 1px solid #e1e7ef;
 }
@@ -133,24 +133,24 @@ button:disabled {
   display: grid;
   grid-template-rows: auto auto minmax(0, 1fr);
   align-items: stretch;
-  gap: 14px;
+  gap: 10px;
   min-height: 0;
   border: 1px solid #dce4ee;
-  border-radius: 18px;
-  padding: 16px;
+  border-radius: 14px;
+  padding: 12px;
   background: linear-gradient(180deg, #ffffff, #f8fbff);
   box-shadow: var(--shadow-soft);
 }
 
 .project-composer-copy {
   display: grid;
-  gap: 4px;
+  gap: 2px;
 }
 
 .project-composer-title {
   margin: 0;
   color: var(--text);
-  font-size: 1rem;
+  font-size: 0.92rem;
   font-weight: 800;
   line-height: 1.2;
 }
@@ -184,13 +184,13 @@ button:disabled {
 
 .app-header {
   display: grid;
-  gap: 10px;
+  gap: 6px;
 }
 
 .eyebrow {
   margin: 0;
   color: var(--primary);
-  font-size: 0.78rem;
+  font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -199,7 +199,7 @@ button:disabled {
 h1 {
   margin: 0;
   color: var(--text);
-  font-size: 3rem;
+  font-size: 2.35rem;
   font-weight: 800;
   line-height: 1.12;
 }
@@ -208,8 +208,8 @@ h1 {
   max-width: 34rem;
   margin: 2px 0 0;
   color: var(--muted);
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 0.9rem;
+  line-height: 1.45;
 }
 
 .status-panel {
@@ -446,7 +446,7 @@ h1 {
 .projects-panel {
   display: grid;
   align-content: start;
-  gap: 12px;
+  gap: 8px;
   min-height: 0;
 }
 
@@ -469,11 +469,11 @@ h1 {
 .project-empty-state {
   margin: 0;
   border: 1px dashed #cfd8e5;
-  border-radius: 14px;
-  padding: 16px 14px;
+  border-radius: 12px;
+  padding: 12px;
   background: rgba(248, 250, 252, 0.72);
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   font-weight: 700;
   line-height: 1.45;
 }
@@ -482,11 +482,11 @@ h1 {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   width: 100%;
   border: 1px solid #e6edf5;
-  border-radius: 14px;
-  padding: 6px;
+  border-radius: 12px;
+  padding: 4px;
   background: rgba(255, 255, 255, 0.72);
   transition:
     border-color 160ms ease,
@@ -511,11 +511,11 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 8px;
   min-width: 0;
   border: 0;
-  border-radius: 10px;
-  padding: 10px 8px;
+  border-radius: 8px;
+  padding: 8px 7px;
   background: transparent;
   color: #344054;
   font-weight: 800;
@@ -536,12 +536,12 @@ h1 {
 }
 
 .project-count {
-  min-width: 30px;
+  min-width: 26px;
   border-radius: 999px;
-  padding: 4px 8px;
+  padding: 3px 7px;
   background: #edf2f7;
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 850;
   text-align: center;
 }
@@ -574,9 +574,9 @@ h1 {
 
 .project-action-button {
   border: 1px solid #cfd8e5;
-  border-radius: 11px;
-  width: 36px;
-  height: 34px;
+  border-radius: 9px;
+  width: 32px;
+  height: 30px;
   padding: 0;
   background: #ffffff;
   color: #475467;
@@ -608,16 +608,16 @@ h1 {
 
 .project-form {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 44px;
-  gap: 8px;
+  grid-template-columns: minmax(0, 1fr) 38px;
+  gap: 6px;
 }
 
 .project-form input,
 .project-edit-form input {
   min-width: 0;
   border: 1px solid #cfd8e5;
-  border-radius: 14px;
-  padding: 12px 13px;
+  border-radius: 11px;
+  padding: 9px 11px;
   background: #ffffff;
   color: var(--text);
 }
@@ -625,8 +625,8 @@ h1 {
 .project-form button,
 .project-save-button {
   border: 0;
-  border-radius: 14px;
-  padding: 12px 14px;
+  border-radius: 11px;
+  padding: 9px 12px;
   background: var(--primary);
   color: #ffffff;
   font-weight: 800;
@@ -668,24 +668,24 @@ h1 {
 .sidebar-footer {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   min-width: 0;
   border: 1px solid #e2e8f0;
-  border-radius: 20px;
-  padding: 12px;
+  border-radius: 14px;
+  padding: 10px;
   background: rgba(255, 255, 255, 0.72);
 }
 
 .profile-avatar {
   display: grid;
   place-items: center;
-  width: 42px;
-  height: 42px;
+  width: 34px;
+  height: 34px;
   flex: 0 0 auto;
-  border-radius: 14px;
+  border-radius: 11px;
   background: var(--primary);
   color: #ffffff;
-  font-size: 0.82rem;
+  font-size: 0.74rem;
   font-weight: 800;
 }
 
@@ -696,13 +696,13 @@ h1 {
 
 .profile-name {
   color: var(--text);
-  font-size: 0.88rem;
+  font-size: 0.8rem;
   font-weight: 800;
 }
 
 .profile-meta {
   color: var(--muted);
-  font-size: 0.76rem;
+  font-size: 0.7rem;
   font-weight: 650;
 }
 
