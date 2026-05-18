@@ -22,6 +22,8 @@ export function createAppView(root) {
     todoFilters: root.querySelector("#todo-filters"),
     todoFooter: root.querySelector("#todo-footer"),
     todoForm: root.querySelector("#todo-form"),
+    notesInput: root.querySelector("#notes-input"),
+    closeTaskButton: root.querySelector("#close-task-button"),
     todoListArea: root.querySelector("#todo-list-area"),
     todoInput: root.querySelector("#todo-input"),
     todoList: root.querySelector("#todo-list"),
@@ -50,17 +52,14 @@ function createLeftPanel() {
   const panel = createElement("aside", { className: "left-panel" });
 
   const header = createElement("header", { className: "app-header" }, [
-    createElement("p", { className: "eyebrow", text: "Project planner" }),
+    createElement("span", { className: "brand-mark", text: "+" }),
     createElement("h1", { id: "app-title", text: "Taskboard" }),
-    createElement("p", {
-      className: "app-intro",
-      text: "Manage project tasks, priorities, and deadlines from one focused workspace.",
-    }),
   ]);
 
   panel.append(
     header,
-    createProjectComposer()
+    createProjectComposer(),
+    createStatusPanel()
   );
 
   return panel;
@@ -128,9 +127,7 @@ function createRightPanel() {
   });
 
   panel.append(
-    createStatusPanel(),
     createStorageStatus(),
-    createFilters(),
     createWorkspaceHeader(),
     createTodoForm(),
     createTodoList(),
@@ -205,59 +202,94 @@ function createWorkspaceHeader() {
         text: "0 tasks in this project",
       }),
     ]),
-    createElement("button", {
-      className: "icon-button add-task-button",
-      id: "add-task-button",
-      text: "+",
-      attributes: {
-        "aria-label": "Add task",
-        "aria-expanded": "false",
-        "aria-controls": "todo-form",
-        title: "Add task",
-        type: "button",
-      },
-    }),
+    createElement("div", { className: "workspace-actions" }, [
+      createFilters(),
+      createElement("button", {
+        className: "add-task-button",
+        id: "add-task-button",
+        text: "+ Add Task",
+        attributes: {
+          "aria-label": "Add task",
+          "aria-expanded": "false",
+          "aria-controls": "todo-form",
+          title: "Add task",
+          type: "button",
+        },
+      }),
+    ]),
   ]);
 }
 
 function createTodoForm() {
   return createElement("form", { className: "todo-form", id: "todo-form" }, [
-    createElement("div", { className: "composer-header" }, [
-      createElement("div", {}, [
-        createElement("p", { className: "status-label", text: "New task" }),
-        createElement("label", { text: "Quick capture", attributes: { for: "todo-input" } }),
+    createElement("section", { className: "todo-dialog", attributes: { "aria-label": "New task" } }, [
+      createElement("div", { className: "composer-header" }, [
+        createElement("h3", { text: "New Task" }),
+        createElement("button", {
+          className: "icon-button dialog-close-button",
+          id: "close-task-button",
+          text: "x",
+          attributes: {
+            "aria-label": "Close task form",
+            type: "button",
+          },
+        }),
       ]),
-      createElement("span", { className: "composer-hint", text: "Selected project" }),
-    ]),
-    createElement("div", { className: "todo-entry" }, [
+      createElement("label", { className: "field-label", text: "Title", attributes: { for: "todo-input" } }),
       createElement("input", {
         id: "todo-input",
         attributes: {
           autocomplete: "off",
           name: "todo",
-          placeholder: "Task title",
+          placeholder: "What needs to be done?",
           type: "text",
         },
       }),
-      createElement("input", {
-        id: "due-date-input",
+      createElement("label", { className: "field-label", text: "Description", attributes: { for: "description-input" } }),
+      createElement("textarea", {
+        id: "description-input",
         attributes: {
-          "aria-label": "Due date",
-          name: "dueDate",
-          type: "date",
+          name: "description",
+          placeholder: "Add more details...",
+          rows: "4",
         },
       }),
-      createPrioritySelect(),
-      createElement("button", { text: "Add task", attributes: { type: "submit" } }),
+      createElement("div", { className: "todo-entry" }, [
+        createElement("label", { className: "field-group" }, [
+          createElement("span", { className: "field-label", text: "Due date" }),
+          createElement("input", {
+            id: "due-date-input",
+            attributes: {
+              "aria-label": "Due date",
+              name: "dueDate",
+              type: "date",
+            },
+          }),
+        ]),
+        createElement("label", { className: "field-group" }, [
+          createElement("span", { className: "field-label", text: "Priority" }),
+          createPrioritySelect(),
+        ]),
+      ]),
+      createElement("label", { className: "field-label", text: "Notes", attributes: { for: "notes-input" } }),
+      createElement("textarea", {
+        id: "notes-input",
+        attributes: {
+          name: "notes",
+          placeholder: "Any extra notes, links, references...",
+          rows: "4",
+        },
+      }),
+      createElement("div", { className: "dialog-actions" }, [
+        createElement("button", {
+          className: "cancel-button",
+          id: "cancel-task-button",
+          text: "Cancel",
+          attributes: { type: "button", "data-dialog-close": "task" },
+        }),
+        createElement("button", { className: "save-button", text: "Add Task", attributes: { type: "submit" } }),
+      ]),
     ]),
-    createElement("textarea", {
-      id: "description-input",
-      attributes: {
-        name: "description",
-        placeholder: "Context or next steps",
-        rows: "3",
-      },
-    }),
   ]);
 }
 

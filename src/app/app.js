@@ -42,6 +42,14 @@ export function startApp(root) {
     }
   });
 
+  view.closeTaskButton.addEventListener("click", closeTaskComposer);
+
+  view.todoForm.addEventListener("click", (event) => {
+    if (event.target.dataset.dialogClose === "task") {
+      closeTaskComposer();
+    }
+  });
+
   view.projectForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -101,6 +109,7 @@ export function startApp(root) {
       title,
       description: view.descriptionInput.value.trim(),
       dueDate: view.dueDateInput.value,
+      notes: view.notesInput.value.trim(),
       priority: view.priorityInput.value,
     });
 
@@ -109,6 +118,7 @@ export function startApp(root) {
     view.todoInput.value = "";
     view.descriptionInput.value = "";
     view.dueDateInput.value = "";
+    view.notesInput.value = "";
     view.priorityInput.value = "medium";
     isTaskComposerOpen = false;
     updateWorkspaceVisibility();
@@ -216,6 +226,12 @@ export function startApp(root) {
     editingTodoId = null;
     render();
     view.todoInput.focus();
+  }
+
+  function closeTaskComposer() {
+    isTaskComposerOpen = false;
+    updateWorkspaceVisibility();
+    view.addTaskButton.focus();
   }
 
   function handleProjectAction(action, projectId) {
