@@ -329,7 +329,7 @@ export function startApp(root) {
     if (getCurrentTodos().length === 0) {
       setEmptyState(
         currentProject ? "project-ready" : "no-project",
-        currentProject ? "Project ready" : "",
+        "",
         currentProject ? `${currentProject.name} has no tasks` : "",
         currentProject
           ? "Use the add task button to capture the first task for this project."
@@ -341,7 +341,7 @@ export function startApp(root) {
     if (currentFilter === "active") {
       setEmptyState(
         "no-active",
-        "No active work",
+        "",
         "No open tasks",
         "Everything in this project is complete. Switch filters to review finished work."
       );
@@ -350,7 +350,7 @@ export function startApp(root) {
 
     setEmptyState(
       "no-completed",
-      "No completed work",
+      "",
       "No completed tasks",
       "Finished work will appear here after tasks are marked complete."
     );
@@ -363,7 +363,6 @@ export function startApp(root) {
   function setEmptyState(state, kicker, title, body) {
     view.emptyState.dataset.state = state;
     view.emptyStateKicker.textContent = kicker;
-    view.emptyStateTitle.textContent = title;
     view.emptyStateBody.textContent = body;
   }
 
