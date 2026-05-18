@@ -53,8 +53,25 @@ function createLeftPanel() {
   const panel = createElement("aside", { className: "left-panel" });
 
   const header = createElement("header", { className: "app-header" }, [
-    createElement("span", { className: "brand-mark", text: "+" }),
+    createElement("span", { className: "brand-mark" }, [
+      createElement("img", {
+        attributes: {
+          alt: "",
+          src: "https://cdn-icons-png.flaticon.com/512/10314/10314520.png",
+        },
+      }),
+    ]),
     createElement("h1", { id: "app-title", text: "Taskboard" }),
+    createElement("a", {
+      className: "logo-credit",
+      text: "Files and folders icons created by Lagot Design - Flaticon",
+      attributes: {
+        href: "https://www.flaticon.com/free-icons/files-and-folders",
+        rel: "noopener noreferrer",
+        target: "_blank",
+        title: "files and folders icons",
+      },
+    }),
   ]);
 
   panel.append(
