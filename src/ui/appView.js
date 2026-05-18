@@ -18,6 +18,8 @@ export function createAppView(root) {
     projectForm: root.querySelector("#project-form"),
     projectSubmitButton: root.querySelector("#project-submit"),
     projectInput: root.querySelector("#project-input"),
+    progressBar: root.querySelector("#project-progress-bar"),
+    progressText: root.querySelector("#project-progress-text"),
     projectList: root.querySelector("#project-list"),
     todoCount: root.querySelector("#todo-count"),
     todoFilters: root.querySelector("#todo-filters"),
@@ -76,10 +78,21 @@ function createLeftPanel() {
 
   panel.append(
     header,
-    createProjectComposer()
+    createProjectComposer(),
+    createTipCard()
   );
 
   return panel;
+}
+
+function createTipCard() {
+  return createElement("aside", { className: "tip-card" }, [
+    createElement("p", { className: "tip-title", text: "Tip" }),
+    createElement("p", {
+      className: "tip-body",
+      text: "Click on a task to view and edit details. Stay organized!",
+    }),
+  ]);
 }
 
 function createStatusPanel() {
@@ -101,9 +114,27 @@ function createStatusPanel() {
 }
 
 function createStatCard(id, label) {
-  return createElement("article", { className: `stat-card stat-${id.replace("-count", "")}` }, [
-    createElement("span", { className: "stat-value", id, text: "0" }),
-    createElement("span", { className: "stat-label", text: label }),
+  const type = id.replace("-count", "");
+  const descriptions = {
+    active: "Tasks in progress",
+    completed: "Tasks completed",
+    overdue: "Past due tasks",
+    total: "All tasks in this project",
+  };
+  const iconNames = {
+    active: "calendar",
+    completed: "check",
+    overdue: "calendar-alert",
+    total: "list",
+  };
+
+  return createElement("article", { className: `stat-card stat-${type}` }, [
+    createElement("span", { className: "stat-icon" }, [createIcon(iconNames[type])]),
+    createElement("span", { className: "stat-copy" }, [
+      createElement("span", { className: "stat-label", text: label === "Done" ? "Completed" : label }),
+      createElement("span", { className: "stat-value", id, text: "0" }),
+      createElement("span", { className: "stat-description", text: descriptions[type] }),
+    ]),
   ]);
 }
 
@@ -220,6 +251,19 @@ function createWorkspaceHeader() {
         id: "current-project-meta",
         text: "0 tasks in this project",
       }),
+      createElement("div", { className: "project-progress" }, [
+        createElement("span", { className: "project-progress-track" }, [
+          createElement("span", {
+            className: "project-progress-bar",
+            id: "project-progress-bar",
+          }),
+        ]),
+        createElement("span", {
+          className: "project-progress-text",
+          id: "project-progress-text",
+          text: "0% complete",
+        }),
+      ]),
     ]),
     createElement("div", { className: "workspace-actions" }, [
       createFilters(),
@@ -498,6 +542,23 @@ function createIcon(name) {
   svg.setAttribute("focusable", "false");
 
   const paths = {
+    calendar: [
+      "M8 2v4",
+      "M16 2v4",
+      "M3 10h18",
+      "M5 4h14a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z",
+    ],
+    "calendar-alert": [
+      "M8 2v4",
+      "M16 2v4",
+      "M3 10h18",
+      "M5 4h14a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z",
+      "M12 14v3",
+      "M12 19h.01",
+    ],
+    check: [
+      "M20 6 9 17l-5-5",
+    ],
     delete: [
       "M4 7h16",
       "M10 11v6",
@@ -509,9 +570,17 @@ function createIcon(name) {
       "M4 20h4l11-11a2.8 2.8 0 0 0-4-4L4 16v4Z",
       "M13.5 6.5l4 4",
     ],
+    list: [
+      "M8 6h13",
+      "M8 12h13",
+      "M8 18h13",
+      "M3 6h.01",
+      "M3 12h.01",
+      "M3 18h.01",
+    ],
   };
 
-  paths[name].forEach((data) => {
+  (paths[name] || paths.list).forEach((data) => {
     const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
     path.setAttribute("d", data);
     svg.append(path);

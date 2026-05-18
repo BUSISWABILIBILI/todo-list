@@ -52,6 +52,14 @@ export function createTodoItem(todo, options) {
   deleteButton.append(createIcon("delete"));
   deleteButton.title = "Delete task";
 
+  const expandButton = document.createElement("button");
+  expandButton.className = "icon-button expand-button";
+  expandButton.type = "button";
+  expandButton.setAttribute("aria-label", "Show task details");
+  expandButton.setAttribute("aria-expanded", "false");
+  expandButton.append(createIcon("chevron"));
+  expandButton.title = "Show task details";
+
   checkbox.addEventListener("change", () => {
     options.onToggle(todo.id, checkbox.checked);
   });
@@ -62,6 +70,16 @@ export function createTodoItem(todo, options) {
 
   deleteButton.addEventListener("click", () => {
     options.onDelete(todo.id);
+  });
+
+  expandButton.addEventListener("click", () => {
+    const isExpanded = item.classList.toggle("is-expanded");
+    expandButton.setAttribute("aria-expanded", String(isExpanded));
+    expandButton.setAttribute(
+      "aria-label",
+      isExpanded ? "Hide task details" : "Show task details"
+    );
+    expandButton.title = isExpanded ? "Hide task details" : "Show task details";
   });
 
   const taskContent = document.createElement("span");
@@ -84,7 +102,7 @@ export function createTodoItem(todo, options) {
 
   const actions = document.createElement("div");
   actions.className = "todo-actions";
-  actions.append(editButton, deleteButton);
+  actions.append(editButton, deleteButton, expandButton);
 
   item.append(label, actions);
 
@@ -290,6 +308,9 @@ function createIcon(name) {
   svg.setAttribute("focusable", "false");
 
   const paths = {
+    chevron: [
+      "M6 9l6 6 6-6",
+    ],
     delete: [
       "M4 7h16",
       "M10 11v6",

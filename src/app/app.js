@@ -312,19 +312,25 @@ export function startApp(root) {
     view.overdueCount.textContent = overdueTotal;
     view.todoCount.textContent = `${activeTotal} open ${taskLabel}`;
     view.clearCompletedButton.disabled = completedTotal === 0;
+    view.clearCompletedButton.hidden = completedTotal === 0;
   }
 
   function updateWorkspaceHeader() {
     const currentProject = getCurrentProject();
-    const taskTotal = getCurrentTodos().length;
+    const todos = getCurrentTodos();
+    const taskTotal = todos.length;
+    const completedTotal = todos.filter((todo) => todo.completed).length;
+    const completion = getCompletionPercent(todos);
     const taskLabel = taskTotal === 1 ? "task" : "tasks";
 
     view.currentProjectName.textContent = currentProject
       ? currentProject.name
       : "No project selected";
     view.currentProjectMeta.textContent = currentProject
-      ? `${taskTotal} ${taskLabel} in this project`
+      ? `${taskTotal} ${taskLabel} • ${completion}% complete`
       : "Create or select a project to add tasks.";
+    view.progressBar.style.width = `${completion}%`;
+    view.progressText.textContent = `${completion}% complete`;
   }
 
   function updateWorkspaceVisibility() {
@@ -444,6 +450,16 @@ export function startApp(root) {
   function getCurrentTodos() {
     return getProjectTodos(projects, currentProjectId);
   }
+}
+
+function getCompletionPercent(todos) {
+  if (!todos.length) {
+    return 0;
+  }
+
+  return Math.round(
+    (todos.filter((todo) => todo.completed).length / todos.length) * 100,
+  );
 }
 
 function compareTodos(firstTodo, secondTodo) {
