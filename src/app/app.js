@@ -303,11 +303,13 @@ export function startApp(root) {
     const todos = getCurrentTodos();
     const activeTotal = todos.filter((todo) => !todo.completed).length;
     const completedTotal = todos.length - activeTotal;
+    const overdueTotal = todos.filter(isOverdueTodo).length;
     const taskLabel = activeTotal === 1 ? "task" : "tasks";
 
     view.totalCount.textContent = todos.length;
     view.activeCount.textContent = activeTotal;
     view.completedCount.textContent = completedTotal;
+    view.overdueCount.textContent = overdueTotal;
     view.todoCount.textContent = `${activeTotal} open ${taskLabel}`;
     view.clearCompletedButton.disabled = completedTotal === 0;
   }
@@ -479,4 +481,16 @@ function getSortableDate(dueDate) {
   return Number.isNaN(date.getTime())
     ? Number.POSITIVE_INFINITY
     : date.getTime();
+}
+
+function isOverdueTodo(todo) {
+  if (todo.completed || !todo.dueDate) {
+    return false;
+  }
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const dueDate = new Date(`${todo.dueDate}T00:00:00`);
+
+  return !Number.isNaN(dueDate.getTime()) && dueDate < today;
 }

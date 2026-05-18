@@ -6,6 +6,7 @@ export function createAppView(root) {
     addTaskButton: root.querySelector("#add-task-button"),
     clearCompletedButton: root.querySelector("#clear-completed"),
     completedCount: root.querySelector("#completed-count"),
+    overdueCount: root.querySelector("#overdue-count"),
     currentProjectMeta: root.querySelector("#current-project-meta"),
     currentProjectName: root.querySelector("#current-project-name"),
     descriptionInput: root.querySelector("#description-input"),
@@ -58,8 +59,7 @@ function createLeftPanel() {
 
   panel.append(
     header,
-    createProjectComposer(),
-    createStatusPanel()
+    createProjectComposer()
   );
 
   return panel;
@@ -72,6 +72,7 @@ function createStatusPanel() {
       createStatCard("total-count", "Total"),
       createStatCard("active-count", "Active"),
       createStatCard("completed-count", "Done"),
+      createStatCard("overdue-count", "Overdue"),
     ]),
     createElement("p", {
       className: "todo-count",
@@ -127,6 +128,7 @@ function createRightPanel() {
   });
 
   panel.append(
+    createStatusPanel(),
     createStorageStatus(),
     createWorkspaceHeader(),
     createTodoForm(),
