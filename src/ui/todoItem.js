@@ -78,7 +78,7 @@ export function createTodoItem(todo, options) {
     taskMeta.append(checklistSummary);
   }
 
-  taskContent.append(taskHeader, taskMeta);
+  taskContent.append(taskHeader, taskMeta, createTaskDetails(todo));
 
   label.append(checkbox, taskContent);
 
@@ -89,6 +89,34 @@ export function createTodoItem(todo, options) {
   item.append(label, actions);
 
   return item;
+}
+
+function createTaskDetails(todo) {
+  const details = document.createElement("span");
+  details.className = "task-details";
+
+  if (todo.notes) {
+    const notes = document.createElement("span");
+    notes.className = "task-notes";
+    notes.textContent = todo.notes;
+    details.append(notes);
+  }
+
+  if (todo.checklist?.length) {
+    const checklist = document.createElement("span");
+    checklist.className = "task-checklist";
+
+    todo.checklist.forEach((item) => {
+      const checklistItem = document.createElement("span");
+      checklistItem.className = "task-checklist-item";
+      checklistItem.textContent = item;
+      checklist.append(checklistItem);
+    });
+
+    details.append(checklist);
+  }
+
+  return details;
 }
 
 function createEditForm(todo, options) {

@@ -8,7 +8,7 @@
     "build": "webpack",
     "dev": "webpack serve",
     "start": "webpack serve",
-    "test": "node --check server.js && node --check webpack.config.js && node --check src/index.js && node --check src/app/app.js && node --check src/domain/appLogic.js && node --check src/storage/projectStorage.js && node --check src/ui/appView.js && node --check src/ui/todoItem.js && node --check src/utils/dateUtils.js"
+    "test": "node --check server.js && node --check webpack.config.js && node --check src/index.js && node --check src/app/app.js && node --check src/domain/appLogic.js && node --check src/storage/projectStorage.js && node --check src/ui/appView.js && node --check src/ui/todoItem.js && node --check src/utils/dateUtils.js && node tests/appLogic.test.js"
   },
   "keywords": [
     "todo",

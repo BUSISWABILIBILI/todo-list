@@ -9,7 +9,7 @@
           i = e.n(a)()(r());
         i.push([
           t.id,
-          ':root {\n  color-scheme: light;\n  font-family:\n    Manrope, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",\n    sans-serif;\n  background: #f8fafc;\n  color: #182230;\n  --bg: #f8fafc;\n  --panel: #ffffff;\n  --panel-border: #e2e8f0;\n  --muted: #64748b;\n  --text: #182230;\n  --primary: #2563eb;\n  --primary-hover: #1d4ed8;\n  --primary-soft: #eff6ff;\n  --success: #10b981;\n  --success-soft: #ecfdf5;\n  --danger: #ef4444;\n  --danger-soft: #fef2f2;\n  --focus-ring: rgba(37, 99, 235, 0.22);\n  --warning: #f59e0b;\n  --warning-soft: #fffbeb;\n  --shadow: 0 28px 90px rgba(15, 23, 42, 0.16);\n  --shadow-card: 0 14px 34px rgba(15, 23, 42, 0.08);\n  --shadow-soft: 0 8px 22px rgba(15, 23, 42, 0.06);\n  --surface: #f8fafc;\n}\n\n* {\n  box-sizing: border-box;\n}\n\n[hidden] {\n  display: none !important;\n}\n\nbody {\n  margin: 0;\n  min-height: 100vh;\n  background:\n    radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 30rem),\n    radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.1), transparent 28rem),\n    linear-gradient(135deg, #f8fafc 0%, #eef2ff 45%, #f6fbff 100%),\n    var(--bg);\n}\n\n::selection {\n  background: rgba(37, 99, 235, 0.18);\n}\n\nbutton,\ninput,\ntextarea,\nselect {\n  font: inherit;\n}\n\nbutton {\n  transition:\n    background 160ms ease,\n    border-color 160ms ease,\n    color 160ms ease,\n    transform 160ms ease,\n    box-shadow 160ms ease;\n}\n\nbutton:active:not(:disabled) {\n  transform: translateY(1px);\n}\n\nbutton:focus-visible,\ninput:focus-visible,\ntextarea:focus-visible,\nselect:focus-visible {\n  outline: 3px solid var(--focus-ring);\n  outline-offset: 2px;\n}\n\ninput:focus-visible,\ntextarea:focus-visible,\nselect:focus-visible {\n  border-color: #93b4ff;\n  box-shadow:\n    inset 0 1px 2px rgba(24, 34, 48, 0.04),\n    0 0 0 1px #93b4ff;\n}\n\nbutton:disabled {\n  cursor: not-allowed;\n}\n\n.app {\n  min-height: 100vh;\n  padding: 24px;\n}\n\n.app-shell {\n  width: 100%;\n  min-height: calc(100vh - 48px);\n  display: grid;\n  grid-template-columns: minmax(310px, 24%) minmax(0, 1fr);\n  background: rgba(255, 255, 255, 0.9);\n  border: 1px solid var(--panel-border);\n  border-radius: 24px;\n  overflow: hidden;\n  box-shadow: var(--shadow);\n  backdrop-filter: blur(18px);\n}\n\n.left-panel,\n.right-panel {\n  padding: 32px;\n}\n\n.left-panel {\n  display: grid;\n  grid-template-rows: auto minmax(0, 1fr);\n  align-content: stretch;\n  gap: 22px;\n  background: linear-gradient(180deg, rgba(248, 250, 252, 0.92), rgba(241, 245, 249, 0.9));\n  border-right: 1px solid #e1e7ef;\n}\n\n.right-panel {\n  display: flex;\n  flex-direction: column;\n  gap: 18px;\n  min-width: 0;\n  background: rgba(255, 255, 255, 0.96);\n}\n\n.project-composer {\n  display: grid;\n  grid-template-rows: auto auto minmax(0, 1fr);\n  align-items: stretch;\n  gap: 12px;\n  min-height: 0;\n  border: 1px solid #dce4ee;\n  border-radius: 14px;\n  padding: 18px;\n  background: linear-gradient(180deg, #ffffff, #f8fbff);\n  box-shadow: var(--shadow-soft);\n}\n\n.project-composer-copy {\n  display: grid;\n  gap: 2px;\n}\n\n.project-composer-title {\n  margin: 0;\n  color: var(--text);\n  font-size: 0.92rem;\n  font-weight: 800;\n  line-height: 1.2;\n}\n\n.workspace-header {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) auto;\n  align-items: start;\n  gap: 20px;\n  padding: 4px 2px 18px;\n  border-bottom: 1px solid #e6ebf2;\n}\n\n.workspace-title {\n  display: grid;\n  align-content: center;\n  gap: 6px;\n}\n\n.workspace-header h2 {\n  margin: 0;\n  color: var(--text);\n  font-size: 1.85rem;\n  font-weight: 800;\n  line-height: 1.12;\n}\n\n.workspace-meta {\n  margin: 0;\n  color: var(--muted);\n  font-size: 0.84rem;\n  font-weight: 750;\n}\n\n.add-task-button {\n  width: 38px;\n  height: 38px;\n  border: 0;\n  border-radius: 999px;\n  background: var(--primary);\n  color: #ffffff;\n  font-size: 1.25rem;\n  font-weight: 800;\n  line-height: 1;\n  cursor: pointer;\n  box-shadow: 0 10px 18px rgba(37, 99, 235, 0.2);\n}\n\n.add-task-button:hover {\n  background: var(--primary-hover);\n  transform: translateY(-1px);\n}\n\n.app-header {\n  display: grid;\n  gap: 6px;\n}\n\n.eyebrow {\n  margin: 0;\n  color: var(--primary);\n  font-size: 0.7rem;\n  font-weight: 800;\n  letter-spacing: 0;\n  text-transform: uppercase;\n}\n\nh1 {\n  margin: 0;\n  color: var(--text);\n  font-size: 2.35rem;\n  font-weight: 800;\n  line-height: 1.12;\n}\n\n.app-intro {\n  max-width: 34rem;\n  margin: 2px 0 0;\n  color: var(--muted);\n  font-size: 0.9rem;\n  line-height: 1.45;\n}\n\n.status-panel {\n  border: 1px solid #dce4ee;\n  border-radius: 20px;\n  padding: 20px;\n  background: linear-gradient(180deg, #ffffff, #f8fafc);\n  box-shadow: var(--shadow-card);\n}\n\n.right-panel > .status-panel {\n  display: grid;\n  grid-template-columns: minmax(94px, auto) minmax(0, 1fr);\n  align-items: center;\n  gap: 12px;\n  padding: 10px 12px;\n  border-radius: 14px;\n  box-shadow: var(--shadow-soft);\n}\n\n.status-label {\n  margin: 0 0 8px;\n  color: var(--muted);\n  font-size: 0.72rem;\n  font-weight: 700;\n  text-transform: uppercase;\n}\n\n.right-panel > .status-panel .status-label,\n.right-panel > .status-panel .todo-count {\n  margin: 0;\n}\n\n.stats-grid {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 8px;\n}\n\n.right-panel > .status-panel .stats-grid {\n  grid-template-columns: repeat(3, minmax(72px, 1fr));\n  gap: 6px;\n}\n\n.stat-card {\n  display: grid;\n  gap: 4px;\n  min-width: 0;\n  border: 1px solid #e3e9f1;\n  border-radius: 16px;\n  padding: 14px 12px;\n  background: #f8fafc;\n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);\n}\n\n.right-panel > .status-panel .stat-card {\n  grid-template-columns: auto 1fr;\n  align-items: baseline;\n  gap: 7px;\n  min-height: 34px;\n  padding: 7px 9px;\n  border-radius: 12px;\n}\n\n.stat-value {\n  color: var(--text);\n  font-size: 1.45rem;\n  font-weight: 800;\n  line-height: 1;\n}\n\n.right-panel > .status-panel .stat-value {\n  font-size: 1.05rem;\n}\n\n.stat-label {\n  color: var(--muted);\n  font-size: 0.74rem;\n  font-weight: 700;\n  text-transform: uppercase;\n}\n\n.right-panel > .status-panel .stat-label,\n.right-panel > .status-panel .todo-count,\n.right-panel > .status-panel .status-label {\n  font-size: 0.68rem;\n}\n\n.right-panel > .status-panel .todo-count {\n  color: var(--muted);\n  text-align: right;\n  white-space: nowrap;\n}\n\n.todo-form {\n  display: grid;\n  gap: 10px;\n  padding: 16px;\n  border: 1px solid #e3e9f1;\n  border-radius: 18px;\n  background: #ffffff;\n  box-shadow: var(--shadow-soft);\n}\n\n.composer-header {\n  display: flex;\n  align-items: flex-start;\n  justify-content: space-between;\n  gap: 12px;\n}\n\n.todo-form label {\n  color: #344054;\n  font-size: 0.9rem;\n  font-weight: 800;\n}\n\n.composer-hint {\n  flex: 0 0 auto;\n  border-radius: 999px;\n  padding: 4px 9px;\n  background: #f1f5f9;\n  color: var(--muted);\n  font-size: 0.78rem;\n  font-weight: 800;\n}\n\n.todo-entry {\n  display: grid;\n  grid-template-columns: minmax(220px, 1fr) minmax(145px, 0.22fr) minmax(124px, 0.18fr) auto;\n  gap: 8px;\n  align-items: stretch;\n}\n\n.todo-entry input,\n.todo-entry select,\n.todo-form textarea,\n.edit-form input,\n.edit-form textarea,\n.edit-form select {\n  min-width: 0;\n  border: 1px solid #cfd8e5;\n  border-radius: 12px;\n  background: #ffffff;\n  color: var(--text);\n  box-shadow: inset 0 1px 2px rgba(24, 34, 48, 0.04);\n}\n\n.todo-entry input,\n.todo-entry select {\n  min-height: 38px;\n  padding: 8px 11px;\n}\n\n.todo-form textarea {\n  width: 100%;\n  min-height: 62px;\n  padding: 10px 11px;\n  resize: vertical;\n}\n\n.todo-entry input::placeholder,\n.todo-form textarea::placeholder {\n  color: #98a2b3;\n}\n\n.todo-entry button,\n.save-button {\n  border: 0;\n  border-radius: 12px;\n  background: var(--primary);\n  color: #ffffff;\n  font-weight: 800;\n  cursor: pointer;\n  box-shadow: 0 10px 18px rgba(37, 99, 235, 0.2);\n}\n\n.todo-entry button {\n  min-height: 38px;\n  min-width: 92px;\n  padding: 8px 14px;\n}\n\n.todo-entry button:hover,\n.save-button:hover {\n  background: var(--primary-hover);\n  transform: translateY(-1px);\n}\n\n.todo-filters {\n  display: grid;\n  grid-template-columns: repeat(3, minmax(0, 1fr));\n  gap: 5px;\n  padding: 3px;\n  border: 1px solid #e4e9f1;\n  border-radius: 12px;\n  background: #eef3f8;\n}\n\n.filter-button {\n  display: grid;\n  place-items: center;\n  align-items: center;\n  border: 1px solid transparent;\n  border-radius: 9px;\n  min-height: 34px;\n  padding: 7px 10px;\n  background: transparent;\n  color: #475467;\n  font-size: 0.82rem;\n  font-weight: 800;\n  text-align: center;\n  cursor: pointer;\n}\n\n.filter-icon {\n  display: none;\n}\n\n.filter-button:hover {\n  color: var(--text);\n}\n\n.filter-button.is-active {\n  border-color: #dbe7ff;\n  background: #ffffff;\n  color: var(--primary-hover);\n  box-shadow: 0 4px 10px rgba(24, 34, 48, 0.07);\n}\n\n.filter-button.is-active .filter-icon {\n  background: var(--primary-soft);\n  color: var(--primary-hover);\n}\n\n.projects-panel {\n  display: grid;\n  align-content: start;\n  gap: 8px;\n  min-height: 0;\n}\n\n.section-heading {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\n.project-list {\n  display: grid;\n  gap: 10px;\n  max-height: 100%;\n  overflow: auto;\n  padding-right: 2px;\n  scrollbar-color: #cbd5e1 transparent;\n  scrollbar-width: thin;\n}\n\n.project-empty-state {\n  margin: 0;\n  border: 1px dashed #cfd8e5;\n  border-radius: 12px;\n  padding: 12px;\n  background: rgba(248, 250, 252, 0.72);\n  color: var(--muted);\n  font-size: 0.72rem;\n  font-weight: 700;\n  line-height: 1.45;\n}\n\n.project-row {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) auto;\n  align-items: center;\n  gap: 4px;\n  width: 100%;\n  border: 1px solid #e6edf5;\n  border-radius: 12px;\n  padding: 7px;\n  background: rgba(255, 255, 255, 0.72);\n  transition:\n    border-color 160ms ease,\n    box-shadow 160ms ease,\n    transform 160ms ease;\n}\n\n.project-row:hover {\n  border-color: #d4deeb;\n  background: #ffffff;\n  box-shadow: var(--shadow-soft);\n  transform: translateY(-1px);\n}\n\n.project-row.is-active {\n  border-color: #c7d8ff;\n  background: #ffffff;\n  box-shadow: 0 12px 26px rgba(37, 99, 235, 0.14);\n}\n\n.project-select {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 8px;\n  min-width: 0;\n  border: 0;\n  border-radius: 8px;\n  padding: 10px 9px;\n  background: transparent;\n  color: #344054;\n  font-weight: 800;\n  text-align: left;\n  cursor: pointer;\n}\n\n.project-select:hover,\n.project-row.is-active .project-select {\n  color: var(--primary-hover);\n}\n\n.project-name {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.project-count {\n  min-width: 26px;\n  border-radius: 999px;\n  padding: 3px 7px;\n  background: #edf2f7;\n  color: var(--muted);\n  font-size: 0.72rem;\n  font-weight: 850;\n  text-align: center;\n}\n\n.project-row.is-active .project-count {\n  background: var(--primary-soft);\n  color: var(--primary-hover);\n}\n\n.project-actions {\n  display: flex;\n  gap: 4px;\n}\n\n.icon-button {\n  display: inline-grid;\n  place-items: center;\n}\n\n.button-icon {\n  width: 15px;\n  height: 15px;\n  fill: none;\n  stroke: currentColor;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n  stroke-width: 2;\n  pointer-events: none;\n}\n\n.project-action-button {\n  border: 1px solid #cfd8e5;\n  border-radius: 9px;\n  width: 32px;\n  height: 30px;\n  padding: 0;\n  background: #ffffff;\n  color: #475467;\n  cursor: pointer;\n}\n\n.project-action-button:hover:not(:disabled) {\n  border-color: #98a2b3;\n  color: var(--text);\n}\n\n.project-action-button.danger {\n  border-color: #ffd6de;\n  background: var(--danger-soft);\n  color: var(--danger);\n}\n\n.project-action-button:disabled {\n  cursor: not-allowed;\n  opacity: 0.44;\n}\n\n.project-edit-form {\n  grid-column: 1 / -1;\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) auto auto;\n  gap: 8px;\n}\n\n.project-form {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) 42px;\n  gap: 12px;\n  align-items: center;\n}\n\n.project-form input,\n.project-edit-form input {\n  min-width: 0;\n  border: 1px solid #cfd8e5;\n  border-radius: 11px;\n  padding: 12px 14px;\n  background: #ffffff;\n  color: var(--text);\n}\n\n.project-form button,\n.project-save-button {\n  border: 0;\n  border-radius: 11px;\n  padding: 9px 12px;\n  background: var(--primary);\n  color: #ffffff;\n  font-weight: 800;\n  cursor: pointer;\n  box-shadow: 0 10px 18px rgba(37, 99, 235, 0.18);\n}\n\n.project-form button {\n  display: inline-grid;\n  place-items: center;\n  width: 42px;\n  height: 42px;\n  min-height: 42px;\n  border-radius: 999px;\n  padding: 0;\n  font-size: 1.25rem;\n  line-height: 1;\n}\n\n.project-form button::before {\n  content: none;\n}\n\n.project-form button:hover,\n.project-save-button:hover {\n  background: var(--primary-hover);\n}\n\n.project-form button:disabled {\n  background: #d8e0ea;\n  color: #7a8899;\n  box-shadow: none;\n}\n\n.project-cancel-button {\n  border: 1px solid #cfd8e5;\n  border-radius: 12px;\n  padding: 10px 12px;\n  background: #ffffff;\n  color: #475467;\n  font-weight: 800;\n  cursor: pointer;\n}\n\n.project-cancel-button:hover {\n  border-color: #98a2b3;\n  color: var(--text);\n}\n\n.todo-list {\n  list-style: none;\n  margin: 10px 0 0;\n  padding: 0;\n  display: grid;\n  gap: 10px;\n  max-height: none;\n  overflow: visible;\n  padding-right: 0;\n  scrollbar-color: #cbd5e1 transparent;\n  scrollbar-width: thin;\n}\n\n.todo-list::-webkit-scrollbar {\n  width: 10px;\n}\n\n.todo-list::-webkit-scrollbar-track {\n  background: transparent;\n}\n\n.todo-list::-webkit-scrollbar-thumb {\n  border: 3px solid #ffffff;\n  border-radius: 999px;\n  background: #cbd5e1;\n}\n\n.todo-item {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) auto;\n  align-items: start;\n  gap: 12px;\n  min-height: 58px;\n  border: 1px solid #e3e9f1;\n  border-left: 4px solid var(--warning);\n  border-radius: 12px;\n  padding: 12px 14px;\n  background: #ffffff;\n  box-shadow: var(--shadow-soft);\n  transition:\n    border-color 160ms ease,\n    box-shadow 160ms ease,\n    background 160ms ease,\n    transform 160ms ease;\n}\n\n.todo-item:hover {\n  border-color: #d4deeb;\n  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);\n  transform: translateY(-1px);\n}\n\n.todo-item:has(.priority-low) {\n  border-left-color: var(--success);\n}\n\n.todo-item:has(.priority-medium) {\n  border-left-color: var(--warning);\n}\n\n.todo-item:has(.priority-high) {\n  border-left-color: var(--danger);\n}\n\n.todo-item.is-editing {\n  grid-template-columns: 1fr;\n  background: #f8fbff;\n}\n\n.todo-check {\n  display: flex;\n  align-items: flex-start;\n  gap: 9px;\n  min-width: 0;\n  cursor: pointer;\n}\n\n.todo-check input {\n  width: 16px;\n  height: 16px;\n  margin-top: 1px;\n  flex: 0 0 auto;\n  accent-color: var(--success);\n  cursor: pointer;\n}\n\n.todo-check span {\n  color: #263445;\n  font-weight: 650;\n  overflow-wrap: anywhere;\n}\n\n.task-content {\n  display: grid;\n  gap: 4px;\n  min-width: 0;\n  flex: 1;\n}\n\n.task-header {\n  display: flex;\n  align-items: center;\n  gap: 7px;\n  min-width: 0;\n}\n\n.task-title {\n  min-width: 0;\n  color: #263445;\n  font-size: 0.9rem;\n  font-weight: 800;\n  overflow-wrap: anywhere;\n}\n\n.task-meta {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 5px 7px;\n  min-width: 0;\n  color: var(--muted);\n  font-size: 0.78rem;\n  font-weight: 650;\n  line-height: 1.45;\n}\n\n.task-due-date {\n  flex: 0 0 auto;\n  border-radius: 999px;\n  padding: 2px 7px;\n  background: #f1f5f9;\n  color: #475467;\n  font-size: 0.72rem;\n  font-weight: 850;\n}\n\n.task-due-date.is-overdue {\n  background: var(--danger-soft);\n  color: #dc2626;\n}\n\n.task-due-date.is-today {\n  background: var(--warning-soft);\n  color: #b45309;\n}\n\n.task-due-date.is-upcoming {\n  background: var(--primary-soft);\n  color: var(--primary-hover);\n}\n\n.task-description {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.task-description::before,\n.task-checklist-summary::before {\n  content: "";\n  display: inline-block;\n  width: 4px;\n  height: 4px;\n  margin: 0 8px 2px 0;\n  border-radius: 999px;\n  background: #98a2b3;\n}\n\n.task-checklist-summary {\n  flex: 0 0 auto;\n}\n\n.priority-badge {\n  border-radius: 999px;\n  padding: 3px 7px;\n  font-size: 0.62rem;\n  font-weight: 850;\n  line-height: 1;\n  text-transform: uppercase;\n}\n\n.priority-low {\n  background: var(--success-soft);\n  color: #047857;\n}\n\n.priority-medium {\n  background: var(--warning-soft);\n  color: #b45309;\n}\n\n.priority-high {\n  background: var(--danger-soft);\n  color: #dc2626;\n}\n\n.todo-item.is-complete {\n  background: #f8fafc;\n}\n\n.todo-item.is-complete .task-title {\n  color: var(--muted);\n  text-decoration: line-through;\n}\n\n.todo-item.is-complete .priority-badge,\n.todo-item.is-complete .task-meta {\n  opacity: 0.72;\n}\n\n.todo-actions {\n  display: flex;\n  gap: 5px;\n}\n\n.edit-button,\n.save-button,\n.cancel-button,\n.delete-button,\n.clear-button {\n  border-radius: 10px;\n  padding: 7px 10px;\n  font-size: 0.82rem;\n  font-weight: 800;\n  cursor: pointer;\n}\n\n.edit-button,\n.cancel-button,\n.clear-button {\n  border: 1px solid #cfd8e5;\n  background: #ffffff;\n  color: #475467;\n}\n\n.edit-button:hover,\n.cancel-button:hover,\n.clear-button:hover:not(:disabled) {\n  border-color: #98a2b3;\n  color: var(--text);\n  box-shadow: 0 6px 14px rgba(24, 34, 48, 0.08);\n}\n\n.edit-button,\n.delete-button {\n  width: 32px;\n  height: 30px;\n  padding: 0;\n}\n\n.save-button {\n  padding-inline: 14px;\n}\n\n.delete-button {\n  border: 1px solid #ffd6de;\n  background: var(--danger-soft);\n  color: var(--danger);\n}\n\n.delete-button:hover {\n  border-color: #fda4af;\n  background: #ffe4e9;\n}\n\n.clear-button:disabled {\n  opacity: 0.48;\n}\n\n.edit-form input,\n.edit-form textarea,\n.edit-form select {\n  padding: 9px 11px;\n}\n\n.edit-form {\n  display: grid;\n  gap: 10px;\n}\n\n.edit-form textarea {\n  width: 100%;\n  min-height: 84px;\n  resize: vertical;\n}\n\n.edit-field-row {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) minmax(145px, auto) minmax(130px, auto);\n  gap: 8px;\n}\n\n.edit-actions {\n  display: flex;\n  gap: 8px;\n  justify-content: flex-end;\n}\n\n.empty-state {\n  position: relative;\n  margin: 16px 0 0;\n  border: 1px solid #dce4ee;\n  border-radius: 18px;\n  padding: 32px 24px;\n  background: #f8fafc;\n  text-align: center;\n  overflow: hidden;\n}\n\n.empty-state::before {\n  content: "";\n  display: block;\n  width: 56px;\n  height: 56px;\n  margin: 0 auto 18px;\n  border: 1px solid #c7d8ff;\n  border-radius: 16px;\n  background:\n    linear-gradient(#2563eb, #2563eb) 18px 20px / 20px 3px no-repeat,\n    linear-gradient(#10b981, #10b981) 18px 29px / 14px 3px no-repeat,\n    linear-gradient(#f59e0b, #f59e0b) 18px 38px / 24px 3px no-repeat,\n    #eff6ff;\n  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.14);\n}\n\n.empty-state[data-state="no-project"]::before {\n  border-color: #d8dee9;\n  background:\n    linear-gradient(#64748b, #64748b) 18px 20px / 20px 3px no-repeat,\n    linear-gradient(#94a3b8, #94a3b8) 18px 29px / 14px 3px no-repeat,\n    linear-gradient(#cbd5e1, #cbd5e1) 18px 38px / 24px 3px no-repeat,\n    #f1f5f9;\n  box-shadow: none;\n}\n\n.empty-state[data-state="no-active"]::before {\n  border-color: #bbf7d0;\n  background:\n    linear-gradient(#10b981, #10b981) 18px 20px / 20px 3px no-repeat,\n    linear-gradient(#10b981, #10b981) 18px 29px / 20px 3px no-repeat,\n    linear-gradient(#10b981, #10b981) 18px 38px / 20px 3px no-repeat,\n    var(--success-soft);\n}\n\n.empty-state[data-state="no-completed"]::before {\n  border-color: #fed7aa;\n  background:\n    linear-gradient(#f59e0b, #f59e0b) 18px 20px / 20px 3px no-repeat,\n    linear-gradient(#f59e0b, #f59e0b) 18px 29px / 14px 3px no-repeat,\n    linear-gradient(#f59e0b, #f59e0b) 18px 38px / 24px 3px no-repeat,\n    var(--warning-soft);\n}\n\n.empty-state-kicker {\n  margin: 0 0 8px;\n  color: var(--primary);\n  font-size: 0.76rem;\n  font-weight: 850;\n  text-transform: uppercase;\n}\n\n.empty-state-kicker:empty,\n.empty-state h3:empty {\n  display: none;\n}\n\n.empty-state h3 {\n  margin: 0;\n  color: var(--text);\n  font-size: 1.12rem;\n  line-height: 1.25;\n}\n\n.empty-state-body {\n  max-width: 36rem;\n  margin: 10px auto 0;\n  color: var(--muted);\n  font-size: 0.86rem;\n  font-weight: 650;\n  line-height: 1.6;\n}\n\n.todo-footer {\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  gap: 16px;\n  margin-top: 22px;\n  padding-top: 18px;\n  border-top: 1px solid #e6ebf2;\n  color: var(--muted);\n}\n\n.todo-count {\n  margin: 16px 0 0;\n  color: var(--text);\n  font-size: 1.35rem;\n  font-weight: 800;\n}\n\n.clear-button:disabled {\n  cursor: not-allowed;\n  opacity: 0.48;\n}\n\n@media (max-width: 860px) {\n  .app {\n    padding: 14px;\n  }\n\n  .app-shell {\n    min-height: auto;\n    grid-template-columns: 1fr;\n    border-radius: 20px;\n  }\n\n  .left-panel {\n    border-right: 0;\n    border-bottom: 1px solid #e1e7ef;\n    grid-template-rows: none;\n  }\n\n  .left-panel,\n  .right-panel {\n    padding: 24px;\n  }\n\n  .project-composer {\n    min-height: auto;\n  }\n\n  .project-list {\n    max-height: 260px;\n  }\n\n  .status-panel {\n    padding: 16px;\n  }\n\n  .right-panel > .status-panel {\n    grid-template-columns: 1fr;\n    align-items: stretch;\n  }\n\n  .todo-filters {\n    grid-template-columns: repeat(3, 1fr);\n  }\n\n  .filter-button {\n    text-align: center;\n  }\n\n  .stats-grid {\n    grid-template-columns: repeat(3, minmax(0, 1fr));\n  }\n\n  .right-panel > .status-panel .stats-grid {\n    grid-template-columns: repeat(3, minmax(0, 1fr));\n  }\n\n  .todo-list {\n    max-height: none;\n  }\n\n}\n\n@media (max-width: 520px) {\n  .app {\n    padding: 0;\n  }\n\n  .app-shell {\n    min-height: 100vh;\n    border: 0;\n    border-radius: 0;\n  }\n\n  .left-panel,\n  .right-panel {\n    padding: 20px;\n  }\n\n  h1 {\n    font-size: 1.85rem;\n  }\n\n  .app-intro {\n    font-size: 0.92rem;\n  }\n\n  .workspace-header h2 {\n    font-size: 1.45rem;\n  }\n\n  .add-task-button {\n    width: 36px;\n    height: 36px;\n  }\n\n  .todo-form {\n    border-radius: 14px;\n    padding: 14px;\n  }\n\n  .todo-entry {\n    grid-template-columns: 1fr;\n  }\n\n  .composer-header {\n    flex-direction: column;\n  }\n\n  .composer-hint {\n    flex: 0 1 auto;\n  }\n\n  .todo-entry button {\n    min-width: 0;\n    width: 100%;\n  }\n\n  .stats-grid {\n    grid-template-columns: 1fr;\n  }\n\n  .right-panel > .status-panel .stats-grid {\n    grid-template-columns: 1fr;\n  }\n\n  .stat-card {\n    grid-template-columns: auto 1fr;\n    align-items: baseline;\n  }\n\n  .project-form {\n    grid-template-columns: minmax(0, 1fr) 42px;\n  }\n\n  .project-form button {\n    min-height: 42px;\n  }\n\n  .project-row,\n  .project-edit-form {\n    grid-template-columns: 1fr;\n  }\n\n  .project-actions {\n    display: flex;\n    justify-content: flex-end;\n  }\n\n  .todo-item {\n    grid-template-columns: 1fr;\n    align-items: stretch;\n  }\n\n  .task-header,\n  .task-meta {\n    align-items: flex-start;\n    flex-direction: column;\n    gap: 6px;\n  }\n\n  .task-description {\n    white-space: normal;\n  }\n\n  .task-description::before,\n  .task-checklist-summary::before {\n    display: none;\n  }\n\n  .todo-actions {\n    display: flex;\n    justify-content: flex-end;\n  }\n\n  .edit-form {\n    grid-template-columns: 1fr;\n  }\n\n  .edit-field-row,\n  .edit-actions {\n    grid-template-columns: 1fr;\n  }\n\n  .edit-actions {\n    display: grid;\n  }\n\n  .todo-footer {\n    align-items: stretch;\n    flex-direction: column;\n  }\n\n  .empty-state {\n    padding: 34px 20px;\n  }\n}\n',
+          ':root {\n  color-scheme: light;\n  font-family:\n    Manrope, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",\n    sans-serif;\n  background: #f8fafc;\n  color: #182230;\n  --bg: #f8fafc;\n  --panel: #ffffff;\n  --panel-border: #e2e8f0;\n  --muted: #64748b;\n  --text: #182230;\n  --primary: #2563eb;\n  --primary-hover: #1d4ed8;\n  --primary-soft: #eff6ff;\n  --success: #10b981;\n  --success-soft: #ecfdf5;\n  --danger: #ef4444;\n  --danger-soft: #fef2f2;\n  --focus-ring: rgba(37, 99, 235, 0.22);\n  --warning: #f59e0b;\n  --warning-soft: #fffbeb;\n  --shadow: 0 28px 90px rgba(15, 23, 42, 0.16);\n  --shadow-card: 0 14px 34px rgba(15, 23, 42, 0.08);\n  --shadow-soft: 0 8px 22px rgba(15, 23, 42, 0.06);\n  --surface: #f8fafc;\n}\n\n* {\n  box-sizing: border-box;\n}\n\n[hidden] {\n  display: none !important;\n}\n\nbody {\n  margin: 0;\n  min-height: 100vh;\n  background:\n    radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 30rem),\n    radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.1), transparent 28rem),\n    linear-gradient(135deg, #f8fafc 0%, #eef2ff 45%, #f6fbff 100%),\n    var(--bg);\n}\n\n::selection {\n  background: rgba(37, 99, 235, 0.18);\n}\n\nbutton,\ninput,\ntextarea,\nselect {\n  font: inherit;\n}\n\nbutton {\n  transition:\n    background 160ms ease,\n    border-color 160ms ease,\n    color 160ms ease,\n    transform 160ms ease,\n    box-shadow 160ms ease;\n}\n\nbutton:active:not(:disabled) {\n  transform: translateY(1px);\n}\n\nbutton:focus-visible,\ninput:focus-visible,\ntextarea:focus-visible,\nselect:focus-visible {\n  outline: 3px solid var(--focus-ring);\n  outline-offset: 2px;\n}\n\ninput:focus-visible,\ntextarea:focus-visible,\nselect:focus-visible {\n  border-color: #93b4ff;\n  box-shadow:\n    inset 0 1px 2px rgba(24, 34, 48, 0.04),\n    0 0 0 1px #93b4ff;\n}\n\nbutton:disabled {\n  cursor: not-allowed;\n}\n\n.app {\n  min-height: 100vh;\n  padding: 24px;\n}\n\n.app-shell {\n  width: 100%;\n  min-height: calc(100vh - 48px);\n  display: grid;\n  grid-template-columns: minmax(310px, 24%) minmax(0, 1fr);\n  background: rgba(255, 255, 255, 0.9);\n  border: 1px solid var(--panel-border);\n  border-radius: 24px;\n  overflow: hidden;\n  box-shadow: var(--shadow);\n  backdrop-filter: blur(18px);\n}\n\n.left-panel,\n.right-panel {\n  padding: 32px;\n}\n\n.left-panel {\n  display: grid;\n  grid-template-rows: auto minmax(0, 1fr);\n  align-content: stretch;\n  gap: 22px;\n  background: linear-gradient(180deg, rgba(248, 250, 252, 0.92), rgba(241, 245, 249, 0.9));\n  border-right: 1px solid #e1e7ef;\n}\n\n.right-panel {\n  display: flex;\n  flex-direction: column;\n  gap: 18px;\n  min-width: 0;\n  background: rgba(255, 255, 255, 0.96);\n}\n\n.project-composer {\n  display: grid;\n  grid-template-rows: auto auto minmax(0, 1fr);\n  align-items: stretch;\n  gap: 12px;\n  min-height: 0;\n  border: 1px solid #dce4ee;\n  border-radius: 14px;\n  padding: 18px;\n  background: linear-gradient(180deg, #ffffff, #f8fbff);\n  box-shadow: var(--shadow-soft);\n}\n\n.project-composer-copy {\n  display: grid;\n  gap: 2px;\n}\n\n.project-composer-title {\n  margin: 0;\n  color: var(--text);\n  font-size: 0.92rem;\n  font-weight: 800;\n  line-height: 1.2;\n}\n\n.workspace-header {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) auto;\n  align-items: start;\n  gap: 20px;\n  padding: 4px 2px 18px;\n  border-bottom: 1px solid #e6ebf2;\n}\n\n.workspace-title {\n  display: grid;\n  align-content: center;\n  gap: 6px;\n}\n\n.workspace-header h2 {\n  margin: 0;\n  color: var(--text);\n  font-size: 1.85rem;\n  font-weight: 800;\n  line-height: 1.12;\n}\n\n.workspace-meta {\n  margin: 0;\n  color: var(--muted);\n  font-size: 0.84rem;\n  font-weight: 750;\n}\n\n.add-task-button {\n  width: 38px;\n  height: 38px;\n  border: 0;\n  border-radius: 999px;\n  background: var(--primary);\n  color: #ffffff;\n  font-size: 1.25rem;\n  font-weight: 800;\n  line-height: 1;\n  cursor: pointer;\n  box-shadow: 0 10px 18px rgba(37, 99, 235, 0.2);\n}\n\n.add-task-button:hover {\n  background: var(--primary-hover);\n  transform: translateY(-1px);\n}\n\n.app-header {\n  display: grid;\n  gap: 6px;\n}\n\n.eyebrow {\n  margin: 0;\n  color: var(--primary);\n  font-size: 0.7rem;\n  font-weight: 800;\n  letter-spacing: 0;\n  text-transform: uppercase;\n}\n\nh1 {\n  margin: 0;\n  color: var(--text);\n  font-size: 2.35rem;\n  font-weight: 800;\n  line-height: 1.12;\n}\n\n.app-intro {\n  max-width: 34rem;\n  margin: 2px 0 0;\n  color: var(--muted);\n  font-size: 0.9rem;\n  line-height: 1.45;\n}\n\n.status-panel {\n  border: 1px solid #dce4ee;\n  border-radius: 20px;\n  padding: 20px;\n  background: linear-gradient(180deg, #ffffff, #f8fafc);\n  box-shadow: var(--shadow-card);\n}\n\n.right-panel > .status-panel {\n  display: grid;\n  grid-template-columns: minmax(94px, auto) minmax(0, 1fr);\n  align-items: center;\n  gap: 12px;\n  padding: 10px 12px;\n  border-radius: 14px;\n  box-shadow: var(--shadow-soft);\n}\n\n.status-label {\n  margin: 0 0 8px;\n  color: var(--muted);\n  font-size: 0.72rem;\n  font-weight: 700;\n  text-transform: uppercase;\n}\n\n.right-panel > .status-panel .status-label,\n.right-panel > .status-panel .todo-count {\n  margin: 0;\n}\n\n.stats-grid {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 8px;\n}\n\n.right-panel > .status-panel .stats-grid {\n  grid-template-columns: repeat(3, minmax(72px, 1fr));\n  gap: 6px;\n}\n\n.stat-card {\n  display: grid;\n  gap: 4px;\n  min-width: 0;\n  border: 1px solid #e3e9f1;\n  border-radius: 16px;\n  padding: 14px 12px;\n  background: #f8fafc;\n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);\n}\n\n.right-panel > .status-panel .stat-card {\n  grid-template-columns: auto 1fr;\n  align-items: baseline;\n  gap: 7px;\n  min-height: 34px;\n  padding: 7px 9px;\n  border-radius: 12px;\n}\n\n.stat-value {\n  color: var(--text);\n  font-size: 1.45rem;\n  font-weight: 800;\n  line-height: 1;\n}\n\n.right-panel > .status-panel .stat-value {\n  font-size: 1.05rem;\n}\n\n.stat-label {\n  color: var(--muted);\n  font-size: 0.74rem;\n  font-weight: 700;\n  text-transform: uppercase;\n}\n\n.right-panel > .status-panel .stat-label,\n.right-panel > .status-panel .todo-count,\n.right-panel > .status-panel .status-label {\n  font-size: 0.68rem;\n}\n\n.right-panel > .status-panel .todo-count {\n  color: var(--muted);\n  text-align: right;\n  white-space: nowrap;\n}\n\n.storage-status {\n  margin: -8px 0 0;\n  border: 1px solid #fed7aa;\n  border-radius: 12px;\n  padding: 9px 11px;\n  background: var(--warning-soft);\n  color: #92400e;\n  font-size: 0.78rem;\n  font-weight: 750;\n  line-height: 1.4;\n}\n\n.todo-form {\n  display: grid;\n  gap: 10px;\n  padding: 16px;\n  border: 1px solid #e3e9f1;\n  border-radius: 18px;\n  background: #ffffff;\n  box-shadow: var(--shadow-soft);\n}\n\n.composer-header {\n  display: flex;\n  align-items: flex-start;\n  justify-content: space-between;\n  gap: 12px;\n}\n\n.todo-form label {\n  color: #344054;\n  font-size: 0.9rem;\n  font-weight: 800;\n}\n\n.composer-hint {\n  flex: 0 0 auto;\n  border-radius: 999px;\n  padding: 4px 9px;\n  background: #f1f5f9;\n  color: var(--muted);\n  font-size: 0.78rem;\n  font-weight: 800;\n}\n\n.todo-entry {\n  display: grid;\n  grid-template-columns: minmax(220px, 1fr) minmax(145px, 0.22fr) minmax(124px, 0.18fr) auto;\n  gap: 8px;\n  align-items: stretch;\n}\n\n.todo-entry input,\n.todo-entry select,\n.todo-form textarea,\n.edit-form input,\n.edit-form textarea,\n.edit-form select {\n  min-width: 0;\n  border: 1px solid #cfd8e5;\n  border-radius: 12px;\n  background: #ffffff;\n  color: var(--text);\n  box-shadow: inset 0 1px 2px rgba(24, 34, 48, 0.04);\n}\n\n.todo-entry input,\n.todo-entry select {\n  min-height: 38px;\n  padding: 8px 11px;\n}\n\n.todo-form textarea {\n  width: 100%;\n  min-height: 62px;\n  padding: 10px 11px;\n  resize: vertical;\n}\n\n.todo-entry input::placeholder,\n.todo-form textarea::placeholder {\n  color: #98a2b3;\n}\n\n.todo-entry button,\n.save-button {\n  border: 0;\n  border-radius: 12px;\n  background: var(--primary);\n  color: #ffffff;\n  font-weight: 800;\n  cursor: pointer;\n  box-shadow: 0 10px 18px rgba(37, 99, 235, 0.2);\n}\n\n.todo-entry button {\n  min-height: 38px;\n  min-width: 92px;\n  padding: 8px 14px;\n}\n\n.todo-entry button:hover,\n.save-button:hover {\n  background: var(--primary-hover);\n  transform: translateY(-1px);\n}\n\n.todo-filters {\n  display: grid;\n  grid-template-columns: repeat(3, minmax(0, 1fr));\n  gap: 5px;\n  padding: 3px;\n  border: 1px solid #e4e9f1;\n  border-radius: 12px;\n  background: #eef3f8;\n}\n\n.filter-button {\n  display: grid;\n  place-items: center;\n  align-items: center;\n  border: 1px solid transparent;\n  border-radius: 9px;\n  min-height: 34px;\n  padding: 7px 10px;\n  background: transparent;\n  color: #475467;\n  font-size: 0.82rem;\n  font-weight: 800;\n  text-align: center;\n  cursor: pointer;\n}\n\n.filter-icon {\n  display: none;\n}\n\n.filter-button:hover {\n  color: var(--text);\n}\n\n.filter-button.is-active {\n  border-color: #dbe7ff;\n  background: #ffffff;\n  color: var(--primary-hover);\n  box-shadow: 0 4px 10px rgba(24, 34, 48, 0.07);\n}\n\n.filter-button.is-active .filter-icon {\n  background: var(--primary-soft);\n  color: var(--primary-hover);\n}\n\n.projects-panel {\n  display: grid;\n  align-content: start;\n  gap: 8px;\n  min-height: 0;\n}\n\n.section-heading {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\n.project-list {\n  display: grid;\n  gap: 10px;\n  max-height: 100%;\n  overflow: auto;\n  padding-right: 2px;\n  scrollbar-color: #cbd5e1 transparent;\n  scrollbar-width: thin;\n}\n\n.project-empty-state {\n  margin: 0;\n  border: 1px dashed #cfd8e5;\n  border-radius: 12px;\n  padding: 12px;\n  background: rgba(248, 250, 252, 0.72);\n  color: var(--muted);\n  font-size: 0.72rem;\n  font-weight: 700;\n  line-height: 1.45;\n}\n\n.project-row {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) auto;\n  align-items: center;\n  gap: 4px;\n  width: 100%;\n  border: 1px solid #e6edf5;\n  border-radius: 12px;\n  padding: 7px;\n  background: rgba(255, 255, 255, 0.72);\n  transition:\n    border-color 160ms ease,\n    box-shadow 160ms ease,\n    transform 160ms ease;\n}\n\n.project-row:hover {\n  border-color: #d4deeb;\n  background: #ffffff;\n  box-shadow: var(--shadow-soft);\n  transform: translateY(-1px);\n}\n\n.project-row.is-active {\n  border-color: #c7d8ff;\n  background: #ffffff;\n  box-shadow: 0 12px 26px rgba(37, 99, 235, 0.14);\n}\n\n.project-select {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 8px;\n  min-width: 0;\n  border: 0;\n  border-radius: 8px;\n  padding: 10px 9px;\n  background: transparent;\n  color: #344054;\n  font-weight: 800;\n  text-align: left;\n  cursor: pointer;\n}\n\n.project-select:hover,\n.project-row.is-active .project-select {\n  color: var(--primary-hover);\n}\n\n.project-name {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.project-count {\n  min-width: 26px;\n  border-radius: 999px;\n  padding: 3px 7px;\n  background: #edf2f7;\n  color: var(--muted);\n  font-size: 0.72rem;\n  font-weight: 850;\n  text-align: center;\n}\n\n.project-row.is-active .project-count {\n  background: var(--primary-soft);\n  color: var(--primary-hover);\n}\n\n.project-actions {\n  display: flex;\n  gap: 4px;\n}\n\n.icon-button {\n  display: inline-grid;\n  place-items: center;\n}\n\n.button-icon {\n  width: 15px;\n  height: 15px;\n  fill: none;\n  stroke: currentColor;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n  stroke-width: 2;\n  pointer-events: none;\n}\n\n.project-action-button {\n  border: 1px solid #cfd8e5;\n  border-radius: 9px;\n  width: 32px;\n  height: 30px;\n  padding: 0;\n  background: #ffffff;\n  color: #475467;\n  cursor: pointer;\n}\n\n.project-action-button:hover:not(:disabled) {\n  border-color: #98a2b3;\n  color: var(--text);\n}\n\n.project-action-button.danger {\n  border-color: #ffd6de;\n  background: var(--danger-soft);\n  color: var(--danger);\n}\n\n.project-action-button:disabled {\n  cursor: not-allowed;\n  opacity: 0.44;\n}\n\n.project-edit-form {\n  grid-column: 1 / -1;\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) auto auto;\n  gap: 8px;\n}\n\n.project-form {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) 42px;\n  gap: 12px;\n  align-items: center;\n}\n\n.project-form input,\n.project-edit-form input {\n  min-width: 0;\n  border: 1px solid #cfd8e5;\n  border-radius: 11px;\n  padding: 12px 14px;\n  background: #ffffff;\n  color: var(--text);\n}\n\n.project-form button,\n.project-save-button {\n  border: 0;\n  border-radius: 11px;\n  padding: 9px 12px;\n  background: var(--primary);\n  color: #ffffff;\n  font-weight: 800;\n  cursor: pointer;\n  box-shadow: 0 10px 18px rgba(37, 99, 235, 0.18);\n}\n\n.project-form button {\n  display: inline-grid;\n  place-items: center;\n  width: 42px;\n  height: 42px;\n  min-height: 42px;\n  border-radius: 999px;\n  padding: 0;\n  font-size: 1.25rem;\n  line-height: 1;\n}\n\n.project-form button::before {\n  content: none;\n}\n\n.project-form button:hover,\n.project-save-button:hover {\n  background: var(--primary-hover);\n}\n\n.project-form button:disabled {\n  background: #d8e0ea;\n  color: #7a8899;\n  box-shadow: none;\n}\n\n.project-cancel-button {\n  border: 1px solid #cfd8e5;\n  border-radius: 12px;\n  padding: 10px 12px;\n  background: #ffffff;\n  color: #475467;\n  font-weight: 800;\n  cursor: pointer;\n}\n\n.project-cancel-button:hover {\n  border-color: #98a2b3;\n  color: var(--text);\n}\n\n.todo-list {\n  list-style: none;\n  margin: 10px 0 0;\n  padding: 0;\n  display: grid;\n  gap: 10px;\n  max-height: none;\n  overflow: visible;\n  padding-right: 0;\n  scrollbar-color: #cbd5e1 transparent;\n  scrollbar-width: thin;\n}\n\n.todo-list::-webkit-scrollbar {\n  width: 10px;\n}\n\n.todo-list::-webkit-scrollbar-track {\n  background: transparent;\n}\n\n.todo-list::-webkit-scrollbar-thumb {\n  border: 3px solid #ffffff;\n  border-radius: 999px;\n  background: #cbd5e1;\n}\n\n.todo-item {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) auto;\n  align-items: start;\n  gap: 12px;\n  min-height: 58px;\n  border: 1px solid #e3e9f1;\n  border-left: 4px solid var(--warning);\n  border-radius: 12px;\n  padding: 12px 14px;\n  background: #ffffff;\n  box-shadow: var(--shadow-soft);\n  transition:\n    border-color 160ms ease,\n    box-shadow 160ms ease,\n    background 160ms ease,\n    transform 160ms ease;\n}\n\n.todo-item:hover {\n  border-color: #d4deeb;\n  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);\n  transform: translateY(-1px);\n}\n\n.todo-item:has(.priority-low) {\n  border-left-color: var(--success);\n}\n\n.todo-item:has(.priority-medium) {\n  border-left-color: var(--warning);\n}\n\n.todo-item:has(.priority-high) {\n  border-left-color: var(--danger);\n}\n\n.todo-item.is-editing {\n  grid-template-columns: 1fr;\n  background: #f8fbff;\n}\n\n.todo-check {\n  display: flex;\n  align-items: flex-start;\n  gap: 9px;\n  min-width: 0;\n  cursor: pointer;\n}\n\n.todo-check input {\n  width: 16px;\n  height: 16px;\n  margin-top: 1px;\n  flex: 0 0 auto;\n  accent-color: var(--success);\n  cursor: pointer;\n}\n\n.todo-check span {\n  color: #263445;\n  font-weight: 650;\n  overflow-wrap: anywhere;\n}\n\n.task-content {\n  display: grid;\n  gap: 4px;\n  min-width: 0;\n  flex: 1;\n}\n\n.task-header {\n  display: flex;\n  align-items: center;\n  gap: 7px;\n  min-width: 0;\n}\n\n.task-title {\n  min-width: 0;\n  color: #263445;\n  font-size: 0.9rem;\n  font-weight: 800;\n  overflow-wrap: anywhere;\n}\n\n.task-meta {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 5px 7px;\n  min-width: 0;\n  color: var(--muted);\n  font-size: 0.78rem;\n  font-weight: 650;\n  line-height: 1.45;\n}\n\n.task-due-date {\n  flex: 0 0 auto;\n  border-radius: 999px;\n  padding: 2px 7px;\n  background: #f1f5f9;\n  color: #475467;\n  font-size: 0.72rem;\n  font-weight: 850;\n}\n\n.task-due-date.is-overdue {\n  background: var(--danger-soft);\n  color: #dc2626;\n}\n\n.task-due-date.is-today {\n  background: var(--warning-soft);\n  color: #b45309;\n}\n\n.task-due-date.is-upcoming {\n  background: var(--primary-soft);\n  color: var(--primary-hover);\n}\n\n.task-description {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.task-description::before,\n.task-checklist-summary::before {\n  content: "";\n  display: inline-block;\n  width: 4px;\n  height: 4px;\n  margin: 0 8px 2px 0;\n  border-radius: 999px;\n  background: #98a2b3;\n}\n\n.task-checklist-summary {\n  flex: 0 0 auto;\n}\n\n.task-details {\n  display: grid;\n  gap: 7px;\n  min-width: 0;\n}\n\n.task-details:empty {\n  display: none;\n}\n\n.task-notes {\n  border-left: 3px solid #dbe7ff;\n  padding-left: 9px;\n  color: #475467;\n  font-size: 0.78rem;\n  font-weight: 650;\n  line-height: 1.5;\n  overflow-wrap: anywhere;\n}\n\n.task-checklist {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 6px;\n}\n\n.task-checklist-item {\n  border: 1px solid #dce4ee;\n  border-radius: 999px;\n  padding: 3px 8px;\n  background: #f8fafc;\n  color: #475467;\n  font-size: 0.72rem;\n  font-weight: 750;\n  line-height: 1.3;\n}\n\n.priority-badge {\n  border-radius: 999px;\n  padding: 3px 7px;\n  font-size: 0.62rem;\n  font-weight: 850;\n  line-height: 1;\n  text-transform: uppercase;\n}\n\n.priority-low {\n  background: var(--success-soft);\n  color: #047857;\n}\n\n.priority-medium {\n  background: var(--warning-soft);\n  color: #b45309;\n}\n\n.priority-high {\n  background: var(--danger-soft);\n  color: #dc2626;\n}\n\n.todo-item.is-complete {\n  background: #f8fafc;\n}\n\n.todo-item.is-complete .task-title {\n  color: var(--muted);\n  text-decoration: line-through;\n}\n\n.todo-item.is-complete .priority-badge,\n.todo-item.is-complete .task-meta {\n  opacity: 0.72;\n}\n\n.todo-actions {\n  display: flex;\n  gap: 5px;\n}\n\n.edit-button,\n.save-button,\n.cancel-button,\n.delete-button,\n.clear-button {\n  border-radius: 10px;\n  padding: 7px 10px;\n  font-size: 0.82rem;\n  font-weight: 800;\n  cursor: pointer;\n}\n\n.edit-button,\n.cancel-button,\n.clear-button {\n  border: 1px solid #cfd8e5;\n  background: #ffffff;\n  color: #475467;\n}\n\n.edit-button:hover,\n.cancel-button:hover,\n.clear-button:hover:not(:disabled) {\n  border-color: #98a2b3;\n  color: var(--text);\n  box-shadow: 0 6px 14px rgba(24, 34, 48, 0.08);\n}\n\n.edit-button,\n.delete-button {\n  width: 32px;\n  height: 30px;\n  padding: 0;\n}\n\n.save-button {\n  padding-inline: 14px;\n}\n\n.delete-button {\n  border: 1px solid #ffd6de;\n  background: var(--danger-soft);\n  color: var(--danger);\n}\n\n.delete-button:hover {\n  border-color: #fda4af;\n  background: #ffe4e9;\n}\n\n.clear-button:disabled {\n  opacity: 0.48;\n}\n\n.edit-form input,\n.edit-form textarea,\n.edit-form select {\n  padding: 9px 11px;\n}\n\n.edit-form {\n  display: grid;\n  gap: 10px;\n}\n\n.edit-form textarea {\n  width: 100%;\n  min-height: 84px;\n  resize: vertical;\n}\n\n.edit-field-row {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) minmax(145px, auto) minmax(130px, auto);\n  gap: 8px;\n}\n\n.edit-actions {\n  display: flex;\n  gap: 8px;\n  justify-content: flex-end;\n}\n\n.empty-state {\n  position: relative;\n  margin: 16px 0 0;\n  border: 1px solid #dce4ee;\n  border-radius: 18px;\n  padding: 32px 24px;\n  background: #f8fafc;\n  text-align: center;\n  overflow: hidden;\n}\n\n.empty-state::before {\n  content: "";\n  display: block;\n  width: 56px;\n  height: 56px;\n  margin: 0 auto 18px;\n  border: 1px solid #c7d8ff;\n  border-radius: 16px;\n  background:\n    linear-gradient(#2563eb, #2563eb) 18px 20px / 20px 3px no-repeat,\n    linear-gradient(#10b981, #10b981) 18px 29px / 14px 3px no-repeat,\n    linear-gradient(#f59e0b, #f59e0b) 18px 38px / 24px 3px no-repeat,\n    #eff6ff;\n  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.14);\n}\n\n.empty-state[data-state="no-project"]::before {\n  border-color: #d8dee9;\n  background:\n    linear-gradient(#64748b, #64748b) 18px 20px / 20px 3px no-repeat,\n    linear-gradient(#94a3b8, #94a3b8) 18px 29px / 14px 3px no-repeat,\n    linear-gradient(#cbd5e1, #cbd5e1) 18px 38px / 24px 3px no-repeat,\n    #f1f5f9;\n  box-shadow: none;\n}\n\n.empty-state[data-state="no-active"]::before {\n  border-color: #bbf7d0;\n  background:\n    linear-gradient(#10b981, #10b981) 18px 20px / 20px 3px no-repeat,\n    linear-gradient(#10b981, #10b981) 18px 29px / 20px 3px no-repeat,\n    linear-gradient(#10b981, #10b981) 18px 38px / 20px 3px no-repeat,\n    var(--success-soft);\n}\n\n.empty-state[data-state="no-completed"]::before {\n  border-color: #fed7aa;\n  background:\n    linear-gradient(#f59e0b, #f59e0b) 18px 20px / 20px 3px no-repeat,\n    linear-gradient(#f59e0b, #f59e0b) 18px 29px / 14px 3px no-repeat,\n    linear-gradient(#f59e0b, #f59e0b) 18px 38px / 24px 3px no-repeat,\n    var(--warning-soft);\n}\n\n.empty-state-kicker {\n  margin: 0 0 8px;\n  color: var(--primary);\n  font-size: 0.76rem;\n  font-weight: 850;\n  text-transform: uppercase;\n}\n\n.empty-state-kicker:empty {\n  display: none;\n}\n\n.empty-state-body {\n  max-width: 36rem;\n  margin: 10px auto 0;\n  color: var(--muted);\n  font-size: 0.86rem;\n  font-weight: 650;\n  line-height: 1.6;\n}\n\n.todo-footer {\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  gap: 16px;\n  margin-top: 22px;\n  padding-top: 18px;\n  border-top: 1px solid #e6ebf2;\n  color: var(--muted);\n}\n\n.todo-count {\n  margin: 16px 0 0;\n  color: var(--text);\n  font-size: 1.35rem;\n  font-weight: 800;\n}\n\n.clear-button:disabled {\n  cursor: not-allowed;\n  opacity: 0.48;\n}\n\n@media (max-width: 860px) {\n  .app {\n    padding: 14px;\n  }\n\n  .app-shell {\n    min-height: auto;\n    grid-template-columns: 1fr;\n    border-radius: 20px;\n  }\n\n  .left-panel {\n    border-right: 0;\n    border-bottom: 1px solid #e1e7ef;\n    grid-template-rows: none;\n  }\n\n  .left-panel,\n  .right-panel {\n    padding: 24px;\n  }\n\n  .project-composer {\n    min-height: auto;\n  }\n\n  .project-list {\n    max-height: 260px;\n  }\n\n  .status-panel {\n    padding: 16px;\n  }\n\n  .right-panel > .status-panel {\n    grid-template-columns: 1fr;\n    align-items: stretch;\n  }\n\n  .todo-filters {\n    grid-template-columns: repeat(3, 1fr);\n  }\n\n  .filter-button {\n    text-align: center;\n  }\n\n  .stats-grid {\n    grid-template-columns: repeat(3, minmax(0, 1fr));\n  }\n\n  .right-panel > .status-panel .stats-grid {\n    grid-template-columns: repeat(3, minmax(0, 1fr));\n  }\n\n  .todo-list {\n    max-height: none;\n  }\n\n}\n\n@media (max-width: 520px) {\n  .app {\n    padding: 0;\n  }\n\n  .app-shell {\n    min-height: 100vh;\n    border: 0;\n    border-radius: 0;\n  }\n\n  .left-panel,\n  .right-panel {\n    padding: 20px;\n  }\n\n  h1 {\n    font-size: 1.85rem;\n  }\n\n  .app-intro {\n    font-size: 0.92rem;\n  }\n\n  .workspace-header h2 {\n    font-size: 1.45rem;\n  }\n\n  .add-task-button {\n    width: 36px;\n    height: 36px;\n  }\n\n  .todo-form {\n    border-radius: 14px;\n    padding: 14px;\n  }\n\n  .todo-entry {\n    grid-template-columns: 1fr;\n  }\n\n  .composer-header {\n    flex-direction: column;\n  }\n\n  .composer-hint {\n    flex: 0 1 auto;\n  }\n\n  .todo-entry button {\n    min-width: 0;\n    width: 100%;\n  }\n\n  .stats-grid {\n    grid-template-columns: 1fr;\n  }\n\n  .right-panel > .status-panel .stats-grid {\n    grid-template-columns: 1fr;\n  }\n\n  .stat-card {\n    grid-template-columns: auto 1fr;\n    align-items: baseline;\n  }\n\n  .project-form {\n    grid-template-columns: minmax(0, 1fr) 42px;\n  }\n\n  .project-form button {\n    min-height: 42px;\n  }\n\n  .project-row,\n  .project-edit-form {\n    grid-template-columns: 1fr;\n  }\n\n  .project-actions {\n    display: flex;\n    justify-content: flex-end;\n  }\n\n  .todo-item {\n    grid-template-columns: 1fr;\n    align-items: stretch;\n  }\n\n  .task-header,\n  .task-meta {\n    align-items: flex-start;\n    flex-direction: column;\n    gap: 6px;\n  }\n\n  .task-description {\n    white-space: normal;\n  }\n\n  .task-description::before,\n  .task-checklist-summary::before {\n    display: none;\n  }\n\n  .todo-actions {\n    display: flex;\n    justify-content: flex-end;\n  }\n\n  .edit-form {\n    grid-template-columns: 1fr;\n  }\n\n  .edit-field-row,\n  .edit-actions {\n    grid-template-columns: 1fr;\n  }\n\n  .edit-actions {\n    display: grid;\n  }\n\n  .todo-footer {\n    align-items: stretch;\n    flex-direction: column;\n  }\n\n  .empty-state {\n    padding: 34px 20px;\n  }\n}\n',
           "",
         ]);
         const s = i;
@@ -323,9 +323,6 @@
   }
   const E = "todo-project-projects";
   function S(t) {
-    localStorage.setItem(E, JSON.stringify(t));
-  }
-  function A(t) {
     const n = localStorage.getItem(t);
     if (!n) return null;
     try {
@@ -334,34 +331,34 @@
       return (localStorage.removeItem(t), null);
     }
   }
-  function C(t, n) {
-    return q(
+  function A(t, n) {
+    return z(
       "article",
       { className: `stat-card stat-${t.replace("-count", "")}` },
       [
-        q("span", { className: "stat-value", id: t, text: "0" }),
-        q("span", { className: "stat-label", text: n }),
+        z("span", { className: "stat-value", id: t, text: "0" }),
+        z("span", { className: "stat-label", text: n }),
       ],
     );
   }
   function I(t, n, e = !1) {
-    return q(
+    return z(
       "button",
       {
         className: e ? "filter-button is-active" : "filter-button",
         attributes: { "data-filter": t, type: "button" },
       },
       [
-        q("span", {
+        z("span", {
           className: "filter-icon",
           text: { active: "Pending", all: "All", completed: "Done" }[t],
         }),
-        q("span", { text: n }),
+        z("span", { text: n }),
       ],
     );
   }
-  function D() {
-    const t = q("select", {
+  function C() {
+    const t = z("select", {
       id: "priority-input",
       attributes: { "aria-label": "Task priority", name: "priority" },
     });
@@ -371,17 +368,17 @@
         ["medium", "Medium"],
         ["high", "High"],
       ].forEach(([n, e]) => {
-        const o = q("option", { text: e, attributes: { value: n } });
+        const o = z("option", { text: e, attributes: { value: n } });
         ((o.selected = "medium" === n), t.append(o));
       }),
       t
     );
   }
-  function T() {
-    return q("p", { className: "project-empty-state", text: "No projects" });
+  function D() {
+    return z("p", { className: "project-empty-state", text: "No projects" });
   }
-  function L(t, n) {
-    const e = q("div", {
+  function T(t, n) {
+    const e = z("div", {
       className:
         t.id === n.currentProjectId ? "project-row is-active" : "project-row",
       attributes: { "data-project-id": t.id },
@@ -390,7 +387,7 @@
       return (
         e.append(
           (function (t, n) {
-            const e = q("input", {
+            const e = z("input", {
                 attributes: {
                   "aria-label": "Project name",
                   "data-project-name-input": t.id,
@@ -398,14 +395,14 @@
                 },
                 properties: { value: t.name },
               }),
-              o = q("form", { className: "project-edit-form" }, [
+              o = z("form", { className: "project-edit-form" }, [
                 e,
-                q("button", {
+                z("button", {
                   className: "project-save-button",
                   text: "Save",
                   attributes: { type: "submit" },
                 }),
-                q("button", {
+                z("button", {
                   className: "project-cancel-button",
                   text: "Cancel",
                   attributes: {
@@ -425,23 +422,23 @@
         ),
         e
       );
-    const o = q(
+    const o = z(
         "button",
         {
           className: "project-select",
           attributes: { "data-project-action": "select", type: "button" },
         },
         [
-          q("span", { className: "project-name", text: t.name }),
-          q("span", { className: "project-count", text: t.todos.length }),
+          z("span", { className: "project-name", text: t.name }),
+          z("span", { className: "project-count", text: t.todos.length }),
         ],
       ),
-      r = q("div", { className: "project-actions" }, [
-        z("edit", `Edit ${t.name}`, {
+      r = z("div", { className: "project-actions" }, [
+        L("edit", `Edit ${t.name}`, {
           "data-project-action": "edit",
           title: "Edit project",
         }),
-        z(
+        L(
           "delete",
           `Delete ${t.name}`,
           {
@@ -454,19 +451,19 @@
       ]);
     return (e.append(o, r), e);
   }
-  function z(t, n, e = {}, o = {}) {
+  function L(t, n, e = {}, o = {}) {
     const { className: r = "", ...a } = e;
-    return q(
+    return z(
       "button",
       {
         className: "icon-button project-action-button" + (r ? ` ${r}` : ""),
         attributes: { ...a, "aria-label": n, type: "button" },
         properties: o,
       },
-      [M(t)],
+      [q(t)],
     );
   }
-  function q(t, n = {}, e = []) {
+  function z(t, n = {}, e = []) {
     const o = document.createElement(t);
     return (
       n.id && (o.id = n.id),
@@ -480,7 +477,7 @@
       o
     );
   }
-  function M(t) {
+  function q(t) {
     const n = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     return (
       n.setAttribute("class", "button-icon"),
@@ -506,10 +503,10 @@
       n
     );
   }
-  function P(t) {
+  function M(t) {
     return "high" === t ? "High" : "low" === t ? "Low" : "Medium";
   }
-  function B(t) {
+  function P(t) {
     const n = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     return (
       n.setAttribute("class", "button-icon"),
@@ -534,25 +531,42 @@
       }),
       n
     );
+  }
+  const B = { high: 0, medium: 1, low: 2 };
+  function F(t, n) {
+    if (t.completed !== n.completed) return t.completed ? 1 : -1;
+    const e = $(t.dueDate),
+      o = $(n.dueDate);
+    if (e !== o) return e - o;
+    const r = B[t.priority] ?? B.medium,
+      a = B[n.priority] ?? B.medium;
+    return r !== a
+      ? r - a
+      : new Date(t.createdAt).getTime() - new Date(n.createdAt).getTime();
+  }
+  function $(t) {
+    if (!t) return Number.POSITIVE_INFINITY;
+    const n = new Date(`${t}T00:00:00`);
+    return Number.isNaN(n.getTime()) ? Number.POSITIVE_INFINITY : n.getTime();
   }
   !(function () {
     const t = (function (t) {
       return (
         t.replaceChildren(
           (function () {
-            const t = q("main", { className: "app" }),
-              n = q("section", {
+            const t = z("main", { className: "app" }),
+              n = z("section", {
                 className: "app-shell",
                 attributes: { "aria-labelledby": "app-title" },
               });
             return (
               n.append(
                 (function () {
-                  const t = q("aside", { className: "left-panel" }),
-                    n = q("header", { className: "app-header" }, [
-                      q("p", { className: "eyebrow", text: "Project planner" }),
-                      q("h1", { id: "app-title", text: "Taskboard" }),
-                      q("p", {
+                  const t = z("aside", { className: "left-panel" }),
+                    n = z("header", { className: "app-header" }, [
+                      z("p", { className: "eyebrow", text: "Project planner" }),
+                      z("h1", { id: "app-title", text: "Taskboard" }),
+                      z("p", {
                         className: "app-intro",
                         text: "Manage project tasks, priorities, and deadlines from one focused workspace.",
                       }),
@@ -561,7 +575,7 @@
                     t.append(
                       n,
                       (function () {
-                        const t = q("input", {
+                        const t = z("input", {
                             id: "project-input",
                             attributes: {
                               autocomplete: "off",
@@ -570,7 +584,7 @@
                               type: "text",
                             },
                           }),
-                          n = q("button", {
+                          n = z("button", {
                             id: "project-submit",
                             text: "+",
                             attributes: {
@@ -580,19 +594,19 @@
                             },
                             properties: { disabled: !0 },
                           });
-                        return q("section", { className: "project-composer" }, [
-                          q("div", { className: "project-composer-copy" }, [
-                            q("p", {
+                        return z("section", { className: "project-composer" }, [
+                          z("div", { className: "project-composer-copy" }, [
+                            z("p", {
                               className: "status-label",
                               text: "Projects",
                             }),
                           ]),
-                          q(
+                          z(
                             "form",
                             { className: "project-form", id: "project-form" },
                             [t, n],
                           ),
-                          q(
+                          z(
                             "section",
                             {
                               className: "projects-panel",
@@ -601,14 +615,14 @@
                               },
                             },
                             [
-                              q("div", { className: "section-heading" }, [
-                                q("p", {
+                              z("div", { className: "section-heading" }, [
+                                z("p", {
                                   className: "status-label",
                                   id: "projects-title",
                                   text: "Project lists",
                                 }),
                               ]),
-                              q("div", {
+                              z("div", {
                                 className: "project-list",
                                 id: "project-list",
                                 attributes: { "aria-label": "Projects" },
@@ -622,37 +636,43 @@
                   );
                 })(),
                 (function () {
-                  const t = q("section", {
+                  const t = z("section", {
                     className: "right-panel",
                     attributes: { "aria-label": "Task workspace" },
                   });
                   return (
                     t.append(
-                      q("div", { className: "status-panel" }, [
-                        q("p", {
+                      z("div", { className: "status-panel" }, [
+                        z("p", {
                           className: "status-label",
                           text: "Current workload",
                         }),
-                        q(
+                        z(
                           "div",
                           {
                             className: "stats-grid",
                             attributes: { "aria-label": "Task summary" },
                           },
                           [
-                            C("total-count", "Total"),
-                            C("active-count", "Active"),
-                            C("completed-count", "Done"),
+                            A("total-count", "Total"),
+                            A("active-count", "Active"),
+                            A("completed-count", "Done"),
                           ],
                         ),
-                        q("p", {
+                        z("p", {
                           className: "todo-count",
                           id: "todo-count",
                           properties: { hidden: !0 },
                           text: "",
                         }),
                       ]),
-                      q(
+                      z("p", {
+                        className: "storage-status",
+                        id: "storage-status",
+                        properties: { hidden: !0 },
+                        attributes: { role: "status" },
+                      }),
+                      z(
                         "div",
                         {
                           className: "todo-filters",
@@ -665,25 +685,25 @@
                           I("completed", "Completed"),
                         ],
                       ),
-                      q(
+                      z(
                         "header",
                         {
                           className: "workspace-header",
                           id: "workspace-header",
                         },
                         [
-                          q("div", { className: "workspace-title" }, [
-                            q("h2", {
+                          z("div", { className: "workspace-title" }, [
+                            z("h2", {
                               id: "current-project-name",
                               text: "No project selected",
                             }),
-                            q("p", {
+                            z("p", {
                               className: "workspace-meta",
                               id: "current-project-meta",
                               text: "0 tasks in this project",
                             }),
                           ]),
-                          q("button", {
+                          z("button", {
                             className: "icon-button add-task-button",
                             id: "add-task-button",
                             text: "+",
@@ -697,25 +717,25 @@
                           }),
                         ],
                       ),
-                      q("form", { className: "todo-form", id: "todo-form" }, [
-                        q("div", { className: "composer-header" }, [
-                          q("div", {}, [
-                            q("p", {
+                      z("form", { className: "todo-form", id: "todo-form" }, [
+                        z("div", { className: "composer-header" }, [
+                          z("div", {}, [
+                            z("p", {
                               className: "status-label",
                               text: "New task",
                             }),
-                            q("label", {
+                            z("label", {
                               text: "Quick capture",
                               attributes: { for: "todo-input" },
                             }),
                           ]),
-                          q("span", {
+                          z("span", {
                             className: "composer-hint",
                             text: "Selected project",
                           }),
                         ]),
-                        q("div", { className: "todo-entry" }, [
-                          q("input", {
+                        z("div", { className: "todo-entry" }, [
+                          z("input", {
                             id: "todo-input",
                             attributes: {
                               autocomplete: "off",
@@ -724,7 +744,7 @@
                               type: "text",
                             },
                           }),
-                          q("input", {
+                          z("input", {
                             id: "due-date-input",
                             attributes: {
                               "aria-label": "Due date",
@@ -732,13 +752,13 @@
                               type: "date",
                             },
                           }),
-                          D(),
-                          q("button", {
+                          C(),
+                          z("button", {
                             text: "Add task",
                             attributes: { type: "submit" },
                           }),
                         ]),
-                        q("textarea", {
+                        z("textarea", {
                           id: "description-input",
                           attributes: {
                             name: "description",
@@ -747,13 +767,13 @@
                           },
                         }),
                       ]),
-                      q("div", { id: "todo-list-area" }, [
-                        q("ul", {
+                      z("div", { id: "todo-list-area" }, [
+                        z("ul", {
                           className: "todo-list",
                           id: "todo-list",
                           attributes: { "aria-label": "Todo list" },
                         }),
-                        q(
+                        z(
                           "section",
                           {
                             className: "empty-state",
@@ -761,16 +781,12 @@
                             properties: { hidden: !0 },
                           },
                           [
-                            q("p", {
+                            z("p", {
                               className: "empty-state-kicker",
                               id: "empty-state-kicker",
                               text: "Select a project",
                             }),
-                            q("h3", {
-                              id: "empty-state-title",
-                              text: "No tasks yet",
-                            }),
-                            q("p", {
+                            z("p", {
                               className: "empty-state-body",
                               id: "empty-state-body",
                               text: "Add your first task to start planning this project.",
@@ -778,11 +794,11 @@
                           ],
                         ),
                       ]),
-                      q(
+                      z(
                         "footer",
                         { className: "todo-footer", id: "todo-footer" },
                         [
-                          q("button", {
+                          z("button", {
                             className: "clear-button",
                             id: "clear-completed",
                             text: "Clear completed",
@@ -812,7 +828,6 @@
           emptyState: t.querySelector("#empty-state"),
           emptyStateBody: t.querySelector("#empty-state-body"),
           emptyStateKicker: t.querySelector("#empty-state-kicker"),
-          emptyStateTitle: t.querySelector("#empty-state-title"),
           priorityInput: t.querySelector("#priority-input"),
           projectForm: t.querySelector("#project-form"),
           projectSubmitButton: t.querySelector("#project-submit"),
@@ -826,30 +841,32 @@
           todoInput: t.querySelector("#todo-input"),
           todoList: t.querySelector("#todo-list"),
           totalCount: t.querySelector("#total-count"),
+          storageStatus: t.querySelector("#storage-status"),
           workspaceHeader: t.querySelector("#workspace-header"),
-          createProjectEmptyState: T,
-          createProjectRow: L,
+          createProjectEmptyState: D,
+          createProjectRow: T,
         }
       );
     })(document.querySelector("#app"));
     let n = (function () {
-        const t = A(E);
+        const t = S(E);
         if (t) return w(t);
-        const n = A("todo-project-tasks");
+        const n = S("todo-project-tasks");
         return n ? [h({ name: "Imported tasks", todos: n })] : [];
       })(),
       e = null,
       o = "all",
       r = null,
       a = null,
-      i = !1;
-    function s() {
+      i = !1,
+      s = "";
+    function d() {
       ((t.todoList.innerHTML = ""),
         (n = w(n)),
-        (e = M()?.id || null),
+        (e = U()?.id || null),
         (a = n.some((t) => t.id === a) ? a : null),
-        S(n),
-        d().forEach((n) => {
+        B(),
+        c().forEach((n) => {
           t.todoList.append(
             (function (t, n) {
               const e = document.createElement("li");
@@ -877,7 +894,7 @@
                         ["low", "medium", "high"].forEach((n) => {
                           const e = document.createElement("option");
                           ((e.value = n),
-                            (e.textContent = P(n)),
+                            (e.textContent = M(n)),
                             (e.selected = (t.priority || "medium") === n),
                             a.append(e));
                         }));
@@ -953,7 +970,7 @@
               ((a.className = "task-title"), (a.textContent = t.title));
               const i = document.createElement("span");
               ((i.className = `priority-badge priority-${t.priority || "medium"}`),
-                (i.textContent = P(t.priority)));
+                (i.textContent = M(t.priority)));
               const s = document.createElement("span");
               ((s.className = `task-due-date ${(function (t, n) {
                 if (!t) return "is-unscheduled";
@@ -996,13 +1013,13 @@
               ((p.className = "icon-button edit-button"),
                 (p.type = "button"),
                 p.setAttribute("aria-label", "Edit task details"),
-                p.append(B("edit")),
+                p.append(P("edit")),
                 (p.title = "Edit task details"));
               const l = document.createElement("button");
               ((l.className = "icon-button delete-button"),
                 (l.type = "button"),
                 l.setAttribute("aria-label", "Delete task"),
-                l.append(B("delete")),
+                l.append(P("delete")),
                 (l.title = "Delete task"),
                 r.addEventListener("change", () => {
                   n.onToggle(t.id, r.checked);
@@ -1021,7 +1038,31 @@
               ((f.className = "task-meta"),
                 f.append(s, d),
                 c.textContent && f.append(c),
-                u.append(m, f),
+                u.append(
+                  m,
+                  f,
+                  (function (t) {
+                    const n = document.createElement("span");
+                    if (((n.className = "task-details"), t.notes)) {
+                      const e = document.createElement("span");
+                      ((e.className = "task-notes"),
+                        (e.textContent = t.notes),
+                        n.append(e));
+                    }
+                    if (t.checklist?.length) {
+                      const e = document.createElement("span");
+                      ((e.className = "task-checklist"),
+                        t.checklist.forEach((t) => {
+                          const n = document.createElement("span");
+                          ((n.className = "task-checklist-item"),
+                            (n.textContent = t),
+                            e.append(n));
+                        }),
+                        n.append(e));
+                    }
+                    return n;
+                  })(t),
+                ),
                 o.append(r, u));
               const b = document.createElement("div");
               return (
@@ -1032,44 +1073,41 @@
               );
             })(n, {
               editingTodoId: r,
-              onCancelEdit: m,
-              onDelete: p,
-              onEdit: l,
-              onSaveEdit: u,
-              onToggle: c,
+              onCancelEdit: f,
+              onDelete: l,
+              onEdit: u,
+              onSaveEdit: m,
+              onToggle: p,
             }),
           );
         }),
         (function () {
-          const n = d().length,
-            e = M();
+          const n = c().length,
+            e = U();
           ((t.emptyState.hidden = n > 0),
             n > 0 ||
-              (0 !== F().length
+              (0 !== O().length
                 ? "active" !== o
-                  ? k(
+                  ? L(
                       "no-completed",
                       "",
-                      "No completed tasks",
                       "Finished work will appear here after tasks are marked complete.",
                     )
-                  : k(
+                  : L(
                       "no-active",
                       "",
-                      "No open tasks",
                       "Everything in this project is complete. Switch filters to review finished work.",
                     )
-                : k(
+                : L(
                     e ? "project-ready" : "no-project",
                     "",
-                    e ? `${e.name} has no tasks` : "",
                     e
                       ? "Use the add task button to capture the first task for this project."
                       : "Create or select a project from the sidebar to open a task workspace.",
                   )));
         })(),
         (function () {
-          const n = F(),
+          const n = O(),
             e = n.filter((t) => !t.completed).length,
             o = n.length - e,
             r = 1 === e ? "task" : "tasks";
@@ -1080,8 +1118,8 @@
             (t.clearCompletedButton.disabled = 0 === o));
         })(),
         (function () {
-          const n = M(),
-            e = F().length,
+          const n = U(),
+            e = O().length,
             o = 1 === e ? "task" : "tasks";
           ((t.currentProjectName.textContent = n
             ? n.name
@@ -1090,7 +1128,7 @@
               ? `${e} ${o} in this project`
               : "Create or select a project to add tasks."));
         })(),
-        g(),
+        x(),
         (t.projectList.innerHTML = ""),
         0 !== n.length
           ? n.forEach((n) => {
@@ -1099,38 +1137,41 @@
                   currentProjectId: e,
                   editingProjectId: a,
                   isDeleteDisabled: !1,
-                  onSaveEdit: f,
+                  onSaveEdit: b,
                 }),
               );
             })
           : t.projectList.append(t.createProjectEmptyState()));
     }
-    function d() {
-      const t = F();
-      return "active" === o
-        ? t.filter((t) => !t.completed)
-        : "completed" === o
-          ? t.filter((t) => t.completed)
-          : t;
+    function c() {
+      const t = O();
+      let n = t;
+      return (
+        "active" === o
+          ? (n = t.filter((t) => !t.completed))
+          : "completed" === o && (n = t.filter((t) => t.completed)),
+        [...n].sort(F)
+      );
     }
-    function c(t, o) {
+    function p(t, o) {
       (!(function (t, n, e, o) {
         const r = N(t, n, e);
         r && (r.completed = o);
       })(n, e, t, o),
-        z());
-    }
-    function p(t) {
-      (!(function (t, n, e) {
-        const o = v(t, n);
-        o && (o.todos = o.todos.filter((t) => t.id !== e));
-      })(n, e, t),
-        z());
+        q());
     }
     function l(t) {
-      ((r = t), s());
+      $("Delete this task?") &&
+        ((function (t, n, e) {
+          const o = v(t, n);
+          o && (o.todos = o.todos.filter((t) => t.id !== e));
+        })(n, e, t),
+        q());
     }
-    function u(o, a, i) {
+    function u(t) {
+      ((r = t), d());
+    }
+    function m(o, a, i) {
       const s = (function (t, n, e, o) {
         const r = N(t, n, e);
         return r
@@ -1145,25 +1186,25 @@
             r)
           : null;
       })(n, e, o, { ...a, priority: i });
-      s && ((r = null), z(), t.todoInput.focus());
+      s && ((r = null), q(), t.todoInput.focus());
     }
-    function m() {
-      ((r = null), s(), t.todoInput.focus());
+    function f() {
+      ((r = null), d(), t.todoInput.focus());
     }
-    function f(d, c) {
-      if ("select" === d)
+    function b(s, c) {
+      if ("select" === s)
         return (
           (e = c),
           (o = "all"),
           (r = null),
           (a = null),
           (i = !1),
-          b(),
-          void s()
+          g(),
+          void d()
         );
-      if ("edit" === d) return ((a = c), void s());
-      if ("cancel-edit" === d) return ((a = null), void s());
-      if ("save-edit" === d) {
+      if ("edit" === s) return ((a = c), void d());
+      if ("cancel-edit" === s) return ((a = null), void d());
+      if ("save-edit" === s) {
         const e = t.projectList.querySelector(
             `[data-project-name-input="${c}"]`,
           ),
@@ -1172,23 +1213,25 @@
               r = e.trim();
             return o && r ? ((o.name = r), o) : null;
           })(n, c, e.value);
-        return o ? ((a = null), void z()) : void e.focus();
+        return o ? ((a = null), void q()) : void e.focus();
       }
-      "delete" === d &&
+      if ("delete" === s) {
+        if (!$("Delete this project and all of its tasks?")) return;
         ((n = (function (t, n) {
           return t.filter((t) => t.id !== n);
         })(n, c)),
-        (e = e === c ? null : e),
-        (a = null),
-        z());
+          (e = e === c ? null : e),
+          (a = null),
+          q());
+      }
     }
-    function b() {
+    function g() {
       t.todoFilters.querySelectorAll("[data-filter]").forEach((t) => {
         t.classList.toggle("is-active", t.dataset.filter === o);
       });
     }
-    function g() {
-      const n = Boolean(M());
+    function x() {
+      const n = Boolean(U());
       ((t.workspaceHeader.hidden = !n),
         (t.addTaskButton.hidden = !n),
         t.addTaskButton.setAttribute("aria-expanded", String(i)),
@@ -1200,26 +1243,46 @@
         (t.todoForm.hidden = !n || !i),
         (t.todoFooter.hidden = !n));
     }
-    function x() {
+    function k() {
       t.projectSubmitButton.disabled = 0 === t.projectInput.value.trim().length;
     }
-    function k(n, e, o, r) {
+    function L(n, e, o) {
       ((t.emptyState.dataset.state = n),
         (t.emptyStateKicker.textContent = e),
-        (t.emptyStateBody.textContent = r));
+        (t.emptyStateBody.textContent = o));
     }
-    function z() {
-      (S(n), s());
+    function q() {
+      (B(), d());
     }
-    function M() {
+    function B() {
+      const e = (function (t) {
+        try {
+          return (localStorage.setItem(E, JSON.stringify(t)), !0);
+        } catch {
+          return !1;
+        }
+      })(n);
+      return (
+        (s = e
+          ? ""
+          : "Changes are visible here but could not be saved in this browser."),
+        (t.storageStatus.hidden = !s),
+        (t.storageStatus.textContent = s),
+        e
+      );
+    }
+    function $(t) {
+      return window.confirm(t);
+    }
+    function U() {
       return v(n, e);
     }
-    function F() {
+    function O() {
       return y(n, e);
     }
-    (t.projectInput.addEventListener("input", x),
+    (t.projectInput.addEventListener("input", k),
       t.addTaskButton.addEventListener("click", () => {
-        ((i = !i), g(), i && t.todoInput.focus());
+        ((i = !i), x(), i && t.todoInput.focus());
       }),
       t.projectForm.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -1230,24 +1293,24 @@
             t.push(e);
           })(n, r),
           (o = "all"),
-          z(),
+          q(),
           (t.projectInput.value = ""),
-          x(),
+          k(),
           t.projectInput.focus());
       }),
       t.projectList.addEventListener("click", (t) => {
         const n = t.target.closest("[data-project-action]"),
           a = t.target.closest("[data-project-id]");
         n && a
-          ? f(n.dataset.projectAction, a.dataset.projectId)
+          ? b(n.dataset.projectAction, a.dataset.projectId)
           : t.target.closest(".project-edit-form") ||
             (a &&
               ((e = a.dataset.projectId),
               (o = "all"),
               (r = null),
               (i = !1),
-              b(),
-              s()));
+              g(),
+              d()));
       }),
       t.todoForm.addEventListener("submit", (o) => {
         o.preventDefault();
@@ -1283,26 +1346,26 @@
             dueDate: t.dueDateInput.value,
             priority: t.priorityInput.value,
           }),
-          z(),
+          q(),
           (t.todoInput.value = ""),
           (t.descriptionInput.value = ""),
           (t.dueDateInput.value = ""),
           (t.priorityInput.value = "medium"),
           (i = !1),
-          g());
+          x());
       }),
       t.todoFilters.addEventListener("click", (t) => {
         const n = t.target.closest("[data-filter]");
-        n && ((o = n.dataset.filter), b(), s());
+        n && ((o = n.dataset.filter), g(), d());
       }),
       t.clearCompletedButton.addEventListener("click", () => {
         (!(function (t, n) {
           const e = v(t, n);
           e && (e.todos = e.todos.filter((t) => !t.completed));
         })(n, e),
-          z());
+          q());
       }),
-      s(),
-      x());
+      d(),
+      k());
   })();
 })();

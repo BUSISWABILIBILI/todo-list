@@ -20,7 +20,12 @@ export function loadProjects() {
 }
 
 export function saveProjects(projects) {
-  localStorage.setItem(projectsStorageKey, JSON.stringify(projects));
+  try {
+    localStorage.setItem(projectsStorageKey, JSON.stringify(projects));
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 function readStoredJson(key) {

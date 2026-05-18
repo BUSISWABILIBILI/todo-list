@@ -13,7 +13,6 @@ export function createAppView(root) {
     emptyState: root.querySelector("#empty-state"),
     emptyStateBody: root.querySelector("#empty-state-body"),
     emptyStateKicker: root.querySelector("#empty-state-kicker"),
-    emptyStateTitle: root.querySelector("#empty-state-title"),
     priorityInput: root.querySelector("#priority-input"),
     projectForm: root.querySelector("#project-form"),
     projectSubmitButton: root.querySelector("#project-submit"),
@@ -27,6 +26,7 @@ export function createAppView(root) {
     todoInput: root.querySelector("#todo-input"),
     todoList: root.querySelector("#todo-list"),
     totalCount: root.querySelector("#total-count"),
+    storageStatus: root.querySelector("#storage-status"),
     workspaceHeader: root.querySelector("#workspace-header"),
     createProjectEmptyState,
     createProjectRow,
@@ -129,6 +129,7 @@ function createRightPanel() {
 
   panel.append(
     createStatusPanel(),
+    createStorageStatus(),
     createFilters(),
     createWorkspaceHeader(),
     createTodoForm(),
@@ -137,6 +138,15 @@ function createRightPanel() {
   );
 
   return panel;
+}
+
+function createStorageStatus() {
+  return createElement("p", {
+    className: "storage-status",
+    id: "storage-status",
+    properties: { hidden: true },
+    attributes: { role: "status" },
+  });
 }
 
 function createProjectComposer() {
@@ -286,7 +296,6 @@ function createTodoList() {
       properties: { hidden: true },
     }, [
       createElement("p", { className: "empty-state-kicker", id: "empty-state-kicker", text: "Select a project" }),
-      createElement("h3", { id: "empty-state-title", text: "No tasks yet" }),
       createElement("p", {
         className: "empty-state-body",
         id: "empty-state-body",

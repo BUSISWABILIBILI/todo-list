@@ -15,6 +15,12 @@ import { loadProjects, saveProjects } from "../storage/projectStorage.js";
 import { createAppView } from "../ui/appView.js";
 import { createTodoItem } from "../ui/todoItem.js";
 
+const priorityRank = {
+  high: 0,
+  medium: 1,
+  low: 2,
+};
+
 export function startApp(root) {
   const view = createAppView(root);
   let projects = loadProjects();
@@ -23,6 +29,7 @@ export function startApp(root) {
   let editingTodoId = null;
   let editingProjectId = null;
   let isTaskComposerOpen = false;
+  let storageErrorMessage = "";
 
   view.projectInput.addEventListener("input", updateProjectSubmitState);
 
@@ -58,7 +65,10 @@ export function startApp(root) {
     const projectRow = event.target.closest("[data-project-id]");
 
     if (actionButton && projectRow) {
-      handleProjectAction(actionButton.dataset.projectAction, projectRow.dataset.projectId);
+      handleProjectAction(
+        actionButton.dataset.projectAction,
+        projectRow.dataset.projectId,
+      );
       return;
     }
 
@@ -128,10 +138,12 @@ export function startApp(root) {
     view.todoList.innerHTML = "";
     projects = normalizeProjects(projects);
     currentProjectId = getCurrentProject()?.id || null;
-    editingProjectId = projects.some((project) => project.id === editingProjectId)
+    editingProjectId = projects.some(
+      (project) => project.id === editingProjectId,
+    )
       ? editingProjectId
       : null;
-    saveProjects(projects);
+    persistProjects();
 
     getFilteredTodos().forEach((todo) => {
       view.todoList.append(
@@ -142,7 +154,7 @@ export function startApp(root) {
           onEdit: editTodo,
           onSaveEdit: saveEdit,
           onToggle: toggleTodo,
-        })
+        }),
       );
     });
 
@@ -155,16 +167,15 @@ export function startApp(root) {
 
   function getFilteredTodos() {
     const todos = getCurrentTodos();
+    let visibleTodos = todos;
 
     if (currentFilter === "active") {
-      return todos.filter((todo) => !todo.completed);
+      visibleTodos = todos.filter((todo) => !todo.completed);
+    } else if (currentFilter === "completed") {
+      visibleTodos = todos.filter((todo) => todo.completed);
     }
 
-    if (currentFilter === "completed") {
-      return todos.filter((todo) => todo.completed);
-    }
-
-    return todos;
+    return [...visibleTodos].sort(compareTodos);
   }
 
   function toggleTodo(id, completed) {
@@ -173,6 +184,10 @@ export function startApp(root) {
   }
 
   function deleteTodo(id) {
+    if (!confirmDelete("Delete this task?")) {
+      return;
+    }
+
     deleteTodoFromProject(projects, currentProjectId, id);
     saveAndRender();
   }
@@ -228,7 +243,9 @@ export function startApp(root) {
     }
 
     if (action === "save-edit") {
-      const input = view.projectList.querySelector(`[data-project-name-input="${projectId}"]`);
+      const input = view.projectList.querySelector(
+        `[data-project-name-input="${projectId}"]`,
+      );
       const project = updateProjectName(projects, projectId, input.value);
 
       if (!project) {
@@ -242,8 +259,13 @@ export function startApp(root) {
     }
 
     if (action === "delete") {
+      if (!confirmDelete("Delete this project and all of its tasks?")) {
+        return;
+      }
+
       projects = deleteProject(projects, projectId);
-      currentProjectId = currentProjectId === projectId ? null : currentProjectId;
+      currentProjectId =
+        currentProjectId === projectId ? null : currentProjectId;
 
       editingProjectId = null;
       saveAndRender();
@@ -254,7 +276,10 @@ export function startApp(root) {
     const filterButtons = view.todoFilters.querySelectorAll("[data-filter]");
 
     filterButtons.forEach((button) => {
-      button.classList.toggle("is-active", button.dataset.filter === currentFilter);
+      button.classList.toggle(
+        "is-active",
+        button.dataset.filter === currentFilter,
+      );
     });
   }
 
@@ -276,7 +301,9 @@ export function startApp(root) {
     const taskTotal = getCurrentTodos().length;
     const taskLabel = taskTotal === 1 ? "task" : "tasks";
 
-    view.currentProjectName.textContent = currentProject ? currentProject.name : "No project selected";
+    view.currentProjectName.textContent = currentProject
+      ? currentProject.name
+      : "No project selected";
     view.currentProjectMeta.textContent = currentProject
       ? `${taskTotal} ${taskLabel} in this project`
       : "Create or select a project to add tasks.";
@@ -287,11 +314,16 @@ export function startApp(root) {
 
     view.workspaceHeader.hidden = !hasSelectedProject;
     view.addTaskButton.hidden = !hasSelectedProject;
-    view.addTaskButton.setAttribute("aria-expanded", String(isTaskComposerOpen));
-    view.addTaskButton.title = isTaskComposerOpen ? "Hide task form" : "Add task";
+    view.addTaskButton.setAttribute(
+      "aria-expanded",
+      String(isTaskComposerOpen),
+    );
+    view.addTaskButton.title = isTaskComposerOpen
+      ? "Hide task form"
+      : "Add task";
     view.addTaskButton.setAttribute(
       "aria-label",
-      isTaskComposerOpen ? "Hide task form" : "Add task"
+      isTaskComposerOpen ? "Hide task form" : "Add task",
     );
     view.todoForm.hidden = !hasSelectedProject || !isTaskComposerOpen;
     view.todoFooter.hidden = !hasSelectedProject;
@@ -312,7 +344,7 @@ export function startApp(root) {
           editingProjectId,
           isDeleteDisabled: false,
           onSaveEdit: handleProjectAction,
-        })
+        }),
       );
     });
   }
@@ -330,10 +362,9 @@ export function startApp(root) {
       setEmptyState(
         currentProject ? "project-ready" : "no-project",
         "",
-        currentProject ? `${currentProject.name} has no tasks` : "",
         currentProject
           ? "Use the add task button to capture the first task for this project."
-          : "Create or select a project from the sidebar to open a task workspace."
+          : "Create or select a project from the sidebar to open a task workspace.",
       );
       return;
     }
@@ -342,8 +373,7 @@ export function startApp(root) {
       setEmptyState(
         "no-active",
         "",
-        "No open tasks",
-        "Everything in this project is complete. Switch filters to review finished work."
+        "Everything in this project is complete. Switch filters to review finished work.",
       );
       return;
     }
@@ -351,24 +381,42 @@ export function startApp(root) {
     setEmptyState(
       "no-completed",
       "",
-      "No completed tasks",
-      "Finished work will appear here after tasks are marked complete."
+      "Finished work will appear here after tasks are marked complete.",
     );
   }
 
   function updateProjectSubmitState() {
-    view.projectSubmitButton.disabled = view.projectInput.value.trim().length === 0;
+    view.projectSubmitButton.disabled =
+      view.projectInput.value.trim().length === 0;
   }
 
-  function setEmptyState(state, kicker, title, body) {
+  function setEmptyState(state, kicker, body) {
     view.emptyState.dataset.state = state;
     view.emptyStateKicker.textContent = kicker;
     view.emptyStateBody.textContent = body;
   }
 
   function saveAndRender() {
-    saveProjects(projects);
+    persistProjects();
     render();
+  }
+
+  function persistProjects() {
+    const saved = saveProjects(projects);
+    storageErrorMessage = saved
+      ? ""
+      : "Changes are visible here but could not be saved in this browser.";
+    updateStorageStatus();
+    return saved;
+  }
+
+  function updateStorageStatus() {
+    view.storageStatus.hidden = !storageErrorMessage;
+    view.storageStatus.textContent = storageErrorMessage;
+  }
+
+  function confirmDelete(message) {
+    return window.confirm(message);
   }
 
   function getCurrentProject() {
@@ -378,4 +426,41 @@ export function startApp(root) {
   function getCurrentTodos() {
     return getProjectTodos(projects, currentProjectId);
   }
+}
+
+function compareTodos(firstTodo, secondTodo) {
+  if (firstTodo.completed !== secondTodo.completed) {
+    return firstTodo.completed ? 1 : -1;
+  }
+
+  const firstDueDate = getSortableDate(firstTodo.dueDate);
+  const secondDueDate = getSortableDate(secondTodo.dueDate);
+
+  if (firstDueDate !== secondDueDate) {
+    return firstDueDate - secondDueDate;
+  }
+
+  const firstPriority = priorityRank[firstTodo.priority] ?? priorityRank.medium;
+  const secondPriority =
+    priorityRank[secondTodo.priority] ?? priorityRank.medium;
+
+  if (firstPriority !== secondPriority) {
+    return firstPriority - secondPriority;
+  }
+
+  return (
+    new Date(firstTodo.createdAt).getTime() -
+    new Date(secondTodo.createdAt).getTime()
+  );
+}
+
+function getSortableDate(dueDate) {
+  if (!dueDate) {
+    return Number.POSITIVE_INFINITY;
+  }
+
+  const date = new Date(`${dueDate}T00:00:00`);
+  return Number.isNaN(date.getTime())
+    ? Number.POSITIVE_INFINITY
+    : date.getTime();
 }
