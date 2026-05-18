@@ -59,7 +59,8 @@ export function startApp(root) {
       return;
     }
 
-    addProject(projects, name);
+    const project = addProject(projects, name);
+    currentProjectId = project.id;
     currentFilter = "all";
     saveAndRender();
 
@@ -262,6 +263,13 @@ export function startApp(root) {
       const input = view.projectList.querySelector(
         `[data-project-name-input="${projectId}"]`,
       );
+
+      if (!input) {
+        editingProjectId = null;
+        render();
+        return;
+      }
+
       const project = updateProjectName(projects, projectId, input.value);
 
       if (!project) {
@@ -281,9 +289,11 @@ export function startApp(root) {
 
       projects = deleteProject(projects, projectId);
       currentProjectId =
-        currentProjectId === projectId ? null : currentProjectId;
+        currentProjectId === projectId ? projects[0]?.id || null : currentProjectId;
 
       editingProjectId = null;
+      editingTodoId = null;
+      isTaskComposerOpen = false;
       saveAndRender();
     }
   }
@@ -327,7 +337,7 @@ export function startApp(root) {
       ? currentProject.name
       : "No project selected";
     view.currentProjectMeta.textContent = currentProject
-      ? `${taskTotal} ${taskLabel} • ${completion}% complete`
+      ? `${taskTotal} ${taskLabel} - ${completion}% complete`
       : "Create or select a project to add tasks.";
     view.progressBar.style.width = `${completion}%`;
     view.progressText.textContent = `${completion}% complete`;

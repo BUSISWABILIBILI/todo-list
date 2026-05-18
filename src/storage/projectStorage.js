@@ -29,7 +29,13 @@ export function saveProjects(projects) {
 }
 
 function readStoredJson(key) {
-  const savedValue = localStorage.getItem(key);
+  let savedValue;
+
+  try {
+    savedValue = localStorage.getItem(key);
+  } catch {
+    return null;
+  }
 
   if (!savedValue) {
     return null;
@@ -38,7 +44,11 @@ function readStoredJson(key) {
   try {
     return JSON.parse(savedValue);
   } catch {
-    localStorage.removeItem(key);
+    try {
+      localStorage.removeItem(key);
+    } catch {
+      // Ignore storage cleanup failures; the app can still run in memory.
+    }
     return null;
   }
 }

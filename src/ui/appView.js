@@ -198,6 +198,7 @@ function createStorageStatus() {
 
 function createProjectComposer() {
   const projectInput = createElement("input", {
+    className: "project-input",
     id: "project-input",
     attributes: {
       autocomplete: "off",
@@ -208,6 +209,7 @@ function createProjectComposer() {
   });
 
   const addButton = createElement("button", {
+    className: "project-submit",
     id: "project-submit",
     text: "+",
     attributes: {

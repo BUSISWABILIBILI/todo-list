@@ -1,4 +1,8 @@
 import "../public/styles.css";
 import { startApp } from "./app/app.js";
 
-startApp(document.querySelector("#app"));
+const root = document.querySelector("#app");
+
+if (root) {
+  startApp(root);
+}

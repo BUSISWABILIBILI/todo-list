@@ -52,13 +52,9 @@ export function createTodoItem(todo, options) {
   deleteButton.append(createIcon("delete"));
   deleteButton.title = "Delete task";
 
-  const expandButton = document.createElement("button");
-  expandButton.className = "icon-button expand-button";
-  expandButton.type = "button";
-  expandButton.setAttribute("aria-label", "Show task details");
-  expandButton.setAttribute("aria-expanded", "false");
-  expandButton.append(createIcon("chevron"));
-  expandButton.title = "Show task details";
+  const details = createTaskDetails(todo);
+  const hasDetails = details.hasChildNodes();
+  const expandButton = hasDetails ? createExpandButton() : null;
 
   checkbox.addEventListener("change", () => {
     options.onToggle(todo.id, checkbox.checked);
@@ -72,15 +68,17 @@ export function createTodoItem(todo, options) {
     options.onDelete(todo.id);
   });
 
-  expandButton.addEventListener("click", () => {
-    const isExpanded = item.classList.toggle("is-expanded");
-    expandButton.setAttribute("aria-expanded", String(isExpanded));
-    expandButton.setAttribute(
-      "aria-label",
-      isExpanded ? "Hide task details" : "Show task details"
-    );
-    expandButton.title = isExpanded ? "Hide task details" : "Show task details";
-  });
+  if (expandButton) {
+    expandButton.addEventListener("click", () => {
+      const isExpanded = item.classList.toggle("is-expanded");
+      expandButton.setAttribute("aria-expanded", String(isExpanded));
+      expandButton.setAttribute(
+        "aria-label",
+        isExpanded ? "Hide task details" : "Show task details"
+      );
+      expandButton.title = isExpanded ? "Hide task details" : "Show task details";
+    });
+  }
 
   const taskContent = document.createElement("span");
   taskContent.className = "task-content";
@@ -96,17 +94,33 @@ export function createTodoItem(todo, options) {
     taskMeta.append(checklistSummary);
   }
 
-  taskContent.append(taskHeader, taskMeta, createTaskDetails(todo));
+  taskContent.append(taskHeader, taskMeta, details);
 
   label.append(checkbox, taskContent);
 
   const actions = document.createElement("div");
   actions.className = "todo-actions";
-  actions.append(editButton, deleteButton, expandButton);
+  actions.append(editButton, deleteButton);
+
+  if (expandButton) {
+    actions.append(expandButton);
+  }
 
   item.append(label, actions);
 
   return item;
+}
+
+function createExpandButton() {
+  const button = document.createElement("button");
+  button.className = "icon-button expand-button";
+  button.type = "button";
+  button.setAttribute("aria-label", "Show task details");
+  button.setAttribute("aria-expanded", "false");
+  button.append(createIcon("chevron"));
+  button.title = "Show task details";
+
+  return button;
 }
 
 function createTaskDetails(todo) {
@@ -324,7 +338,7 @@ function createIcon(name) {
     ],
   };
 
-  paths[name].forEach((data) => {
+  (paths[name] || paths.chevron).forEach((data) => {
     const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
     path.setAttribute("d", data);
     svg.append(path);
