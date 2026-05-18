@@ -1815,8 +1815,8 @@ h1 {
 .right-panel {
   display: grid;
   grid-template-rows: auto auto minmax(0, 1fr) auto;
-  gap: 22px;
-  padding: 30px 28px 32px;
+  gap: 16px;
+  padding: 24px 28px 28px;
   background: transparent;
 }
 
@@ -2012,27 +2012,27 @@ h1 {
 
 .right-panel > .status-panel .stats-grid {
   grid-template-columns: repeat(4, minmax(170px, 1fr));
-  gap: 20px;
+  gap: 14px;
 }
 
 .stat-card {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   align-items: start;
-  gap: 22px;
-  min-height: 142px;
+  gap: 16px;
+  min-height: 88px;
   border: 1px solid var(--reference-border);
   border-radius: 12px;
-  padding: 28px 24px;
+  padding: 14px 18px;
   background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.045);
 }
 
 .stat-icon {
   display: grid;
   place-items: center;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 10px;
   color: #2563eb;
   background: #dbeafe;
@@ -2055,27 +2055,30 @@ h1 {
 
 .stat-copy {
   display: grid;
-  gap: 8px;
+  gap: 4px;
+  padding-top: 1px;
 }
 
 .stat-label {
-  color: #29375d;
-  font-size: 0.82rem;
+  color: #33415f;
+  font-size: 0.78rem;
   font-weight: 900;
-  text-transform: none;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
 }
 
 .stat-value {
   color: #030a20;
-  font-size: 2rem;
+  font-size: 1.55rem;
   font-weight: 900;
   line-height: 1;
 }
 
 .stat-description {
-  color: #41527a;
-  font-size: 0.82rem;
-  font-weight: 650;
+  color: #667494;
+  font-size: 0.76rem;
+  font-weight: 700;
+  line-height: 1.25;
 }
 
 .workspace-header {
@@ -2083,10 +2086,10 @@ h1 {
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: 24px;
-  min-height: 134px;
+  min-height: 104px;
   border: 1px solid var(--reference-border);
   border-radius: 12px;
-  padding: 26px 24px;
+  padding: 20px 24px;
   background: rgba(255, 255, 255, 0.94);
   box-shadow: 0 16px 36px rgba(15, 23, 42, 0.05);
 }
@@ -2110,7 +2113,7 @@ h1 {
   grid-template-columns: minmax(180px, 590px) auto;
   align-items: center;
   gap: 20px;
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
 .project-progress-track {
