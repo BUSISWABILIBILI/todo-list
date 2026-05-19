@@ -32,6 +32,7 @@ export function createAppView(root) {
     todoList: root.querySelector("#todo-list"),
     totalCount: root.querySelector("#total-count"),
     storageStatus: root.querySelector("#storage-status"),
+    themeToggle: root.querySelector("#theme-toggle"),
     workspaceHeader: root.querySelector("#workspace-header"),
     createProjectEmptyState,
     createProjectRow,
@@ -63,7 +64,10 @@ function createLeftPanel() {
         },
       }),
     ]),
-    createElement("h1", { id: "app-title", text: "Taskboard" }),
+    createElement("div", { className: "app-title-row" }, [
+      createElement("h1", { id: "app-title", text: "Taskboard" }),
+      createThemeToggle(),
+    ]),
     createElement("a", {
       className: "logo-credit",
       text: "Files and folders icons created by Lagot Design - Flaticon",
@@ -83,6 +87,25 @@ function createLeftPanel() {
   );
 
   return panel;
+}
+
+function createThemeToggle() {
+  const input = createElement("input", {
+    className: "theme-toggle-input",
+    id: "theme-toggle",
+    attributes: {
+      "aria-label": "Use dark mode",
+      type: "checkbox",
+    },
+  });
+
+  return createElement("label", { className: "theme-toggle", attributes: { for: "theme-toggle" } }, [
+    input,
+    createElement("span", { className: "theme-toggle-icon", attributes: { "aria-hidden": "true" } }, [
+      createIcon("sun"),
+      createIcon("moon"),
+    ]),
+  ]);
 }
 
 function createTipCard() {
@@ -579,6 +602,20 @@ function createIcon(name) {
       "M3 6h.01",
       "M3 12h.01",
       "M3 18h.01",
+    ],
+    moon: [
+      "M21 12.8A8.6 8.6 0 1 1 11.2 3a6.8 6.8 0 0 0 9.8 9.8Z",
+    ],
+    sun: [
+      "M12 4V2",
+      "M12 22v-2",
+      "M4.93 4.93 3.52 3.52",
+      "M20.48 20.48l-1.41-1.41",
+      "M2 12h2",
+      "M20 12h2",
+      "M4.93 19.07l-1.41 1.41",
+      "M20.48 3.52l-1.41 1.41",
+      "M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z",
     ],
   };
 

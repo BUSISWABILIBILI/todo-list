@@ -2773,3 +2773,277 @@ h1 {
     width: 42px;
   }
 }
+
+/* Theme switch and dark mode */
+.app-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+  color: #41527a;
+  cursor: pointer;
+  transition: color 160ms ease;
+}
+
+.theme-toggle-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.theme-toggle-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  color: #475569;
+  transition: color 160ms ease;
+}
+
+.theme-toggle-icon .button-icon {
+  grid-area: 1 / 1;
+  width: 19px;
+  height: 19px;
+}
+
+.theme-toggle-icon .button-icon:first-child {
+  display: none;
+}
+
+.theme-toggle-input:checked ~ .theme-toggle-icon {
+  color: #fbbf24;
+}
+
+.theme-toggle-input:checked ~ .theme-toggle-icon .button-icon:first-child {
+  display: block;
+}
+
+.theme-toggle-input:checked ~ .theme-toggle-icon .button-icon:last-child {
+  display: none;
+}
+
+.theme-toggle:has(.theme-toggle-input:focus-visible) {
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.16);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  background: #0b1120;
+  color: #e5eefc;
+  --bg: #0b1120;
+  --panel: #111827;
+  --panel-border: #26344a;
+  --muted: #9aa8bd;
+  --text: #e5eefc;
+  --primary: #60a5fa;
+  --primary-hover: #93c5fd;
+  --primary-soft: rgba(96, 165, 250, 0.16);
+  --success: #34d399;
+  --success-soft: rgba(52, 211, 153, 0.15);
+  --danger: #fb7185;
+  --danger-soft: rgba(251, 113, 133, 0.15);
+  --focus-ring: rgba(96, 165, 250, 0.34);
+  --warning: #fbbf24;
+  --warning-soft: rgba(251, 191, 36, 0.15);
+  --shadow: 0 28px 90px rgba(0, 0, 0, 0.46);
+  --shadow-card: 0 14px 34px rgba(0, 0, 0, 0.28);
+  --shadow-soft: 0 8px 22px rgba(0, 0, 0, 0.24);
+  --surface: #101827;
+  --reference-bg: #0b1120;
+  --reference-card: #111827;
+  --reference-border: #26344a;
+  --reference-text: #f8fafc;
+  --reference-muted: #9aa8bd;
+}
+
+:root[data-theme="dark"] body,
+:root[data-theme="dark"] .app {
+  background:
+    radial-gradient(circle at 18% 0%, rgba(96, 165, 250, 0.12), transparent 26rem),
+    radial-gradient(circle at 82% 18%, rgba(52, 211, 153, 0.08), transparent 24rem),
+    #0b1120;
+}
+
+:root[data-theme="dark"] .left-panel,
+:root[data-theme="dark"] .right-panel,
+:root[data-theme="dark"] .project-composer,
+:root[data-theme="dark"] .tip-card,
+:root[data-theme="dark"] .workspace-header,
+:root[data-theme="dark"] .stat-card,
+:root[data-theme="dark"] .todo-list,
+:root[data-theme="dark"] .todo-form,
+:root[data-theme="dark"] .todo-dialog,
+:root[data-theme="dark"] .empty-state,
+:root[data-theme="dark"] .task-details {
+  border-color: var(--reference-border);
+  background: rgba(17, 24, 39, 0.92);
+  box-shadow: var(--shadow-soft);
+}
+
+:root[data-theme="dark"] .left-panel {
+  background: rgba(15, 23, 42, 0.96);
+}
+
+:root[data-theme="dark"] .brand-mark,
+:root[data-theme="dark"] .add-task-button,
+:root[data-theme="dark"] .save-button,
+:root[data-theme="dark"] .project-row.is-active,
+:root[data-theme="dark"] .project-progress-bar {
+  background: #3b82f6;
+}
+
+:root[data-theme="dark"] h1,
+:root[data-theme="dark"] .workspace-header h2,
+:root[data-theme="dark"] .stat-value,
+:root[data-theme="dark"] .task-title,
+:root[data-theme="dark"] .project-form .project-input,
+:root[data-theme="dark"] .project-input,
+:root[data-theme="dark"] .todo-dialog input,
+:root[data-theme="dark"] .todo-dialog textarea,
+:root[data-theme="dark"] .todo-dialog select,
+:root[data-theme="dark"] .edit-form input,
+:root[data-theme="dark"] .edit-form textarea,
+:root[data-theme="dark"] .edit-form select {
+  color: var(--reference-text);
+}
+
+:root[data-theme="dark"] .status-label,
+:root[data-theme="dark"] .workspace-meta,
+:root[data-theme="dark"] .stat-label,
+:root[data-theme="dark"] .stat-description,
+:root[data-theme="dark"] .tip-body,
+:root[data-theme="dark"] .project-progress-text,
+:root[data-theme="dark"] .task-description,
+:root[data-theme="dark"] .task-meta,
+:root[data-theme="dark"] .task-notes,
+:root[data-theme="dark"] .theme-toggle,
+:root[data-theme="dark"] .field-label,
+:root[data-theme="dark"] .empty-state-body {
+  color: var(--reference-muted);
+}
+
+:root[data-theme="dark"] .project-form .project-input,
+:root[data-theme="dark"] .project-input,
+:root[data-theme="dark"] .todo-dialog input,
+:root[data-theme="dark"] .todo-dialog textarea,
+:root[data-theme="dark"] .todo-dialog select,
+:root[data-theme="dark"] .edit-form input,
+:root[data-theme="dark"] .edit-form textarea,
+:root[data-theme="dark"] .edit-form select,
+:root[data-theme="dark"] .project-edit-form input {
+  border-color: #334155;
+  background: #0f172a;
+  box-shadow: none;
+}
+
+:root[data-theme="dark"] .project-form .project-input::placeholder,
+:root[data-theme="dark"] .project-input::placeholder,
+:root[data-theme="dark"] .todo-dialog input::placeholder,
+:root[data-theme="dark"] .todo-dialog textarea::placeholder,
+:root[data-theme="dark"] .edit-form textarea::placeholder {
+  color: #73829a;
+}
+
+:root[data-theme="dark"] .project-row:hover,
+:root[data-theme="dark"] .todo-item:hover {
+  border-color: #334155;
+  background: rgba(30, 41, 59, 0.82);
+}
+
+:root[data-theme="dark"] .project-count,
+:root[data-theme="dark"] .task-due-date,
+:root[data-theme="dark"] .task-checklist-item,
+:root[data-theme="dark"] .composer-hint,
+:root[data-theme="dark"] .project-progress-track {
+  border-color: #334155;
+  background: #1e293b;
+  color: #cbd5e1;
+}
+
+:root[data-theme="dark"] .theme-toggle {
+  background: transparent;
+}
+
+:root[data-theme="dark"] .theme-toggle-icon {
+  color: #fbbf24;
+  box-shadow: none;
+}
+
+:root[data-theme="dark"] .filter-button,
+:root[data-theme="dark"] .project-action-button,
+:root[data-theme="dark"] .edit-button,
+:root[data-theme="dark"] .cancel-button,
+:root[data-theme="dark"] .clear-button,
+:root[data-theme="dark"] .dialog-close-button,
+:root[data-theme="dark"] .project-cancel-button {
+  border-color: #334155;
+  background: #111827;
+  color: #cbd5e1;
+}
+
+:root[data-theme="dark"] .filter-button.is-active {
+  border-color: rgba(96, 165, 250, 0.42);
+  background: rgba(96, 165, 250, 0.16);
+  color: #bfdbfe;
+}
+
+:root[data-theme="dark"] .todo-item {
+  border-bottom-color: #26344a;
+}
+
+:root[data-theme="dark"] .todo-item.is-complete {
+  background: rgba(15, 23, 42, 0.72);
+}
+
+:root[data-theme="dark"] .stat-icon {
+  color: #bfdbfe;
+  background: rgba(96, 165, 250, 0.16);
+}
+
+:root[data-theme="dark"] .stat-active .stat-icon {
+  color: #fde68a;
+  background: rgba(251, 191, 36, 0.15);
+}
+
+:root[data-theme="dark"] .stat-completed .stat-icon {
+  color: #a7f3d0;
+  background: rgba(52, 211, 153, 0.15);
+}
+
+:root[data-theme="dark"] .stat-overdue .stat-icon {
+  color: #fecdd3;
+  background: rgba(251, 113, 133, 0.15);
+}
+
+:root[data-theme="dark"] .priority-low {
+  color: #86efac;
+}
+
+:root[data-theme="dark"] .priority-medium {
+  color: #fde68a;
+}
+
+:root[data-theme="dark"] .priority-high,
+:root[data-theme="dark"] .task-due-date.is-overdue,
+:root[data-theme="dark"] .delete-button,
+:root[data-theme="dark"] .project-action-button.danger {
+  color: #fda4af;
+}

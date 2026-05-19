@@ -21,6 +21,10 @@ const priorityRank = {
   low: 2,
 };
 
+const THEME_STORAGE_KEY = "taskboard-theme";
+const DARK_THEME = "dark";
+const LIGHT_THEME = "light";
+
 export function startApp(root) {
   const view = createAppView(root);
   let projects = loadProjects();
@@ -30,8 +34,18 @@ export function startApp(root) {
   let editingProjectId = null;
   let isTaskComposerOpen = false;
   let storageErrorMessage = "";
+  let currentTheme = getInitialTheme();
+
+  applyTheme(currentTheme);
+  view.themeToggle.checked = currentTheme === DARK_THEME;
 
   view.projectInput.addEventListener("input", updateProjectSubmitState);
+
+  view.themeToggle.addEventListener("change", () => {
+    currentTheme = view.themeToggle.checked ? DARK_THEME : LIGHT_THEME;
+    applyTheme(currentTheme);
+    persistTheme(currentTheme);
+  });
 
   view.addTaskButton.addEventListener("click", () => {
     isTaskComposerOpen = !isTaskComposerOpen;
@@ -459,6 +473,37 @@ export function startApp(root) {
 
   function getCurrentTodos() {
     return getProjectTodos(projects, currentProjectId);
+  }
+}
+
+function getInitialTheme() {
+  let savedTheme = null;
+
+  try {
+    savedTheme = window.localStorage?.getItem(THEME_STORAGE_KEY);
+  } catch {
+    savedTheme = null;
+  }
+
+  if (savedTheme === DARK_THEME || savedTheme === LIGHT_THEME) {
+    return savedTheme;
+  }
+
+  return window.matchMedia?.("(prefers-color-scheme: dark)").matches
+    ? DARK_THEME
+    : LIGHT_THEME;
+}
+
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  document.documentElement.style.colorScheme = theme;
+}
+
+function persistTheme(theme) {
+  try {
+    window.localStorage?.setItem(THEME_STORAGE_KEY, theme);
+  } catch {
+    // Theme changes should still apply when browser storage is unavailable.
   }
 }
 
