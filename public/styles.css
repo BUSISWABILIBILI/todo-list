@@ -306,7 +306,7 @@ h1 {
 
 .right-panel > .status-panel .stat-card {
   grid-template-columns: auto 1fr;
-  align-items: baseline;
+  align-items: center;
   gap: 7px;
   min-height: 34px;
   padding: 7px 9px;
